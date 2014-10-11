@@ -5,7 +5,6 @@ class CreateUrls < ActiveRecord::Migration
       t.string :short_url
       t.integer :click_counter
       t.integer :user_id
-
       t.timestamps
     end
   end

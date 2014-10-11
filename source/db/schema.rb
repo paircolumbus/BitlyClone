@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141011153127) do
+ActiveRecord::Schema.define(version: 20141011160120) do
 
   create_table "urls", force: true do |t|
     t.string   "full_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "password"
+    t.string   "password_confirmation"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

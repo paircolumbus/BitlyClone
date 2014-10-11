@@ -7,6 +7,11 @@ class ApplicationController < ActionController::Base
     session[:user_id]
   end
 
-  def authenticate_user
+  def current_user
+    @user = session[:user_id] ? User.find(session[:user_id]) : User.new 
+  end
+
+  def authenticate_user!
+    redirect_to root_url unless logged_in?
   end
 end

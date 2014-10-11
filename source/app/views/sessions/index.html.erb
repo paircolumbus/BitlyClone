@@ -1,9 +1,12 @@
 <h1>Super Bitly Clone</h1>
 <p>Welcome to our bitly clone!</p>
 
-<br>
-<%= link_to 'Sign Up', '#' %>
-<%= link_to 'Login', '#' %>
-<%= link_to 'Logout', '#' %>
-<%= link_to 'New Url', new_url_path %>
+<%= form_for @user, url: sessions_path do |f| %>
+  Email: <%=  f.text_field :email, { placeholder: "Email" }  %><br />
+  Password: <%=  f.password_field :password, { placeholder: "Password" } %><br />
 
+  <%=  submit_tag "Login" %>
+<% end %>
+
+<br>
+<%= link_to 'Sign Up', new_user_path %>

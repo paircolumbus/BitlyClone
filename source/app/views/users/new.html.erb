@@ -1,0 +1,12 @@
+<h1>This is our new User signup page</h1>
+
+<%= form_for @user do |f| %>
+  Name: <%=  f.text_field :name, { placeholder: "Name" }  %><br />
+  Email: <%=  f.text_field :email, { placeholder: "Email" }  %><br />
+  Password: <%=  f.password_field :password, { placeholder: "Password" } %><br />
+  Confirm Password: <%=  f.password_field :password_confirmation, { placeholder: "Password Confirmation" } %><br />
+
+  <%=  submit_tag "Sign Up" %>
+<% end %>
+
+

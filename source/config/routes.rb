@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
+  root 'sessions#index'
+
   resources :urls
   resources :sessions, except: [:update, :edit]
+  resources :users
 
-  root 'sessions#index'
   get '/logout' => 'sessions#destroy'
   get '/login' => 'sessions#create'
   

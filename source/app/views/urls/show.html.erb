@@ -1,0 +1,20 @@
+<h1>hello</h1>
+
+<%= form_for @url, url: {action: "create"} do |f| %>
+	<%=  f.label :long_name %>
+	<%=  f.text_field :long_name %>
+	<%=  f.submit "Submit"%>
+<% end %>
+
+<br />
+<table>
+<% Url.all.map do |url| %>
+<tr>
+	<td>
+<%= url.long_name%>
+<%= url.short_name%>
+</td>
+</tr>
+<% end %>
+</table>
+

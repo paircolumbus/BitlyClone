@@ -15,6 +15,9 @@ ActiveRecord::Schema.define(version: 20141011153127) do
 
   create_table "urls", force: true do |t|
     t.string   "full_url"
+    t.string   "short_url"
+    t.integer  "click_counter"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

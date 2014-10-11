@@ -30,7 +30,7 @@ __A valid URL is...__
 ##Release 3: Add Error Handling
 Display a helpful error message if a user enters an invalid URL, giving them the opportunity to correct their error.
 
-##EXTRA CREDIT - Release 4: Add User Authentication
+##EXTRA CREDIT - Add User Authentication
 Create one model, `User` to handle both regular users and at least one administrator. Your controllers should support a few core actions:
 
 1. Logging in

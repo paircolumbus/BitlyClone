@@ -1,6 +1,6 @@
 #Bitly Clone
 
-__Skill Level:__ Intermediate
+__Skill Level:__ Intermediate  
 __Time Limit:__ 1-2 hours
 
 Bitly.com is a link shortening service that provides people with a way to take really long urls and turn them into short urls for easy use in email and social media. Today, you'll create a clone.
@@ -30,7 +30,7 @@ __A valid URL is...__
 ##Release 3: Add Error Handling
 Display a helpful error message if a user enters an invalid URL, giving them the opportunity to correct their error.
 
-##Release 4: Add User Authentication
+##EXTRA CREDIT - Release 4: Add User Authentication
 Create one model, `User` to handle both regular users and at least one administrator. Your controllers should support a few core actions:
 
 1. Logging in

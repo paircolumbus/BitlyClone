@@ -1,0 +1,26 @@
+<h1>List of Shortened URLs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>URL</th>
+      <th>Shortened URL</th>
+      <th>User</th>
+      <th>Count</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @urls.each do |urls| %>
+      <tr>
+        <td><%= urls.id %></td>
+        <td><%= urls.url %></td>
+        <td><%= urls.shortened_url %></td>
+        <td><%= urls.user %></td>
+        <td><%= urls.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

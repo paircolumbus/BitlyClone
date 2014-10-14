@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :urls
-  get '/:url', to: 'urls#redirect'
+  
   get '/list' => 'urls#list'
+  get '/:url', to: 'urls#redirect'
   #get '/:url', to: 'urls#redirect'
 
   # The priority is based upon order of creation: first created -> highest priority.

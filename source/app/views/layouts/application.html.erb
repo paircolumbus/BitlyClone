@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Source</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<title>Source</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet"
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+	type="text/css" />
 </head>
 <body>
-
-<%= yield %>
-
-</body>
-</html>
+	<div class="container">
+		<div class="jumbotron">
+			<h1>Bit.ly Clone</h1>
+			<p>Just cause, we can</p>
+		</div>
+		<%= yield %>
+		<hr>
+		<div class="text-muted text-right">&copy; Maintained by
+			<a href="https://github.com/columbustutoringgroup">columbustutoringgroup</a></div>
+		</div>
+	</body>
+	</html>
+	<script
+	src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"
+	type="text/javascript">
+	</script>

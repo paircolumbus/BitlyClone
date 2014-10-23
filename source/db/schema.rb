@@ -13,16 +13,17 @@
 
 ActiveRecord::Schema.define(version: 20141011154452) do
 
-  create_table "url_organizers", force: true do |t|
-    t.string   "long_name"
-    t.string   "short_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  # create_table "url_organizers", force: true do |t|
+  #   t.string   "long_name"
+  #   t.string   "short_name"
+  #   t.datetime "created_at"
+  #   t.datetime "updated_at"
+  # end
 
   create_table "urls", force: true do |t|
     t.string   "long_name"
     t.string   "short_name"
+    t.integer   "hit_count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

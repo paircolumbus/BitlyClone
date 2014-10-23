@@ -6,10 +6,4 @@ class Url < ActiveRecord::Base
 		end
 		new_short_name
 	end
-
-	#def populate longName 
-	#long_name = longName
-    #short_name = make_short_name
-    #short_name
-	#end
 end

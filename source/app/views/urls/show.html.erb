@@ -1,20 +1,32 @@
-<h1>hello</h1>
+<h3>Type the url you want to shorten.</h3>
+
 
 <%= form_for @url, url: {action: "create"} do |f| %>
-	<%=  f.label :long_name %>
-	<%=  f.text_field :long_name %>
-	<%=  f.submit "Submit"%>
+<div class="form-inline" role="form">
+	<div class="form-group">
+		<%=  f.text_field :long_name, class: 'form-control', placeholder: '--- your url --' %>
+		<%=  f.submit "Submit", class: 'btn btn-primary'%>
+	</div>
+</div>
+<% end %>
+
+<% if flash[:success] %>
+Here is your new url - <a href="<%= flash[:success] %>"><%= flash[:success] %></a> 
 <% end %>
 
 <br />
-<table>
-<% Url.all.map do |url| %>
-<tr>
-	<td>
-<%= url.long_name%>
-<%= url.short_name%>
-</td>
-</tr>
-<% end %>
+<table class="table table-bordered table-striped">
+	<tr class="success">
+		<th>Your Url</th>
+		<th>Shortened</th>
+		<th>Hit Count</th>
+	</tr>
+	<% Url.all.map do |url| %>
+	<tr>
+		<td><%= url.long_name%></td>
+		<td><a href="http://0.0.0.0:3000/<%= url.short_name%>"><%= url.short_name%></a></td>
+		<td><%= url.hit_count%></td>
+	</tr>
+	<% end %>
 </table>
 

@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'urls#show'
-
+  root 'urls#show'
+  match ':id', controller: 'reroute', action: 'show', via: [:get]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   #post 'urls/create/' => 'urls#show', as: :UrlOrganizer
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-     resources :urls
+  resources :urls
 
   # Example resource route with options:
   #   resources :products do

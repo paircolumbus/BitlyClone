@@ -2,8 +2,13 @@ class UrlsController < ApplicationController
   skip_before_filter  :verify_authenticity_token
 
   def create
-    @url = Url.new(url: params['url'])
-    @url.save
+    @url = Url.new(url_params)
+    if @url.save
+    	flash.now[:success] = "Shortened URL created successfully!"
+    	redirect_to action: 'list'
+    else
+    	render 'new'
+    end
   end
 
 	def list
@@ -18,4 +23,10 @@ class UrlsController < ApplicationController
 	def new
 		@url = Url.new
 	end
+
+	private
+
+		def url_params
+			params.require(:url).permit(:user, :count)
+		end
 end

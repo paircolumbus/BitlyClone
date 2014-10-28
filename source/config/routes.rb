@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :urls
+  root 'urls#new'
   
   get '/list' => 'urls#list'
   get '/:url', to: 'urls#redirect'

@@ -14,4 +14,8 @@ class UrlsController < ApplicationController
 		@shortened_url = params['url']
 		redirect_to Url.find_by(shortened_url: @shortened_url).url
 	end
+
+	def new
+		@url = Url.new
+	end
 end

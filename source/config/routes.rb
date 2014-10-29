@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'urls#new'
   
   get '/list' => 'urls#list'
-  get '/:url', to: 'urls#redirect'
+  #get '/:url', to: 'urls#redirect'
   #get '/:url', to: 'urls#redirect'
 
   # The priority is based upon order of creation: first created -> highest priority.

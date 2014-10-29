@@ -4,7 +4,7 @@ class UrlsController < ApplicationController
   def create
     @url = Url.new(url_params)
     if @url.save
-    	flash.now[:success] = "Shortened URL created successfully!"
+    	flash[:success] = "Shortened URL created successfully!"
     	redirect_to action: 'list'
     else
     	render 'new'
@@ -27,6 +27,6 @@ class UrlsController < ApplicationController
 	private
 
 		def url_params
-			params.require(:url).permit(:user, :count)
+			params.require(:url).permit(:url, :user, :count)
 		end
 end

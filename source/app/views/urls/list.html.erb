@@ -8,6 +8,8 @@
       <th>Shortened URL</th>
       <th>User</th>
       <th>Count</th>
+      <th>Created</th>
+      <th>Updated</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +22,8 @@
         <td><%= urls.shortened_url %></td>
         <td><%= urls.user %></td>
         <td><%= urls.count %></td>
+        <td><%= urls.created_at.to_formatted_s(:long) %></td>
+        <td><%= urls.updated_at.to_formatted_s(:long) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,6 +1,7 @@
 class Url < ActiveRecord::Base
   before_save :default_values
-
+  VALID_URL_REGEX = /\A(http|https):\/\//
+  validates :url, presence: true, format: { with: VALID_URL_REGEX }
 
   private
 

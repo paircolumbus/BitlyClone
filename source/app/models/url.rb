@@ -3,16 +3,20 @@ class Url < ActiveRecord::Base
   VALID_URL_REGEX = /\A(http|https):\/\//
   validates :url, presence: true, format: { with: VALID_URL_REGEX }
 
+def increment_count
+    self.count += 1
+    self.save
+end
+
   private
 
   def generate_shortened_url(length=6)
-  	charset = [*('a'..'z'),*('A'..'Z'),*('0'..'9')]
-    (0...length).map{ charset.to_a[rand(charset.size)] }.join
+  	[*('a'..'z'),*('A'..'Z'),*('0'..'9')].sample(6).join
   end
 
   def default_values
-    self.shortened_url = generate_shortened_url
+    self.shortened_url ||= generate_shortened_url
     self.user ||= 'general'
-    self.count = 0
+    self.count ||= 0
   end
 end

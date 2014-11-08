@@ -4,8 +4,9 @@ class UrlsController < ApplicationController
   def create
     @url = Url.new(url_params)
     if @url.save
-    	flash[:success] = "Shortened URL created successfully!"
+    	#flash[:redirect] = "Shortened URL created successfully!"
     	redirect_to action: 'index'
+    	flash[:redirect] = "Shortened URL created successfully!"
     else
     	render 'new'
     end
@@ -22,6 +23,8 @@ class UrlsController < ApplicationController
 	def redirect
 		@shortened_url = params['url']
 		redirect_to Url.find_by(shortened_url: @shortened_url).url
+		@url = Url.find_by(shortened_url: @shortened_url)
+		@url.increment_count
 	end
 
 	def new
@@ -31,6 +34,8 @@ class UrlsController < ApplicationController
 	private
 
 		def url_params
+			#require 'pry'; binding.pry
+			#params
 			params.require(:url).permit(:url, :user, :count)
 		end
 end

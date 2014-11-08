@@ -5,13 +5,17 @@ class UrlsController < ApplicationController
     @url = Url.new(url_params)
     if @url.save
     	flash[:success] = "Shortened URL created successfully!"
-    	redirect_to action: 'list'
+    	redirect_to action: 'index'
     else
     	render 'new'
     end
   end
 
 	def list
+		@urls = Url.all
+	end
+
+	def index
 		@urls = Url.all
 	end
 

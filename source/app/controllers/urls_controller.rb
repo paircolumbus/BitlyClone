@@ -20,9 +20,6 @@ class UrlsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def new
     @url = Url.new
   end

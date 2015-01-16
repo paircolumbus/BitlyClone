@@ -4,8 +4,6 @@ class UrlsController < ApplicationController
   end
 
   def show
-    # @url = Url.find_by short_link: params[:id]
-    # redirect_to @url.link
     @url = Url.find(params[:id])
   end
 

@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Value:</strong>
-  <%= @url.value %>
+  <strong>Short url:</strong>
+  <%= @url.short_url %>
+</p>
+
+<p>
+  <strong>Long url:</strong>
+  <%= @url.long_url %>
 </p>
 
 <%= link_to 'Edit', edit_url_path(@url) %> |

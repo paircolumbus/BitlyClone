@@ -1,4 +1,6 @@
 class Url < ActiveRecord::Base
+  validates :long_url, format: URI::regexp
+
   before_create :setup
 
   def setup

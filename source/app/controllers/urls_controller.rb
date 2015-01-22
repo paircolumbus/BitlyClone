@@ -10,7 +10,12 @@ class UrlsController < ApplicationController
   # GET /urls/1
   # GET /urls/1.json
   def show
-    redirect_to @url.long_url
+    if @url && @url.long_url
+      @url.increment! :click_count
+      redirect_to @url.long_url
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
   end
 
   # GET /urls/new
@@ -52,6 +57,6 @@ class UrlsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def url_params
-      params.require(:url).permit(:short_url, :long_url)
+      params.require(:url).permit(:short_url, :long_url, :click_count)
     end
 end

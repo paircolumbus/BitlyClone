@@ -18,7 +18,7 @@ class UrlsControllerTest < ActionController::TestCase
 
   test "should create url" do
     assert_difference('Url.count') do
-      post :create, url: { long_url: @url.long_url, short_url: @url.short_url }
+      post :create, url: { click_count: @url.click_count, long_url: @url.long_url, short_url: @url.short_url }
     end
 
     assert_redirected_to url_path(assigns(:url))

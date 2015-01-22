@@ -1,7 +1,8 @@
 class Url < ActiveRecord::Base
-  before_save :set_permalink
+  before_create :setup
 
-  def set_permalink
+  def setup
+    self.click_count = 0
     self.short_url = SecureRandom.urlsafe_base64 4
   end
 

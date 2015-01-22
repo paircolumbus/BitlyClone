@@ -3,7 +3,9 @@
 one:
   short_url: MyString
   long_url: MyString
+  click_count: 1
 
 two:
   short_url: MyString
   long_url: MyString
+  click_count: 1

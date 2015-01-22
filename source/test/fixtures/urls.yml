@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  short_url: MyString
-  long_url: MyString
-  click_count: 1
+valid:
+  short_url: google
+  long_url: https://www.google.com/
+  click_count: 0
 
-two:
+invalid:
   short_url: MyString
   long_url: MyString
   click_count: 1

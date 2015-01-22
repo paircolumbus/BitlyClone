@@ -29,16 +29,6 @@ class UrlsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit, id: @url
-    assert_response :success
-  end
-
-  test "should update url" do
-    patch :update, id: @url, url: { long_url: @url.long_url, short_url: @url.short_url }
-    assert_redirected_to url_path(assigns(:url))
-  end
-
   test "should destroy url" do
     assert_difference('Url.count', -1) do
       delete :destroy, id: @url

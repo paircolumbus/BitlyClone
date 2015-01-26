@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Url.delete_all
+
+Url.create! shortcode: "xxx", destination: "https://www.google.com/"
+Url.create! shortcode: "yyy", destination: "https://www.stackoverflow.com/"
+Url.create! shortcode: "zzz", destination: "https://www.mint.com/"

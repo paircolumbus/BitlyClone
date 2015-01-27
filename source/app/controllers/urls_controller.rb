@@ -24,6 +24,8 @@ class UrlsController < ApplicationController
   def goto
     id = Url.decode_shortcode params[:shortcode]
     url = Url.find id
+    url.click_count += 1
+    url.save!
     redirect_to url.destination
   end
   # POST /urls

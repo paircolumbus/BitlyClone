@@ -8,6 +8,9 @@
 
 Url.delete_all
 
+Url.create! destination: "covermymeds.com"
 Url.create! destination: "https://www.google.com/"
 Url.create! destination: "https://www.stackoverflow.com/"
 Url.create! destination: "https://www.mint.com/"
+Url.create! destination: "http://weather.com/"
+Url.create! destination: "wikipedia.org"

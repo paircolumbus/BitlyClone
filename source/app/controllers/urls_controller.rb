@@ -21,6 +21,11 @@ class UrlsController < ApplicationController
   def edit
   end
 
+  def goto
+    id = Url.decode_shortcode params[:shortcode]
+    url = Url.find id
+    redirect_to url.destination
+  end
   # POST /urls
   # POST /urls.json
   def create

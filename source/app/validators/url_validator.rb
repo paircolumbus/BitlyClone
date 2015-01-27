@@ -4,7 +4,6 @@ require 'net/http'
 class UrlValidator < ActiveModel::EachValidator
 
   def validate_each(record, attribute, value)
-    value = "http://#{value}" unless /^[a-z]+:\/\// =~ value 
     uri = URI(value)
     return record.errors.add attribute, "must use HTTP or HTTPS" unless ['http','https'].member? uri.scheme
     begin

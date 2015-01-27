@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Shortcode</th>
       <th>Destination</th>
       <th colspan="3"></th>
     </tr>
@@ -11,6 +12,7 @@
   <tbody>
     <% @urls.each do |url| %>
       <tr>
+        <td><%= url.shortcode %></td>
         <td><%= url.destination %></td>
         <td><%= link_to 'Show', url %></td>
         <td><%= link_to 'Edit', edit_url_path(url) %></td>

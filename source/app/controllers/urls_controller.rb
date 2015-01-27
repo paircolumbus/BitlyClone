@@ -10,7 +10,7 @@ class UrlsController < ApplicationController
   # GET /urls/1
   # GET /urls/1.json
   def show
-    if @url && @url.long_url
+    if @url
       @url.increment! :click_count
       redirect_to @url.long_url
     else

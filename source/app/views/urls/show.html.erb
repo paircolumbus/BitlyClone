@@ -2,12 +2,12 @@
 
 <p>
   <strong>Destination:</strong>
-  <%= @url.destination %>
+  <%= link_to @url.destination, @url.destination %>
 </p>
 
 <p>
   <strong>Shortenened URL:</strong>
-  <%= "#{request.protocol}#{request.host_with_port}/#{@url.shortcode}" %>
+  <%= link_to @url.shortlink, @url.shortlink %>
 </p>
 
 <p>

@@ -15,7 +15,7 @@
       <tr>
         <td><%= url.shortcode %></td>
         <td><%= url.click_count %></td>
-        <td><%= url.destination %></td>
+        <td><%= link_to url.destination, url.destination %></td>
         <td><%= link_to 'Show', url %></td>
         <td><%= link_to 'Edit', edit_url_path(url) %></td>
         <td><%= link_to 'Destroy', url, method: :delete, data: { confirm: 'Are you sure?' } %></td>

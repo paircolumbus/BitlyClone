@@ -1,3 +1,6 @@
+
+require 'socket'
+
 class Url < ActiveRecord::Base
   validates :destination, url: true
 
@@ -11,5 +14,9 @@ class Url < ActiveRecord::Base
   
   def self.decode_shortcode shortcode
     shortcode.to_i(36)
+  end
+
+  def shortlink 
+    "http://localhost:3000/#{shortcode}"
   end
 end

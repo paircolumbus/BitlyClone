@@ -11,10 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126180838) do
+ActiveRecord::Schema.define(version: 20150126204532) do
 
   create_table "urls", force: true do |t|
-    t.string   "shortcode"
     t.string   "destination"
     t.datetime "created_at"
     t.datetime "updated_at"

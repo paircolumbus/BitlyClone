@@ -1,5 +1,5 @@
 class UrlsController < ApplicationController
-  before_action :set_url, only: [:show, :edit, :update, :destroy]
+  before_action :set_url, only: [:show, :stats, :edit, :update, :destroy]
 
   # GET /urls
   # GET /urls.json
@@ -12,9 +12,20 @@ class UrlsController < ApplicationController
   def show
   end
 
+  def expand
+    if @url = Url.find_by(short_url: params[:short_url])
+      redirect_to @url.long_url
+    else
+      redirect_to '/', alert: "URL not found!"
+    end
+  end
+
   # GET /urls/new
   def new
     @url = Url.new
+  end
+
+  def stats
   end
 
   # GET /urls/1/edit

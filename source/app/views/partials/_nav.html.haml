@@ -1,0 +1,20 @@
+%nav.navbar.navbar-default.navbar-fixed-top{ role: 'navigation' }
+  .container
+    .navbar-header
+      %button{ class: "navbar-toggle", "data-toggle" => "collapse", "data-target" => "#bs-example-navbar-collapse-1" }
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+      %a{ class: "navbar-brand", href: "/" }
+        Super App
+    .collapse.navbar-collapse#bs-example-navbar-collapse-1
+      %ul.nav.navbar-nav.navbar-right
+        %li=link_to 'Home', root_url
+        - if @current_user
+          %li= link_to "Logged in as #{@current_user.email}", user_path(@current_user)
+
+          //%li= link_to "Logout", log_out_path
+        - else
+          //%li= link_to "Sign up", sign_up_path
+          //%li= link_to "login", log_in_path

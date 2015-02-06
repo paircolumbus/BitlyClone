@@ -1,0 +1,24 @@
+%h1 Listing urls
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Clicks
+      %th Short url
+      %th Long url
+      %th{colspan: "3"}
+  %tbody>
+    - @urls.each do |url|
+      %tr
+        %td= link_to url.name, url_path(url.short_url)
+        %td= link_to url.clicks, url_stats_path(url)
+        %td= link_to url.short_url, expand_url_path(url.short_url)
+        %td= link_to url.long_url, expand_url_path(url.short_url)
+
+        %td= link_to 'Show', url
+        %td= link_to 'Edit', edit_url_path(url)
+        %td= link_to 'Destroy', url, method: :delete, data: { confirm: 'Are you sure?' }
+%br
+
+= link_to 'New Url', new_url_path

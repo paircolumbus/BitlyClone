@@ -42,6 +42,7 @@ class UrlsController < ApplicationController
         format.html { redirect_to @url, notice: 'Url was successfully created.' }
         format.json { render :show, status: :created, location: @url }
       else
+        flash.now.alert = "Error creating URL!"
         format.html { render :new }
         format.json { render json: @url.errors, status: :unprocessable_entity }
       end

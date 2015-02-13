@@ -11,10 +11,10 @@
   %tbody>
     - @urls.each do |url|
       %tr
-        %td= link_to url.name, url_path(url.short_url)
+        //%td= link_to url.name, url_path(url.short_url)
         %td= link_to url.clicks, url_stats_path(url)
-        %td= link_to url.short_url, expand_url_path(url.short_url)
-        %td= link_to url.long_url, expand_url_path(url.short_url)
+        //%td= link_to url.short_url, expand_url_path(url.short_url)
+        //%td= link_to url.long_url, expand_url_path(url.short_url)
 
         %td= link_to 'Show', url
         %td= link_to 'Edit', edit_url_path(url)

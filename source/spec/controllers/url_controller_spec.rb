@@ -9,7 +9,7 @@ RSpec.describe UrlsController, :type => :controller do
 		end
 
 		it "should create a shortened URL" do
-			require 'pry'; binding.pry
+			#require 'pry'; binding.pry
 			expect(response).to have_http_status(:redirect)
 		end
 

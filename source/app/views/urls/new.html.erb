@@ -1,0 +1,9 @@
+<h1>Url to Shorten!</h1>
+<div class='row'>
+  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+    <%= simple_form_for @url do |f| %>
+      <%= f.input :original_url, label:false %>
+      <%= f.button :submit, 'Shorten!' %>
+    <% end %>
+  </div>
+</div>

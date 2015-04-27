@@ -44,6 +44,7 @@ class UrlsController < ApplicationController
     respond_to do |format|
       if params[:short_extension]
         @url = Url.find_by short_extension: params[:short_extension]
+        Url.increment_counter :click_count, @url.id
         format.html { redirect_to @url.original_url }
       else
         format.html { redirect_to root_url, warning: "Shortened URL doesn't exist" }

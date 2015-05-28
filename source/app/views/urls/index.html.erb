@@ -1,0 +1,9 @@
+<h1>URLs</h1>
+<ul>
+  <% @urls.each do |url| %>
+    <li>
+      <%= link_to "#{ENV['hostname']}/#{url.short_path}", url_path(url.short_path) %>
+      -&gt; <%= url.original_url %>
+    </li>
+  <% end %>
+</ul>

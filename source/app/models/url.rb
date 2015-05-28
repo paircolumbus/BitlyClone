@@ -4,6 +4,6 @@ class Url < ActiveRecord::Base
   private
 
   def create_short
-    self.short_path = SecureRandom.hex(3)
+    self.short_path ||= SecureRandom.hex(3)
   end
 end

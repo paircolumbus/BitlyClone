@@ -3,7 +3,7 @@
   <% @urls.each do |url| %>
     <li>
       <%= link_to "#{ENV['hostname']}/#{url.short_path}", url_path(url.short_path) %>
-      -&gt; <%= url.original_url %>
+      -&gt; <%= url.original_url %> (Clicked <%= url.click_count %> times!)
     </li>
   <% end %>
 </ul>

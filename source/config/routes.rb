@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :urls, only: [:index, :create, :show], path: '/'
+  resources :urls, only: [:index, :new, :create, :show], path: '/'
 end

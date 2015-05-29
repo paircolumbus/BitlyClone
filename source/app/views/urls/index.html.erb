@@ -1,4 +1,4 @@
-<h1>URLs</h1>
+<h1>Shortened URLs</h1>
 <ul>
   <% @urls.each do |url| %>
     <li>
@@ -7,3 +7,5 @@
     </li>
   <% end %>
 </ul>
+
+<%= link_to "New URL", new_url_path %>

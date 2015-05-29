@@ -1,0 +1,13 @@
+<h1>New URL</h1>
+<% if @url.errors.any? %>
+  Errors:
+  <ul>
+    <% @url.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_for :url, url: urls_path do |f| %>
+  <%= f.text_field :original_url, placeholder: "URL" %>
+  <%= f.submit "Create!" %>
+<% end %>

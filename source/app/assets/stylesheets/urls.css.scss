@@ -1,3 +1,17 @@
 // Place all the styles related to the Urls controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$headline: "Times New Roman", Times, serif; 
+$primary-font: Verdana, Geneva, sans-serif;
+$my_grey: #F5F5F5; 
+
+
+.container {
+  margin: 5% auto;
+  width: 70%;
+  padding: 2%;
+  border: 3px solid black;
+  background-color: $my_grey;
+  font-family: $primary-font;
+}

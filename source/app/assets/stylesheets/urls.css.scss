@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$red: #8C2318;
 $headline: "Times New Roman", Times, serif; 
 $primary-font: Verdana, Geneva, sans-serif;
 $my_grey: #F5F5F5; 
@@ -14,4 +15,17 @@ $my_grey: #F5F5F5;
   border: 3px solid black;
   background-color: $my_grey;
   font-family: $primary-font;
+}
+
+.wrap-center {
+  margin:5px;
+  display:block;
+  text-align: center;
+}
+
+.error {
+  background-color: pink;
+  padding:10px;
+  color:$red;
+  display:inline-block;
 }

@@ -1,0 +1,8 @@
+<h1>Your URL shortened:</h1>
+
+ 
+<p>Original: <%= @url.orig %></p>
+
+<p>Short: 
+  <%= link_to "localhost:3000/url/#{@url.short}", link_path(@url.short), :method => :post %>
+</p>

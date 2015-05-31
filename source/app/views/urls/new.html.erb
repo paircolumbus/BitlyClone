@@ -1,0 +1,28 @@
+<h1>URL shortner</h1>
+
+<% if @url.errors.any? %>
+  <%= pluralize(@url.errors.count, "error") %>
+  prohibited this url from being shortenend:
+  <% @url.errors.full_messages.each do |msg| %>
+    <ul>
+      <li><%= msg %></li>
+    </ul>
+  <% end %>
+
+  <% if flash[:error] %>
+    <div class='wrap-center'><p class='error'><%= flash[:error] %></p></div>
+  <% end %>
+  
+<% end %>
+
+
+<%= form_for @url do |f| %>
+
+<p>
+  <br><%= f.text_field :orig, placeholder: 'Enter your url' %>
+</p>
+
+<p>
+  <%= f.submit %>
+</p>
+<% end %>

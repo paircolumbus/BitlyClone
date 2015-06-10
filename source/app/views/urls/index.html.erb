@@ -10,10 +10,8 @@
   <tbody>
     <% @urls.each do |url| %>
       <tr>
+        <td><%= link_to root_url + url.unique_key, url.unique_key %></td>
         <td><%= url.address %></td>
-        <td><%= root_url + url.unique_key %></td>
-        <td><%= link_to 'Show', url %></td>
-        <td><%= link_to 'Edit', edit_url_path(url) %></td>
         <td><%= link_to 'Destroy', url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

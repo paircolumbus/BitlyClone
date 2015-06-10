@@ -1,6 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<p><%= @url.address %></p>
+<p><%= root_url + @url.unique_key %></p>
 
-<%= link_to 'Edit', edit_url_path(@url) %> |
 <%= link_to 'Back', urls_path %>

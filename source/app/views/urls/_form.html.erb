@@ -1,5 +1,17 @@
 <%= form_for @url, url: {action: "create"} do |f| %>
 
+  <% if @url.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@url.errors.count, "error") %> prohibited this url from being saved:</h2>
+
+      <ul>
+      <% @url.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div>
     <p> Url: <%= f.text_field :address %> <p>
   </div>

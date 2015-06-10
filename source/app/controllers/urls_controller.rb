@@ -10,8 +10,15 @@ class UrlsController < ApplicationController
 
   def create
     @url = Url.new(params.require(:url).permit(:address))
-    @url.save
-    redirect_to_index
+    respond_to do |format|
+      if @url.save
+        format.html { redirect_to Url, notice: 'Url was successfully created.' }
+        format.json { render :show, status: :created, location: @url }
+      else
+        format.html { render :new, notice: "Url could not be created" }
+        format.json { render json: @url.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def new

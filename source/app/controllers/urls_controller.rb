@@ -5,18 +5,17 @@ class UrlsController < ApplicationController
   before_action :get_url, only: [:show, :destroy]
 
   def index
-    @urls = Url.all()
+    @urls = Url.all
   end
 
   def create
-    @url = Url.new(params.require(:url).permit(:address))
+    @url = Url.new(url_params)
     respond_to do |format|
       if @url.save
-        format.html { redirect_to Url, notice: 'Url was successfully created.' }
-        format.json { render :show, status: :created, location: @url }
+        # binding.pry
+        format.html { redirect_to urls_path, notice: 'Url was successfully created.' }
       else
         format.html { render :new, notice: "Url could not be created" }
-        format.json { render json: @url.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -50,6 +49,6 @@ class UrlsController < ApplicationController
   end
 
   def url_params
-    params.require(:url).permit(:click_count)
+    params.require(:url).permit(:address)
   end
 end

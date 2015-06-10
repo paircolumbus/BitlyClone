@@ -16,7 +16,7 @@
         <td><%= link_to 'Destroy', url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-    <% if @urls.size == 0 %>
+    <% if @urls.empty? %>
       <p> There are no urls </p>
     <% end %>
   </tbody>

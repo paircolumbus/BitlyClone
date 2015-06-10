@@ -1,12 +1,11 @@
+require 'pry'
+
 class UrlsController < ApplicationController
+
   before_action :get_url, only: [:show, :destroy]
 
   def index
     @urls = Url.all()
-  end
-
-  def show
-    
   end
 
   def create
@@ -34,10 +33,16 @@ class UrlsController < ApplicationController
   end
 
   def redirect_to_url
+    @url.click_count += 1
+    @url.save
     redirect_to @url.address
   end
 
   def get_url
     @url = Url.find(params[:id])
+  end
+
+  def url_params
+    params.require(:url).permit(:click_count)
   end
 end

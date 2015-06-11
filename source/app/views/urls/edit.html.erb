@@ -1,6 +1,14 @@
-<h1>Editing url</h1>
+<h1>Update link</h1>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@url) do |f| %>
 
-<%= link_to 'Show', @url %> |
-<%= link_to 'Back', urls_path %>
+      <%= f.label :address %>
+      <%= f.text_field :address, class: 'form-control' %>
+
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+
+  </div>
+</div>

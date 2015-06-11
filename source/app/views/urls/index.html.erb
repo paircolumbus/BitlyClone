@@ -13,6 +13,7 @@
         <td><%= link_to root_url + url.unique_key, url.unique_key %></td>
         <td><%= url.address %></td>
         <td><%= url.click_count %></td>
+        <td><%= link_to 'Edit', edit_url_path(url) %></td>
         <td><%= link_to 'Destroy', url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

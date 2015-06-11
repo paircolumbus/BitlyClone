@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  get 'users/new'
+
   root 'urls#index'
 
   get '/urls', to: 'urls#index'
+  get '/signup', to: 'users#new'
   get '/:unique_key', to: 'urls#expand_link'
 
   resources :urls, except: [:show, :edit, :update, :index]

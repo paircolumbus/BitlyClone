@@ -10,12 +10,12 @@ class UrlsController < ApplicationController
 
   def create
     @url = Url.new(url_params)
-    respond_to do |format|
-      if @url.save
-        format.html { redirect_to urls_path, notice: 'Url was successfully created.' }
-      else
-        format.html { render :new, notice: @url.errors.messages }
-      end
+    if @url.save
+      flash[:success] = 'Url was successfully created'
+      redirect_to urls_path
+    else
+      flash[:failure] = 'Url could not be created'
+      render 'new'
     end
   end
 

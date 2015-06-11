@@ -10,10 +10,12 @@
   <div>
     <% if logged_in? %>
       <p><%= link_to "Log out", logout_path, method: :delete %></p>
+      <% if admin? %>
+        <p>YOU'RE AN ADMIN!</p>
+      <% end %>
     <% else %>
       <p><%= link_to "Log in", login_path %></p>
     <% end %>
-
   </div>
 
   <% flash.each do |message_type, message| %>

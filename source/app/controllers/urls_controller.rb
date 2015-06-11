@@ -3,7 +3,7 @@ require 'pry'
 class UrlsController < ApplicationController
 
   before_action :get_url, only: [:show, :destroy]
-  before_action :logged_in_user, only: [:edit, :update, :create]
+  before_action :logged_in_user, only: [:edit, :update, :create, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
@@ -12,6 +12,7 @@ class UrlsController < ApplicationController
 
   def create
     @url = Url.new(url_params)
+    @url.user_id = current_user
     if @url.save
       flash[:success] = 'Url was successfully created'
       redirect_to urls_path
@@ -77,8 +78,7 @@ class UrlsController < ApplicationController
     end
 
     def correct_user
-      # TODO Make this reference the user attached to the Url
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      user = User.find(get_url.user_id)
+      redirect_to(root_url) unless current_user?(user) || admin?
     end
 end

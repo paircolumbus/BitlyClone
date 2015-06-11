@@ -11,15 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150611133240) do
+ActiveRecord::Schema.define(version: 20150611153619) do
 
-  create_table "urls", force: true do |t|
-    t.string   "address"
-    t.string   "unique_key"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "click_count", default: 0
-  end
+# Could not dump table "urls" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "users", force: true do |t|
     t.string   "email"

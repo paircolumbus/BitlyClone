@@ -37,5 +37,10 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
- gem 'rspec-rails', group: [:development, :test]
+gem 'rspec-rails', group: [:development, :test]
+
+# sass
+gem 'bootstrap-sass', '~> 3.3.5'
+gem 'autoprefixer-rails'
+gem 'bootstrap-sass-extras'
 

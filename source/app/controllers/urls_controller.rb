@@ -26,9 +26,10 @@ class UrlsController < ApplicationController
     @url = Url.find_by(linkid: params[:id])
   end
 
+  # redirect to the long url
   def follow
-    # redirect to the long url
     url = Url.find_by(linkid: params[:linkid])
+    Url.increment_counter( :click_count, url.id )
     redirect_to url.target_link
   end
 end

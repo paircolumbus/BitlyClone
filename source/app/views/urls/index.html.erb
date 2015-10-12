@@ -8,7 +8,7 @@
   </thead>
 <% @urls.each do |url| %>
   <tr><td><a href="<%= url_url(url.linkid) %>"><%= url.linkid %></a></td>
-    <td><a href="<%= url.target_link %>"><% url.target_link %></a></td></tr>
+    <td><a href="<%= url.target_link %>"><%= url.target_link %></a></td></tr>
 <% end %>
 </table>
 <% else %>

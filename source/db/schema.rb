@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151012124222) do
+ActiveRecord::Schema.define(version: 20151012132805) do
 
   create_table "urls", force: true do |t|
     t.string   "linkid",      limit: 8
     t.string   "target_link", limit: 1024
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "click_count",              default: 0
   end
 
   add_index "urls", ["linkid"], name: "index_urls_on_linkid", unique: true

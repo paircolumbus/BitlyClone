@@ -1,0 +1,11 @@
+<h1>URL Shortener</h1>
+<% if flash[:save_error] %>
+  <p class="error"><%= flash[:save_error] %></p>
+<% end %>
+<form id="new_url" method="post" action="<%= urls_path %>">
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
+  <label for="#target">Target:</label>
+  <input type="text" name="target" id="target" size="100" placeholder="http://example.com/cool_page.html" value="<%= flash[:target] || '' %>">
+  <button class="btn btn-primary" type="submit">Shorten</button>
+</form>
+<a href="<%= urls_path %>">Back to list</a>

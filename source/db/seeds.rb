@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Url.create([{target_link: 'https://google.com'},
+            {target_link: 'http://guides.rubyonrails.org/v4.1.12/action_controller_overview.html'}])

@@ -1,0 +1,19 @@
+<h1>URL Shortcut</h1>
+
+<a href="<%= urls_path %>">Back to list</a>
+
+<% if @url.nil? %>
+<p>Unrecognized Shortcut.</p>
+<% else %>
+<table>
+  <tr>
+    <th>Shortened Link</th>
+    <td><a href="<%= follow_path(@url.linkid) %>"><%= follow_url(@url.linkid) %></a></td>
+  </tr>
+  <tr>
+    <th>Target Link</th>
+    <td><a href="<%= @url.target_link %>"><%= @url.target_link %></a></td>
+  </tr>
+</table>
+<% end %>
+

@@ -6,16 +6,27 @@ class UrlsController < ApplicationController
 
   def new
     # default behavior looks good
+    @target = ''
+    @save_errors = nil
   end
 
   def create
     # Actually create the new shortened url
-    target= params[:target]
+    @target = params[:target]
+    @errors = nil
 
-    @url = Url.new(target_link: target)
+    @url = Url.new(target_link: @target)
     if !@url.save
-      flash[:save_error] = ['Unable to save URL. Please try another.'];
-      flash[:target] = target
+      case
+      when @url.errors[:target_link].any?
+        @errors = @url.errors[:target_link]
+      when @url.errors[:linkid].any?
+        @errors = @url.errors[:linkid]
+      when @url.errors[:base].any?
+        @errors = @url.errors[:base]
+      else
+        @errors = ['Unable to save URL. Please try another.'];
+      end
       render 'new'
     else
       redirect_to url_path(@url.linkid)

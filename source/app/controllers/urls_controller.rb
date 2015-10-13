@@ -10,6 +10,12 @@ class UrlsController < ApplicationController
     @save_errors = nil
   end
 
+  def _extract_url_errors(url)
+    index = [:target_link, :linkid, :base].find { |i| url.errors[i].any? }
+    return nil if index.nil?
+    url.errors[index]
+  end
+
   def create
     # Actually create the new shortened url
     @target = params[:target]
@@ -17,16 +23,8 @@ class UrlsController < ApplicationController
 
     @url = Url.new(target_link: @target)
     if !@url.save
-      case
-      when @url.errors[:target_link].any?
-        @errors = @url.errors[:target_link]
-      when @url.errors[:linkid].any?
-        @errors = @url.errors[:linkid]
-      when @url.errors[:base].any?
-        @errors = @url.errors[:base]
-      else
-        @errors = ['Unable to save URL. Please try another.'];
-      end
+      @errors = _extract_url_errors(@url) ||
+                ['Unable to save URL. Please try another.']
       render 'new'
     else
       redirect_to url_path(@url.linkid)
@@ -40,7 +38,7 @@ class UrlsController < ApplicationController
   # redirect to the long url
   def follow
     url = Url.find_by(linkid: params[:linkid])
-    Url.increment_counter( :click_count, url.id )
+    Url.increment_counter(:click_count, url.id)
     redirect_to url.target_link
   end
 end

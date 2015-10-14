@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "urls/index", :type => :view do
+RSpec.describe 'urls/index', type: :view do
   before(:each) do
     assign(:urls, [
       Url.create!(target_link: 'http://google.com/'),
@@ -8,7 +8,7 @@ RSpec.describe "urls/index", :type => :view do
     ])
   end
 
-  it "renders a list of urls" do
+  it 'renders a list of urls' do
     render
   end
 end

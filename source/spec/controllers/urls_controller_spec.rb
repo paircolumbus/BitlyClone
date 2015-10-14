@@ -18,18 +18,13 @@ require 'rails_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-RSpec.describe UrlsController, :type => :controller do
-
+RSpec.describe UrlsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Url. As you add validations to Url, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    { target_link: 'http://google.com/' }
-  }
+  let(:valid_attributes) { { target_link: 'http://google.com/' } }
 
-  let(:invalid_attributes) {
-    { target_link: 'wqaesrdtfyjguhj' }
-  }
+  let(:invalid_attributes) { { target_link: 'wqaesrdtfyjguhj' } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -47,7 +42,7 @@ RSpec.describe UrlsController, :type => :controller do
   describe 'GET show' do
     it 'assigns the requested url as @url' do
       url = Url.create! valid_attributes
-      get :show, {:id => url.id}, valid_session
+      get :show, { id: url.id }, valid_session
       expect(assigns(:url)).to eq(url)
     end
   end
@@ -64,10 +59,8 @@ RSpec.describe UrlsController, :type => :controller do
   describe 'POST create' do
     describe 'with valid params' do
       it 'creates a new Url' do
-        expect {
-          post :create, valid_attributes, valid_session
-        }.to change(Url, :count).by(1)
-        # TODO: Need to figure out correct incantation for this link
+        expect { post :create, valid_attributes, valid_session }
+          .to change(Url, :count).by(1)
         expect(response).to redirect_to(Url.last)
       end
     end
@@ -87,7 +80,8 @@ RSpec.describe UrlsController, :type => :controller do
     end
 
     describe 'with unreachable link' do
-      subject { post :create, { target_link: 'http://a.a.a.a.a.a.a/' }, valid_session }
+      bad_link = 'http://a.a.a.a.a.a.a/'
+      subject { post :create, { target_link: bad_link }, valid_session }
       it 're-renders the new template' do
         expect(subject).to render_template :new
       end
@@ -95,11 +89,11 @@ RSpec.describe UrlsController, :type => :controller do
   end
 
   describe 'GET follow' do
-      let(:url) { Url.create! valid_attributes }
+    let(:url) { Url.create! valid_attributes }
 
-      it 'redirects to target' do
-        get :follow, { linkid: url.linkid }, valid_session
-        expect(response).to redirect_to url.target_link
-      end
+    it 'redirects to target' do
+      get :follow, { linkid: url.linkid }, valid_session
+      expect(response).to redirect_to url.target_link
+    end
   end
 end

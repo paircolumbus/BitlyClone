@@ -9,7 +9,7 @@ class Url < ActiveRecord::Base
 
   def target_link_not_empty
     return unless errors.empty?
-    return unless target_link.empty?
+    return unless target_link.nil? || target_link.empty?
     errors[:target_link] << 'Target URL cannot be blank'
   end
 

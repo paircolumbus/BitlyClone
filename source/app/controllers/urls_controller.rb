@@ -18,7 +18,7 @@ class UrlsController < ApplicationController
 
   def create
     # Actually create the new shortened url
-    @target = params[:target]
+    @target = params[:target_link]
     @errors = nil
 
     @url = Url.new(target_link: @target)
@@ -27,12 +27,12 @@ class UrlsController < ApplicationController
                 ['Unable to save URL. Please try another.']
       render 'new'
     else
-      redirect_to url_path(@url.linkid)
+      redirect_to @url
     end
   end
 
   def show
-    @url = Url.find_by(linkid: params[:id])
+    @url = Url.find(params[:id])
   end
 
   # redirect to the long url

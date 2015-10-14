@@ -1,14 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe UrlsController, type: :controller do
-  URLS_PATH_WITH_OPTIONAL_QS = %r{\/urls\??.*}
+  URLS_PATH_WITH_ALERT = %r{\/urls\?alert=.*}
   VALID_URL_PATH = 'cmm'
   INVALID_URL_PATH = 'somethingweird'
 
   let(:valid_attributes) do
     { original: 'http://www.covermymeds.com', shortened: "/#{VALID_URL_PATH}" }
   end
-  let(:invalid_attributes) { {} }
   let(:valid_session) { {} }
 
   describe 'GET index' do
@@ -36,21 +35,32 @@ RSpec.describe UrlsController, type: :controller do
     end
   end
 
-  describe 'GET short with valid url' do
+  describe 'GET short with valid id' do
     it 'redirect to the original url' do
       url = Url.create! valid_attributes
-      expect(Url).to receive(:build_from_params).with( any_args ).and_return(url)
-      get :short, { id: url.to_param }, valid_session
+      valid_params =  { id: url.to_param }
+      expect(Url).to receive(:build_from_params).with( hash_including(valid_params) ).and_return(url)
+      get :short, valid_params, valid_session
       expect(response).to redirect_to(url.original)
     end
   end
 
+  describe 'GET short with valid shortened url' do
+    it 'redirect to the original url' do
+      url = Url.create! valid_attributes
+      valid_params =  { unmatched_route: VALID_URL_PATH }
+      expect(Url).to receive(:build_from_params).with( hash_including(valid_params) ).and_return(url)
+      get :short, valid_params, valid_session
+      expect(response).to redirect_to(url.original)
+    end
+  end
 
   describe 'GET short with invalid path will redirect to index' do
     it 'redirect to the original url' do
-      expect(Url).to receive(:build_from_params).with( any_args ).and_return(nil)
-      get :short, { unmatched_route: INVALID_URL_PATH }, valid_session
-      expect(response).to redirect_to(URLS_PATH_WITH_OPTIONAL_QS)
+      invalid_params =  { unmatched_route: INVALID_URL_PATH }
+      expect(Url).to receive(:build_from_params).with( hash_including(invalid_params) ).and_return(nil)
+      get :short, invalid_params, valid_session
+      expect(response).to redirect_to(URLS_PATH_WITH_ALERT)
     end
   end
 

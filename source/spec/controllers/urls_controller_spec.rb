@@ -36,24 +36,19 @@ RSpec.describe UrlsController, type: :controller do
     end
   end
 
-  describe 'GET short with id' do
+  describe 'GET short with valid url' do
     it 'redirect to the original url' do
       url = Url.create! valid_attributes
+      expect(Url).to receive(:build_from_params).with( any_args ).and_return(url)
       get :short, { id: url.to_param }, valid_session
       expect(response).to redirect_to(url.original)
     end
   end
 
-  describe 'GET short with shortened path' do
-    it 'redirect to the original url' do
-      url = Url.create! valid_attributes
-      get :short, { unmatched_route: VALID_URL_PATH }, valid_session
-      expect(response).to redirect_to(url.original)
-    end
-  end
 
   describe 'GET short with invalid path will redirect to index' do
     it 'redirect to the original url' do
+      expect(Url).to receive(:build_from_params).with( any_args ).and_return(nil)
       get :short, { unmatched_route: INVALID_URL_PATH }, valid_session
       expect(response).to redirect_to(URLS_PATH_WITH_OPTIONAL_QS)
     end

@@ -1,8 +1,8 @@
 class UrlsController < ApplicationController
   before_action :set_url, only: [:show, :edit, :update, :destroy]
+  helper UrlsHelper
 
   # GET /urls
-  # GET /urls.json
   def index
     if params.has_key?(:alert)
       flash.now[:alert] = params[:alert]
@@ -11,29 +11,18 @@ class UrlsController < ApplicationController
   end
 
   # GET /urls/1
-  # GET /urls/1.json
   def show
   end
 
   def short
 
-    url = url_from_params
+    url = Url.build_from_params(params)
     if url == nil
       redirect_to action: "index", alert: "Your URL was not found"
     else
       redirect_to url.original
     end
 
-  end
-
-  def url_from_params
-    url = nil
-    if params.has_key?(:id)
-      url = Url.find_by_id(params[:id])
-    elsif params.has_key?(:unmatched_route)
-      url = Url.find_by_shortened("/#{params[:unmatched_route]}")
-    end
-    url
   end
 
   # GET /urls/new

@@ -22,12 +22,12 @@ class UrlsController < ApplicationController
     @errors = nil
 
     @url = Url.new(target_link: @target)
-    if !@url.save
+    if @url.save
+      redirect_to @url
+    else
       @errors = _extract_url_errors(@url) ||
                 ['Unable to save URL. Please try another.']
       render 'new'
-    else
-      redirect_to @url
     end
   end
 

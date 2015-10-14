@@ -9,13 +9,13 @@ class Url < ActiveRecord::Base
 
   def target_link_not_empty
     return unless errors.empty?
-    return unless target_link.nil? || target_link.empty?
+    return unless target_link.blank?
     errors[:target_link] << 'Target URL cannot be blank'
   end
 
   def target_link_must_be_http
     return unless errors.empty?
-    return if target_link.match(%r{^https?://})
+    return if target_link.match(%r{\Ahttps?://})
     errors[:target_link] << 'Target URL has an unrecognized scheme'
   end
 

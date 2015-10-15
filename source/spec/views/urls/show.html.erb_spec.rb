@@ -15,5 +15,6 @@ RSpec.describe 'urls/show', type: :view do
     render
     expect(rendered).to match(/Original/)
     expect(rendered).to match(/Shortened/)
+    expect(rendered).to match(/0/)
   end
 end

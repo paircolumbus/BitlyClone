@@ -1,12 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe UrlsController, type: :controller do
-  URLS_PATH_WITH_ALERT = %r{\/urls\?alert=.*}
-  VALID_URL_PATH = 'cmm'
-  INVALID_URL_PATH = 'somethingweird'
-
+  let(:valid_url_path){ 'cmm' }
+  let(:invalid_url_path){ 'somethingweird' }
+  let(:urls_path_with_alert){ %r{\/urls\?alert=.*} }
   let(:valid_attributes) do
-    { original: 'http://www.covermymeds.com', shortened: "/#{VALID_URL_PATH}" }
+    { original: 'http://www.covermymeds.com', shortened: "/#{valid_url_path}" }
   end
   let(:valid_session) { {} }
 
@@ -44,32 +43,33 @@ RSpec.describe UrlsController, type: :controller do
         .with(hash_including(valid_params))
         .and_return(url)
       get :short, valid_params, valid_session
-      expect(response).to redirect_to(url.original)
+      expect(url.click_count).to eq(1)
     end
   end
 
   describe 'GET short with valid shortened url' do
     it 'redirect to the original url' do
       url = Url.create! valid_attributes
-      valid_params =  { unmatched_route: VALID_URL_PATH }
+      valid_params =  { unmatched_route: valid_url_path}
       expect(Url)
         .to receive(:build_from_params)
         .with(hash_including(valid_params))
         .and_return(url)
       get :short, valid_params, valid_session
+      expect(url.click_count).to eq(1)
       expect(response).to redirect_to(url.original)
     end
   end
 
   describe 'GET short with invalid path will redirect to index' do
     it 'redirect to the original url' do
-      invalid_params =  { unmatched_route: INVALID_URL_PATH }
+      invalid_params =  { unmatched_route: invalid_url_path}
       expect(Url)
         .to receive(:build_from_params)
         .with(hash_including(invalid_params))
         .and_return(nil)
       get :short, invalid_params, valid_session
-      expect(response).to redirect_to(URLS_PATH_WITH_ALERT)
+      expect(response).to redirect_to(urls_path_with_alert)
     end
   end
 
@@ -100,6 +100,7 @@ RSpec.describe UrlsController, type: :controller do
         post :create, { url: valid_attributes }, valid_session
         expect(assigns(:url)).to be_a(Url)
         expect(assigns(:url)).to be_persisted
+        expect(Url.find(1).click_count).to eq(0)
       end
 
       it 'redirects to the created url' do

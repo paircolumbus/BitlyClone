@@ -1,5 +1,9 @@
 class Url < ActiveRecord::Base
 
+  before_create do
+    self.click_count = 0
+  end
+
   def self.build_from_params params
     url = nil
     if params.has_key?(:id)
@@ -9,5 +13,6 @@ class Url < ActiveRecord::Base
     end
     url
   end
+
 
 end

@@ -20,6 +20,8 @@ class UrlsController < ApplicationController
     if url.nil?
       redirect_to action: 'index', alert: URL_NOT_FOUND
     else
+      url.increment('click_count', 1)
+      url.save
       redirect_to url.original
     end
   end

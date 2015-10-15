@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151012151315) do
+ActiveRecord::Schema.define(version: 20151015165317) do
 
   create_table "urls", force: true do |t|
     t.string   "original"
     t.string   "shortened"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "click_count", default: 0
   end
 
 end

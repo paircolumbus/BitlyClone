@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :urls
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+  root 'urls#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -25,6 +28,11 @@ Rails.application.routes.draw do
   #       get 'sold'
   #     end
   #   end
+  resources :urls do
+    member do
+      get 'short'
+    end
+  end
 
   # Example resource route with sub-resources:
   #   resources :products do
@@ -53,4 +61,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  get '*unmatched_route', to: 'urls#short'
+
 end

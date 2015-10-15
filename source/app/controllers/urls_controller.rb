@@ -1,12 +1,13 @@
+# CRUD for the urls and redirect for shortened GET
 class UrlsController < ApplicationController
   before_action :set_url, only: [:show, :edit, :update, :destroy]
   helper UrlsHelper
 
+  URL_NOT_FOUND = 'Your URL was not found'
+
   # GET /urls
   def index
-    if params.has_key?(:alert)
-      flash.now[:alert] = params[:alert]
-    end
+    flash.now[:alert] = params[:alert] if params.key?(:alert)
     @urls = Url.all
   end
 
@@ -15,21 +16,18 @@ class UrlsController < ApplicationController
   end
 
   def short
-
     url = Url.build_from_params(params)
-    if url == nil
-      redirect_to action: "index", alert: "Your URL was not found"
+    if url.nil?
+      redirect_to action: 'index', alert: URL_NOT_FOUND
     else
       redirect_to url.original
     end
-
   end
 
   # GET /urls/new
   def new
     @url = Url.new
   end
-
 
   # GET /urls/1/edit
   def edit
@@ -61,13 +59,14 @@ class UrlsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_url
-      @url = Url.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def url_params
-      params.require(:url).permit(:original, :shortened)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_url
+    @url = Url.find(params[:id])
+  end
+
+  # Only allow the white list through.
+  def url_params
+    params.require(:url).permit(:original, :shortened)
+  end
 end

@@ -39,7 +39,10 @@ RSpec.describe UrlsController, type: :controller do
     it 'redirect to the original url' do
       url = Url.create! valid_attributes
       valid_params =  { id: url.to_param }
-      expect(Url).to receive(:build_from_params).with( hash_including(valid_params) ).and_return(url)
+      expect(Url)
+        .to receive(:build_from_params)
+        .with(hash_including(valid_params))
+        .and_return(url)
       get :short, valid_params, valid_session
       expect(response).to redirect_to(url.original)
     end
@@ -49,7 +52,10 @@ RSpec.describe UrlsController, type: :controller do
     it 'redirect to the original url' do
       url = Url.create! valid_attributes
       valid_params =  { unmatched_route: VALID_URL_PATH }
-      expect(Url).to receive(:build_from_params).with( hash_including(valid_params) ).and_return(url)
+      expect(Url)
+        .to receive(:build_from_params)
+        .with(hash_including(valid_params))
+        .and_return(url)
       get :short, valid_params, valid_session
       expect(response).to redirect_to(url.original)
     end
@@ -58,7 +64,10 @@ RSpec.describe UrlsController, type: :controller do
   describe 'GET short with invalid path will redirect to index' do
     it 'redirect to the original url' do
       invalid_params =  { unmatched_route: INVALID_URL_PATH }
-      expect(Url).to receive(:build_from_params).with( hash_including(invalid_params) ).and_return(nil)
+      expect(Url)
+        .to receive(:build_from_params)
+        .with(hash_including(invalid_params))
+        .and_return(nil)
       get :short, invalid_params, valid_session
       expect(response).to redirect_to(URLS_PATH_WITH_ALERT)
     end

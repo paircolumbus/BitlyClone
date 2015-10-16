@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151015165317) do
+ActiveRecord::Schema.define(version: 20151015201446) do
 
   create_table "urls", force: true do |t|
     t.string   "original"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 20151015165317) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "click_count", default: 0
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "last_name"
+    t.string   "login"
+    t.string   "password"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

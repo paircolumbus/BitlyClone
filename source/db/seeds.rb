@@ -6,8 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Url.create([
-  {original: "http://www.google.com", shortened: "/g"},
-  {original: "http://www.yahoo.com", shortened: "/b"},
-  {original: "http://www.msn.com", shortened: "/c"},
-  {original: "http://www.covermymeds.com", shortened: "/cmm"}
-])
+             { original: "http://www.google.com", shortened: "/g" },
+             { original: "http://www.yahoo.com", shortened: "/b" },
+             { original: "http://www.msn.com", shortened: "/c" },
+             { original: "http://www.covermymeds.com", shortened: "/cmm" }
+           ])
+
+User.create([
+              { name: "Charles", last_name: "Xavier", login: "cxavier", password: "plaintextbadidea" },
+              { name: "Richard", last_name: "Carlyle", login: "rcarlyle", password: "plaintextbadidea" }
+            ])

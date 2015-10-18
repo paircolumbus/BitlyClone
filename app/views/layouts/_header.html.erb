@@ -1,0 +1,14 @@
+<header>
+  <div class="navbar navbar-default">
+    <%= link_to "Big Title", root_path, id: "logo" %>
+    <ul class="nav nav-pills">
+      <% if current_user != nil %>
+        <li id="loginIdentifier"style="padding: 10px 30px 0 0">
+          Logged in as: <%= current_user.name %>
+        </li>
+      <% end %>
+      <li><%= link_to "Link1", '#' %></li>
+      <li><%= link_to "Link2", '#' %></li>
+    </ul>
+  </div>
+</header>

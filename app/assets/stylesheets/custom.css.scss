@@ -1,0 +1,91 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$color1: #FFFFFF;
+$color2: #CCCCCC;
+$color3: #888888;
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+/* header and footer */
+.nav-pills {
+  float: right;
+}
+
+.nav-pills a {
+  color: black;
+}
+
+header {
+  .navbar {
+    padding: 20px;
+    border: 1px solid black;
+  }
+
+  #logo {
+    float: left;
+    font-size: 1.5em;
+    color: black;
+  }
+
+  #logo:hover {
+    color: $color3;
+    text-decoration: none;
+  }
+
+  #loginIdentifier {
+    padding: 10px 30px 0 0;
+  }
+}
+
+footer {
+  border-top: 1px solid black;
+  padding: 0;
+  margin: 20px 0;
+}
+
+/* main content */
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* index pages */
+.index-box {
+  border: 1px solid black;
+  margin: 10px;
+  padding: 10px 10px 10px 20px;
+}
+
+.catalog {
+  width: 80%;
+  margin: auto;
+
+  tr:nth-child(odd) {
+    background-color: $color1;
+  }
+
+  tr:nth-child(even) {
+    background-color: $color2;
+  }
+
+  td {
+    font-size: 16px;
+  }
+}
+
+/* form pages*/
+input {
+  margin-bottom: 20px;
+  width: 100%;
+  @include box_sizing;
+}
+
+.debug_dump {
+  margin-top: 50px;
+  @include box_sizing;
+}

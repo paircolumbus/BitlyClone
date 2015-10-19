@@ -1,7 +1,6 @@
 # CRUD for the urls and redirect for shortened GET
 class UrlsController < ApplicationController
   before_action :set_url, only: [:show, :edit, :update, :destroy]
-  helper UrlsHelper
 
   URL_NOT_FOUND = 'Your URL was not found'
 

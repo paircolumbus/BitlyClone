@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe UrlsController, type: :controller do
-  let(:valid_url_path){ 'cmm' }
-  let(:invalid_url_path){ 'somethingweird' }
-  let(:urls_path_with_alert){ %r{\/urls\?alert=.*} }
+  let(:valid_url_path) { 'cmm' }
+  let(:invalid_url_path) { 'somethingweird' }
+  let(:urls_path_with_alert) { %r{\/urls\?alert=.*} }
   let(:valid_attributes) do
     { original: 'http://www.covermymeds.com', shortened: "/#{valid_url_path}" }
   end
-  let(:valid_session) { {} }
+  let(:valid_session) { { user_id: 1 } }
 
   describe 'GET index' do
     it 'assigns all urls as @urls' do
@@ -37,7 +37,7 @@ RSpec.describe UrlsController, type: :controller do
   describe 'GET short with valid id' do
     it 'redirect to the original url' do
       url = Url.create! valid_attributes
-      valid_params =  { id: url.to_param }
+      valid_params = { id: url.to_param }
       expect(Url)
         .to receive(:build_from_params)
         .with(hash_including(valid_params))
@@ -50,7 +50,7 @@ RSpec.describe UrlsController, type: :controller do
   describe 'GET short with valid shortened url' do
     it 'redirect to the original url' do
       url = Url.create! valid_attributes
-      valid_params =  { unmatched_route: valid_url_path}
+      valid_params = { unmatched_route: valid_url_path }
       expect(Url)
         .to receive(:build_from_params)
         .with(hash_including(valid_params))
@@ -63,7 +63,7 @@ RSpec.describe UrlsController, type: :controller do
 
   describe 'GET short with invalid path will redirect to index' do
     it 'redirect to the original url' do
-      invalid_params =  { unmatched_route: invalid_url_path}
+      invalid_params = { unmatched_route: invalid_url_path }
       expect(Url)
         .to receive(:build_from_params)
         .with(hash_including(invalid_params))
@@ -113,7 +113,7 @@ RSpec.describe UrlsController, type: :controller do
   describe 'PUT update' do
     describe 'with valid params' do
       let(:new_value) { 'new value' }
-      let(:new_attributes)  do
+      let(:new_attributes) do
         { original: new_value, shortened: new_value }
       end
 

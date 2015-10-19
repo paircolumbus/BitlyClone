@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    
+    <%= will_paginate %>
+    <table class="catalog">
+
+      <tr class="row">
+        <th class="col-md-3">Name</th>
+        <th class="col-md-3">Position</th>
+        <th class="col-md-3">Team</th>
+      </tr>
+
+      <% @players.each do |player| %>
+
+        <tr class="row">
+          <td class="col-md-3">
+            <%= "#{player.first_name} #{player.last_name}" %>
+          </td>
+          <td class="col-md-3">
+            <%= player.position %>
+          </td>
+          <td class="col-md-3">
+            <%= "[team]" %>
+          </td>
+          <td class="col-md-3">
+            <%= link_to "Select", '#' %>
+          </td>
+        </tr>
+
+      <% end %>
+
+
+    </table>
+    <%= will_paginate %>
+  </div>
+</div>

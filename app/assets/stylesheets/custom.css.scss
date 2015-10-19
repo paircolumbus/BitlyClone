@@ -4,6 +4,7 @@
 $color1: #FFFFFF;
 $color2: #CCCCCC;
 $color3: #888888;
+$bootstrapBlue: #337ab7;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -28,7 +29,7 @@ header {
 
   #logo {
     float: left;
-    font-size: 1.5em;
+    font-size: 2em;
     color: black;
   }
 
@@ -46,18 +47,21 @@ footer {
   border-top: 1px solid black;
   padding: 0;
   margin: 20px 0;
+  clear: both;
 }
 
 /* main content */
 h1 {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 /* index pages */
 .index-box {
-  border: 1px solid black;
-  margin: 10px;
+  border: 1px solid $bootstrapBlue;
+  width: 31%;
+  float: left;
+  margin: 1%;
   padding: 10px 10px 10px 20px;
 }
 
@@ -78,11 +82,20 @@ h1 {
   }
 }
 
+.pagination {
+  width: 100%;
+}
+
 /* form pages*/
 input {
   margin-bottom: 20px;
-  width: 100%;
   @include box_sizing;
+}
+
+.formMessage {
+  width: 100%;
+  margin-top: 20px;
+  text-align: right;
 }
 
 .debug_dump {

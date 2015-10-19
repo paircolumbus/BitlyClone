@@ -1,6 +1,6 @@
-<% provide(:title, "Sign up") %>
+<% provide(:title, "Edit Profile") %>
 
-<h1>Sign up</h1>
+<h1>Edit Profile</h1>
 
 <%= form_for(@user) do |f| %>
   <div class="row">
@@ -17,15 +17,9 @@
                      placeholder: "Confirm password", class: "form-control" %>
       <div class="row">
         <div class="col-md-2 col-md-offset-5">
-          <%= f.submit "Sign up", class: "btn btn-primary" %>
+          <%= f.submit "Submit changes", class: "btn btn-primary" %>
         </div>
       </div>
-      <p class="formMessage">
-        Already have an account? 
-        <%= link_to "Log in.", login_path %>
-      </p>
     </div>
   </div>
 <% end %>
-
-

@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    
+    <%= will_paginate %>
+    <table class="catalog">
+
+      <tr class="row">
+        <th class="col-md-3">Name</th>
+        <th class="col-md-5">Email</th>
+        <th class="col-md-2"></th>
+        <th class="col-md-2"></th>
+      </tr>
+
+      <% @users.each do |user| %>
+
+        <tr class="row">
+          <td class="col-md-3">
+            <%= link_to full_name(user), user %>
+          </td>
+          <td class="col-md-5">
+            <%= user.email %>
+          </td>
+          <td class="col-md-2">
+            <% if user == current_user %>
+              <%= link_to "Edit", edit_user_path(current_user) %>
+            <% end %>
+          </td>
+          <td class="col-md-2">
+            <% if current_user.admin? %>
+              <%= link_to "Delete", user, method: :delete, 
+                                data: {confirm: "Really delete this user?"} %>
+            <% end %>
+          </td>
+        </tr>
+
+      <% end %>
+
+    </table>
+    <%= will_paginate %>
+  </div>
+</div>

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Url, type: :model do
-  let(:valid_url_path){ 'cmm' }
-  let(:invalid_url_path){ 'somethingweird' }
+  let(:valid_url_path) { 'cmm' }
+  let(:invalid_url_path) { 'somethingweird' }
   let(:valid_attributes) do
     { original: 'http://www.covermymeds.com', shortened: "/#{valid_url_path}" }
   end

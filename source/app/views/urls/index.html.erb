@@ -14,7 +14,7 @@
       <tr>
         <td><%= url.short_url %></td>
         <td><%= url.real_url %></td>
-        <td><%= link_to 'Go to', "goto/#{url.short_url}" %></td>
+        <td><%= link_to 'Go to', url_path(url.short_url) %></td>
       </tr>
     <% end %>
   </tbody>

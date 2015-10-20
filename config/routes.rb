@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
+  get 'mylinks' => 'urls#myIndex'
+  get 'urls/:id/land' => 'urls#land'
+  resources :urls
+
 end

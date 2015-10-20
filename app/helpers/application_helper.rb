@@ -17,4 +17,8 @@ module ApplicationHelper
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
+  def shortUrl(url)
+    "#{root_url}urls/#{url.id}"
+  end
+
 end

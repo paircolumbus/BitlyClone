@@ -15,11 +15,7 @@
                                                       class: "form-control" %>
       <%= f.password_field :password_confirmation, 
                      placeholder: "Confirm password", class: "form-control" %>
-      <div class="row">
-        <div class="col-md-2 col-md-offset-5">
-          <%= f.submit "Sign up", class: "btn btn-primary" %>
-        </div>
-      </div>
+      <%= f.submit "Sign up", class: "btn btn-primary" %>
       <p class="formMessage">
         Already have an account? 
         <%= link_to "Log in.", login_path %>

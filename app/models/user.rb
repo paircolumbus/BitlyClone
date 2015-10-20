@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  has_many :urls
+
     # Returns the hash digest of the given string.
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

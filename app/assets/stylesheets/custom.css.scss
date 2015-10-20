@@ -46,7 +46,7 @@ header {
 footer {
   border-top: 1px solid black;
   padding: 0;
-  margin: 20px 0;
+  margin: 100px 0;
   clear: both;
 }
 
@@ -88,6 +88,7 @@ h1 {
 
 /* form pages*/
 input {
+  width: 100%;
   margin-bottom: 20px;
   @include box_sizing;
 }

@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-12 col-md-offset-0">
+    
+    <%= will_paginate %>
+    <table class="catalog">
+
+      <tr class="row">
+        <th class="col-md-2">Our Version</th>
+        <th class="col-md-5">Long Version</th>
+        <th class="col-md-3">User</th>
+        <th class="col-md-1"></th>
+        <th class="col-md-1"></th>
+      </tr>
+
+      <% @urls.each do |url| %>
+
+        <tr class="row">
+          <td class="col-md-2">
+            <%= shortUrl(url) %>
+          </td>
+          <td class="col-md-5">
+            <%= url.longText %>
+          </td>
+          <td class="col-md-3">
+            <%= link_to full_name(url.user), url.user %>
+          </td>
+          <td class="col-md-1">
+            <% if current_user == url.user %>
+              <%= link_to "Edit", edit_url_path(url) %>
+            <% end %>
+          </td>
+          <td class="col-md-1">
+            <% if (current_user.admin? || current_user == url.user) %>
+              <%= link_to "Delete", url, method: :delete, 
+                                data: {confirm: "Really delete this url?"} %>
+            <% end %>
+          </td>
+        </tr>
+
+      <% end %>
+
+    </table>
+    <%= will_paginate %>
+  </div>
+</div>

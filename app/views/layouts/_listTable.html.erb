@@ -5,12 +5,14 @@
     <table class="catalog">
 
       <tr class="row">
-        <th class="col-md-3">Name</th>
-        <th class="col-md-3">Position</th>
-        <th class="col-md-3">Team</th>
+        <th class="col-md-2">Our Version</th>
+        <th class="col-md-4">Long Version</th>
+        <th class="col-md-2">User</th>
+        <th class="col-md-2">Edit</th>
+        <th class="col-md-2">Delete</th>
       </tr>
 
-      <% @players.each do |player| %>
+      <% @urls.each do |player| %>
 
         <tr class="row">
           <td class="col-md-3">
@@ -25,6 +27,10 @@
           <td class="col-md-3">
             <%= link_to "Select", '#' %>
           </td>
+                    <td class="col-md-3">
+            <%= link_to "Select", '#' %>
+          </td>
+          
         </tr>
 
       <% end %>

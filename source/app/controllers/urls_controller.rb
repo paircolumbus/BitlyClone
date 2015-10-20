@@ -8,7 +8,10 @@ class UrlsController < ApplicationController
   # GET /urls/1
   # GET /urls/1.json
   def show
-    redirect_to Url.find_by(short_url: params[:id]).real_url
+    url = Url.find_by(short_url: params[:id])
+    url.click_count += 1
+    url.save
+    redirect_to url.real_url
   end
 
   # GET /urls/new
@@ -31,12 +34,6 @@ class UrlsController < ApplicationController
         format.json { render json: @url.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  # GET /goto/<shortened url>
-  def goto
-    url = Url.find_by(short_url: params[:short_url])
-    redirect_to url.real_url
   end
 
   private

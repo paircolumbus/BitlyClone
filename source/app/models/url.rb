@@ -3,6 +3,6 @@ class Url < ActiveRecord::Base
 
   private
     def make_short_url
-      self.short_url = SecureRandom.hex(4)
+      self.short_url = SecureRandom.hex(4) if self.short_url.empty?
     end
 end

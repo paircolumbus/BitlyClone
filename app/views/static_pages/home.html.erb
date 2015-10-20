@@ -6,7 +6,12 @@
   <h2 style="text-align: center">
     This is the home page for Joe's Bitly Clone.
   </h2>
-  <div style="width: 14%; margin: auto; padding-top: 50px">
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary"%>
-  </div>
+
+  <% if current_user == nil %>
+    <div style="width: 14%; margin: auto; padding-top: 50px">
+      <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary"%>
+    </div>
+  <% end %>
+
+
 </div>

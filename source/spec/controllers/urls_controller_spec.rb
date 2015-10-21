@@ -34,7 +34,7 @@ RSpec.describe UrlsController, :type => :controller do
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # UrlsController. Be sure to keep this updated too.
-  let(:valid_session) { { user_id: 2 } }
+  let(:valid_session) { { user_id: 1 } }
   include SessionsHelper
 
   describe "GET index" do
@@ -46,7 +46,6 @@ RSpec.describe UrlsController, :type => :controller do
     it "assigns all urls as @urls" do
       url = Url.create! valid_attributes
       get :index, {}, valid_session
-      print "here: #{User.find_by(id: session[:user_id])}"
       expect(assigns(:urls)).to eq([url])
     end
   end

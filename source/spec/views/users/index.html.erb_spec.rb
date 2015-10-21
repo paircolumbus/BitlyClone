@@ -10,7 +10,7 @@ RSpec.describe "users/index", :type => :view do
       ),
       User.create!(
         :name => "Name",
-        :email => "admin@example.com",
+        :email => "test2@example.com",
         :password => "password"
       )
     ])
@@ -20,6 +20,6 @@ RSpec.describe "users/index", :type => :view do
     render
     assert_select "tr>td", :text => "Name".to_s, :count => 2
     assert_select "tr>td", :text => "test@example.com".to_s, :count => 1
-    assert_select "tr>td", :text => "admin@example.com".to_s, :count => 1
+    assert_select "tr>td", :text => "test2@example.com".to_s, :count => 1
   end
 end

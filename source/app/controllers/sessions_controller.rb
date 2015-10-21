@@ -17,11 +17,10 @@ class SessionsController < ApplicationController
 
   # POST /sessions
   def create
-    user = User.find_by_login_and_password(
-      session_params[:transient_login],
-      session_params[:transient_password]
+    user = User.find_by_login(
+      session_params[:transient_login]
     )
-    if user.nil?
+    if user.nil? ||  BCrypt::Password.new(user.password) != session_params[:transient_password]
       redirect_to new_session_path, alert: WRONG_CREDENTIALS
     else
       session[:user_id] = user.id

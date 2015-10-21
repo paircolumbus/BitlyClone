@@ -48,15 +48,23 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">URLs</a>
-          <% if session.key?(:user_id) && !session[:user_id].nil?  %>
-          <%= button_to 'Logout', {controller:'sessions', action: 'destroy', id: 1}, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-
+          <a class="navbar-brand" href="#">Source</a>
         </div>
 
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav">
+            <li class="<%= params['controller'] == 'urls'?'active':'' %>"><%= link_to 'urls', {controller: 'urls'} %></li>
+            <li class="<%= params['controller'] == 'users'?'active':'' %>"><%= link_to 'users', {controller: 'users'} %></li>
+            <% if session.key?(:user_id) && !session[:user_id].nil?  %>
+              <li class="right"><%= link_to 'logout', {controller:'sessions', action: 'destroy', id: 1}, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            <% end %>
+
+          </ul>
+        </div><!-- /.navbar-collapse -->
       </div>
     </nav>
+
     <br />
     <hr />
 
@@ -69,7 +77,7 @@
       </div><!--/row-->
 
       <footer>
-        <p>&copy; paircolumbus 2015</p>
+        <p>&copy; Company 2015</p>
       </footer>
 
     </div> <!-- /container -->

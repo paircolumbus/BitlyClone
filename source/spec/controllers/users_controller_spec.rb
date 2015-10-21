@@ -24,27 +24,39 @@ RSpec.describe UsersController, :type => :controller do
   # User. As you add validations to User, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { name: 'Ima Tester', email: 'tester@example.com', password: 'tester' }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { name: 'Ima Tester', email: 'bademail', password: 'tester' }
   }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # UsersController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) { { user_id: 1 } }
+  include SessionsHelper
 
   describe "GET index" do
+    it "redirects to login page if not logged in" do
+      get :index
+      expect(response).to redirect_to(login_path)
+    end
+
     it "assigns all users as @users" do
-      user = User.create! valid_attributes
+      users = User.all
       get :index, {}, valid_session
-      expect(assigns(:users)).to eq([user])
+      expect(assigns(:users)).to eq(users)
     end
   end
 
   describe "GET show" do
+    it "redirects to login page if not logged in" do
+      user = User.create! valid_attributes
+      get :show, {:id => user.to_param}
+      expect(response).to redirect_to(login_path)
+    end
+
     it "assigns the requested user as @user" do
       user = User.create! valid_attributes
       get :show, {:id => user.to_param}, valid_session
@@ -60,6 +72,12 @@ RSpec.describe UsersController, :type => :controller do
   end
 
   describe "GET edit" do
+    it "redirects to login page if not logged in" do
+      user = User.create! valid_attributes
+      get :edit, {:id => user.to_param}
+      expect(response).to redirect_to(login_path)
+    end
+
     it "assigns the requested user as @user" do
       user = User.create! valid_attributes
       get :edit, {:id => user.to_param}, valid_session
@@ -101,16 +119,20 @@ RSpec.describe UsersController, :type => :controller do
   end
 
   describe "PUT update" do
-    describe "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+    let(:new_attributes) {
+      { name: 'Ima C. Tester', email: 'tester2@example.com', password: 'tester' }
+    }
 
+    it "redirects to login page if not logged in" do
+      user = User.create! valid_attributes
+      put :update, {:id => user.to_param, :user => new_attributes}
+      expect(response).to redirect_to(login_path)
+    end
+    describe "with valid params" do
       it "updates the requested user" do
         user = User.create! valid_attributes
         put :update, {:id => user.to_param, :user => new_attributes}, valid_session
-        user.reload
-        skip("Add assertions for updated state")
+        expect(user.name).to eq(valid_attributes[:name])
       end
 
       it "assigns the requested user as @user" do

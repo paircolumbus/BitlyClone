@@ -2,6 +2,7 @@ class UrlsController < ApplicationController
   # GET /urls
   # GET /urls.json
   def index
+    redirect_to login_path and return if !logged_in?
     @urls = Url.all
   end
 
@@ -16,12 +17,14 @@ class UrlsController < ApplicationController
 
   # GET /urls/new
   def new
+    redirect_to login_path and return if !logged_in?
     @url = Url.new
   end
 
   # POST /urls
   # POST /urls.json
   def create
+    redirect_to login_path and return if !logged_in?
     @url = Url.new(url_params)
 
     respond_to do |format|

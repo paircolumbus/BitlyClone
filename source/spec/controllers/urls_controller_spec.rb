@@ -34,12 +34,19 @@ RSpec.describe UrlsController, :type => :controller do
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # UrlsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) { { user_id: 2 } }
+  include SessionsHelper
 
   describe "GET index" do
+    it "redirects to login page if not logged in" do
+      get :index
+      expect(response).to redirect_to(login_path)
+    end
+
     it "assigns all urls as @urls" do
       url = Url.create! valid_attributes
       get :index, {}, valid_session
+      print "here: #{User.find_by(id: session[:user_id])}"
       expect(assigns(:urls)).to eq([url])
     end
   end
@@ -53,6 +60,11 @@ RSpec.describe UrlsController, :type => :controller do
   end
 
   describe "GET new" do
+    it "redirects to login page if not logged in" do
+      get :new
+      expect(response).to redirect_to(login_path)
+    end
+
     it "assigns a new url as @url" do
       get :new, {}, valid_session
       expect(assigns(:url)).to be_a_new(Url)
@@ -60,6 +72,11 @@ RSpec.describe UrlsController, :type => :controller do
   end
 
   describe "POST create" do
+    it "redirects to login page if not logged in" do
+      post :create
+      expect(response).to redirect_to(login_path)
+    end
+
     describe "with valid params" do
       it "creates a new Url" do
         expect {

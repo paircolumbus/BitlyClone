@@ -56,6 +56,13 @@ RSpec.describe UrlsController, :type => :controller do
       get :show, {:id => url.short_url}, valid_session
       expect(response).to redirect_to(url.real_url)
     end
+    it "increments click_count" do
+      url = Url.create! valid_attributes
+      old_count = url.click_count
+      get :show, {:id => url.short_url}, valid_session
+      url.reload
+      expect(url.click_count).to be > old_count
+    end
   end
 
   describe "GET new" do

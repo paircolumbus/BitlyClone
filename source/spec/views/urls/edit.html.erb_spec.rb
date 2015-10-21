@@ -4,7 +4,7 @@ RSpec.describe "urls/edit", :type => :view do
   before(:each) do
     @url = assign(:url, Url.create!(
       :short_url => "MyString",
-      :real_url => "MyString"
+      :real_url => "http://example.com"
     ))
   end
 

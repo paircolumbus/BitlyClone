@@ -4,13 +4,13 @@ RSpec.describe "urls/show", :type => :view do
   before(:each) do
     @url = assign(:url, Url.create!(
       :short_url => "Short Url",
-      :real_url => "Real Url"
+      :real_url => "http://example.com"
     ))
   end
 
   it "renders attributes in <p>" do
     render
     expect(rendered).to match(/Short Url/)
-    expect(rendered).to match(/Real Url/)
+    expect(rendered).to match(/http:\/\/example.com/)
   end
 end

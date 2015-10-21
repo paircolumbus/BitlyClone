@@ -1,5 +1,5 @@
 require 'User'
-#
+
 class SessionsController < ApplicationController
   before_action :check_session, only: [:new, :create]
   WRONG_CREDENTIALS = 'Wrong crendentials, please try again'

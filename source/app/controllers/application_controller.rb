@@ -6,6 +6,11 @@ class ApplicationController < ActionController::Base
 
   before_action do |controller|
     redirect_to new_session_url if
-      !session.key?(:user_id) && !controller.is_a?(SessionsController)
+      !session.key?(:user_id) && (
+        controller.is_a?(UsersController) ||(
+          controller.is_a?(UrlsController) &&
+            controller.action_name != 'short'
+        )
+      )
   end
 end

@@ -14,7 +14,9 @@ class Url < ActiveRecord::Base
     def test_url
       # validate url is http or https
       uri = URI(self.real_url)
-      errors.add(:real_url, 'is not http or https') unless uri.scheme == 'http' || uri.scheme == 'https'
+      if self.real_url !~ /\A#{URI::regexp(['http', 'https'])}\z/
+        errors.add(:real_url, 'is not http or https')
+      end
 
       # validate url is accessible
       begin

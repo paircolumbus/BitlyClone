@@ -10,7 +10,7 @@ class UrlsController < ApplicationController
   # GET /urls/1
   # GET /urls/1.json
   def show
-    url = Url.find_by(short_url: params[:id])
+    url = Url.find_by!(short_url: params[:id])
     url.click_count += 1
     url.save
     redirect_to url.real_url

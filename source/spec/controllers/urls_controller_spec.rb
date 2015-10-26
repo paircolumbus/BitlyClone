@@ -51,6 +51,11 @@ RSpec.describe UrlsController, :type => :controller do
   end
 
   describe "GET show" do
+    it "responds 404 to invalid short_url" do
+      expect {
+        get :show, {:id => 'invalid short url'}, valid_session
+      }.to raise_exception(ActiveRecord::RecordNotFound)
+    end
     it "redirects to the real_url" do
       url = Url.create! valid_attributes
       get :show, {:id => url.short_url}, valid_session

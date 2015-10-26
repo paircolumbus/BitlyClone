@@ -8,7 +8,7 @@ class Url < ActiveRecord::Base
 
   private
     def make_short_url
-      self.short_url = SecureRandom.hex(4) if self.short_url.nil? || self.short_url.empty?
+      self.short_url = SecureRandom.hex(4) if self.short_url.blank?
     end
 
     def test_url

@@ -65,6 +65,10 @@ RSpec.describe UsersController, :type => :controller do
   end
 
   describe "GET new" do
+    it "assigns a new user as @user if not logged in" do
+      get :new, {}
+      expect(assigns(:user)).to be_a_new(User)
+    end
     it "assigns a new user as @user" do
       get :new, {}, valid_session
       expect(assigns(:user)).to be_a_new(User)

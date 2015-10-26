@@ -20,7 +20,7 @@ class Url < ActiveRecord::Base
 
       # validate url is accessible
       begin
-        result = open(uri.to_s)
+        open(uri.to_s)
       rescue
         errors.add(:real_url, 'is not accessible')
       end

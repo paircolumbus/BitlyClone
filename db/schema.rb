@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151019231254) do
+ActiveRecord::Schema.define(version: 20151220191144) do
 
   create_table "urls", force: :cascade do |t|
     t.string   "longText"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "clicks",     default: 0
   end
 
   add_index "urls", ["longText"], name: "index_urls_on_longText", unique: true

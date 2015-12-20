@@ -7,7 +7,8 @@
       <tr class="row">
         <th class="col-md-2">Our Version</th>
         <th class="col-md-5">Long Version</th>
-        <th class="col-md-3">User</th>
+        <th class="col-md-1">Clicks</th>
+        <th class="col-md-2">User</th>
         <th class="col-md-1"></th>
         <th class="col-md-1"></th>
       </tr>
@@ -21,7 +22,10 @@
           <td class="col-md-5">
             <%= url.longText %>
           </td>
-          <td class="col-md-3">
+          <td class="col-md-1">
+            <%= url.clicks %>
+          </td>
+          <td class="col-md-2">
             <%= link_to full_name(url.user), url.user %>
           </td>
           <td class="col-md-1">

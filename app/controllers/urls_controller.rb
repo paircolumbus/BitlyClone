@@ -36,6 +36,8 @@ class UrlsController < ApplicationController
 
   def show
     @url = Url.find(params[:id])
+    @url.clicks += 1
+    @url.save
     redirect_to @url.longText
   end
 

@@ -1,0 +1,7 @@
+<%= form_tag("/urls", method: "post") do %>
+  Name: <%= text_field_tag(:name) %>
+  <br />
+  Url: <%= text_field_tag(:unshortened) %>
+  <br />
+  <%= submit_tag("Add") %>
+<% end %>

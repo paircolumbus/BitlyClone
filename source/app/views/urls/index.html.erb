@@ -1,5 +1,12 @@
-<% @urls.each do |url|%>
-
-  <a href="s/<%= url.shortened %>"><%= url.unshortened %></a> has <%= count_of_clicks(url) %> clicks!
-  <br />
+<% if flash[:create_error] %>
+  <div class="error"><%= flash[:create_error] %></div>
 <% end %>
+
+<% @urls.each do |url|%>
+  <%= link_to link_name_helper(url), "s/" + url.shortened.to_s, "data-no-turbolink" => true %> has <%= pluralize( count_of_clicks(url) , 'click')  %>!
+  <br/>
+<% end %>
+
+<br/>
+<br/>
+<%= render :partial => 'add_form' %>

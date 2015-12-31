@@ -3,6 +3,12 @@ class Url < ActiveRecord::Base
 
   before_create :add_shortened
 
+  def increment_count
+    self.click_count = 0 if self.click_count.nil?
+    self.click_count += 1
+    self.save!
+  end
+
 
   private
 

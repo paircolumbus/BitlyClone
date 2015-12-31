@@ -1,5 +1,5 @@
 <% @urls.each do |url|%>
 
-  <a href="<%= url.shortened %>"><%= url.unshortened %></a>
-
+  <a href="s/<%= url.shortened %>"><%= url.unshortened %></a> has <%= count_of_clicks(url) %> clicks!
+  <br />
 <% end %>

@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def s
-    Url.find_by(shortened: params[:shortened])
+    @url = Url.find_by(shortened: params[:shortened])
+    redirect_to @url.unshortened
+    @url.increment_count
   end
 end

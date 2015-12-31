@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151231004453) do
+ActiveRecord::Schema.define(version: 20151231195338) do
 
   create_table "urls", force: true do |t|
     t.text     "unshortened"
@@ -24,5 +24,12 @@ ActiveRecord::Schema.define(version: 20151231004453) do
   end
 
   add_index "urls", ["user_id"], name: "index_urls_on_user_id"
+
+  create_table "users", force: true do |t|
+    t.string   "email"
+    t.string   "hashed_password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

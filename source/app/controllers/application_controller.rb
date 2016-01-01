@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  before_action :authenticate_user!
 
   # from http://stackoverflow.com/questions/2385799/how-to-redirect-to-a-404-in-rails
   def render_404
@@ -21,5 +22,9 @@ class ApplicationController < ActionController::Base
     else
       render_404
     end
+  end
+
+  def login
+    render 'users/sign_in'
   end
 end

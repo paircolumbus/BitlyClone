@@ -1,3 +1,8 @@
+<% if current_user.is_admin %>
+<%= link_to "Admin", '/admin', method: :get, :class => 'navbar-link'  %>
+<% end %>
+<br />
+<br />
 <% if flash[:create_error] %>
   <div class="error"><%= flash[:create_error] %></div>
 <% end %>

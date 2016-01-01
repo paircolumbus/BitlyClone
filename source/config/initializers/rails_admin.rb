@@ -19,6 +19,14 @@ RailsAdmin.config do |config|
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
+  config.authorize_with do |controller|
+    unless current_user.is_admin === true
+      redirect_to main_app.root_path
+      flash[:error] = "You are not an admin"
+    end
+  end
+
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory

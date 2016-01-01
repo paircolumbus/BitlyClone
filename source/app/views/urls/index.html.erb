@@ -6,6 +6,9 @@
 <% if flash[:create_error] %>
   <div class="error"><%= flash[:create_error] %></div>
 <% end %>
+<% if flash[:error] #admin error %>
+  <div class="error"><%= flash[:error] %></div>
+<% end %>
 
 <% @urls.each do |url|%>
   <%= link_to link_name_helper(url), "s/" + url.shortened.to_s, "data-no-turbolink" => true %> has <%= pluralize( count_of_clicks(url) , 'click')  %>!

@@ -1,0 +1,7 @@
+
+<p>
+  <strong>New Url is:</strong>
+  <a href="<%= request.base_url + '/' + @url.unique_key %>"><%= request.base_url + '/' + @url.unique_key %><a>
+</p>
+
+<%= link_to 'Back', urls_path %>

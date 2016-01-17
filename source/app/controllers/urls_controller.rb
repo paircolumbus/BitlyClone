@@ -6,6 +6,7 @@ class UrlsController < ApplicationController
 
   def show
     @url = Url.find_by unique_key: (params[:unique_key])
+    Url.increment_counter(:view_counter, @url.id)
     redirect_to @url.address
   end
 

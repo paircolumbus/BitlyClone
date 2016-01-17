@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160116205358) do
+ActiveRecord::Schema.define(version: 20160116235701) do
 
   create_table "urls", force: true do |t|
     t.string   "address"
     t.string   "unique_key"
+    t.integer  "view_counter"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

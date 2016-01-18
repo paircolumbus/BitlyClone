@@ -1,9 +1,15 @@
-New Link
+<%= render 'shared/errors', obj: @link %>
 
-<%= form_for(@link) do |f| %>
-  <%= f.label :long_url %>
-  <%= f.text_field :long_url %>
+<div class="container">
+<h3> New URL </h3>
 
-  <%= f.submit %>
+  <div class="well">
+    <%= form_for(@link) do |f|  %>
+      <b> Enter URL: </b> <br>
+      <%= f.text_field :long_url, class: "form-control" %> <br>
 
-<% end %>
+      <%= f.submit class: "btn btn-primary" %>
+
+    <% end %>
+  </div>
+</div>

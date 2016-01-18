@@ -1,26 +1,30 @@
+require 'SecureRandom'
+require 'net/http'
+
 class Link < ActiveRecord::Base
-  require 'SecureRandom'
-  require 'net/http'
 
+  validate :valid_uri, on: :create
   before_save :shorten
-  before_save :valid_uri
-  before_save :check_http
 
-  validates :long_url, presence: true
-
-  def shorten
-    self.short_url = SecureRandom.urlsafe_base64(6)
-  end
 
   def valid_uri
-    uri = URI.parse(long_url)
-    %w( http https ).include?(uri.scheme)
+    regex_check = /\A#{URI::regexp(["http", "https"])}\z/
+    if regex_check =~ long_url
+      check_http
+    else
+      self.errors.add(:url, "invalid")
+    end
   end
 
   def check_http
     uri = URI(long_url)
     res = Net::HTTP.get_response(uri)
-    res.code.to_i < 400
+    self.errors.add(:url_response_code, "invalid") if res.code.to_i >= 400
+  end
+
+  private
+  def shorten
+    self.short_url = SecureRandom.urlsafe_base64(6)
   end
 
 end

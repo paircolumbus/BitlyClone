@@ -16,7 +16,8 @@ before_filter :find_link, only: [:show]
     if @link.save
       redirect_to root_path
     else
-      redirect_to :back
+      flash.now[:danger] = "Link creation unsuccessful."
+      render :new
     end
   end
 
@@ -37,7 +38,7 @@ before_filter :find_link, only: [:show]
 
   def find_link
     @link = Link.find_by(short_url: params[:short_url])
-    @link.click_count += 1
+    @link.increment_counter(:click_count, @link.id)
     redirect_to "http://" + @link.long
   end
 end

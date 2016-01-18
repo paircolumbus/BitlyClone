@@ -37,7 +37,7 @@ before_filter :find_link, only: [:show]
 
   def find_link
     @link = Link.find_by(short: params[:short])
-    @link.click_counter += 1
+    @link.click_count += 1
     redirect_to "http://" + @link.long
   end
 end

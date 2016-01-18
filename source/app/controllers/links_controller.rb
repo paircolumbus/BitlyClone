@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
-before_filter :set_link, only: [:show]
+before_filter :set_link, only: [:edit]
+before_filter :find_link, only: [:show]
 
   def index
     @links = Link.all
@@ -22,6 +23,9 @@ before_filter :set_link, only: [:show]
   def show
   end
 
+  def edit
+  end
+
   private
   def link_params
     params.require(:link).permit(:long)
@@ -31,4 +35,9 @@ before_filter :set_link, only: [:show]
     @link = Link.find(params[:id])
   end
 
+  def find_link
+    @link = Link.find_by(short: params[:short])
+    @link.click_counter += 1
+    redirect_to "http://" + @link.long
+  end
 end

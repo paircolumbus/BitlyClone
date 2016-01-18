@@ -6,5 +6,4 @@ class Link < ActiveRecord::Base
     self.short = SecureRandom.urlsafe_base64(6)
   end
 
-
 end

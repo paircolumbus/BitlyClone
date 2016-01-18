@@ -1,3 +1,5 @@
+require 'uri'
+
 class UrlsController < ApplicationController
 
   def index
@@ -6,8 +8,8 @@ class UrlsController < ApplicationController
 
   def show
     @url = Url.find_by unique_key: (params[:unique_key])
-    Url.increment_counter(:view_counter, @url.id)
     redirect_to @url.address
+    Url.increment_counter(:view_counter, @url.id)
   end
 
   def new
@@ -16,9 +18,10 @@ class UrlsController < ApplicationController
 
   def create
     @url = Url.new(params.require(:url).permit(:address))
-
-    @url.save
-    redirect_to action: "show_key", unique_key: @url.unique_key
+    if @url.address =~ /\A#{URI::regexp(['http', 'https'])}\z/
+      @url.save
+      redirect_to action: "show_key", unique_key: @url.unique_key
+    end
   end
 
   def destroy

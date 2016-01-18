@@ -1,8 +1,9 @@
 class Link < ActiveRecord::Base
-  binding.pry
+  require 'SecureRandom'
+  before_save :shorten
 
   def shorten
-
+    self.short = SecureRandom.urlsafe_base64(6)
   end
 
 

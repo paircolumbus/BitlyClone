@@ -1,4 +1,5 @@
-class UrlsController < ApplicationController
+class LinksController < ApplicationController
+before_filter :set_link, only: [:show]
 
   def index
     @links = Link.all
@@ -18,9 +19,16 @@ class UrlsController < ApplicationController
     end
   end
 
+  def show
+  end
 
   private
-  def links_params
+  def link_params
     params.require(:link).permit(:long)
   end
+
+  def set_link
+    @link = Link.find(params[:id])
+  end
+
 end

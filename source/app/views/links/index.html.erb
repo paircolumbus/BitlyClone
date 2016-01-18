@@ -1,5 +1,8 @@
 Index
 
 <% @links.each do |link| %>
-  <h3> <%= @link.long %> </h3> 
+  <h3> Long:  <%= link.long %> </h3> 
+  <h3> Short: <%= link.short %> </h3> 
 <% end %>
+
+<%= link_to "New Link", new_link_path %>

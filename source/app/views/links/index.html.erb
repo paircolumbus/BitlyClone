@@ -1,6 +1,6 @@
 <% @links.each do |link| %>
-  <h3> Long:  <%= link.long %> </h3> 
-  <h5> Short: <%= link.short %> </h5> 
+  <h3> Long:  <%= link.long_url %> </h3> 
+  <h5> Short: <%= link.short_url %> </h5> 
 <% end %>
 
 <%= link_to "New Link", new_link_path %>

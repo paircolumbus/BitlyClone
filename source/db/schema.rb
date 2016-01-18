@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20160117233514) do
 
   create_table "links", force: true do |t|
-    t.string  "long"
-    t.string  "short"
+    t.string  "long_url"
+    t.string  "short_url"
     t.integer "click_count", default: 0
   end
 

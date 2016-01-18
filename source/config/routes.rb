@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
 
   root 'links#index'
-  resources :links, only: [:new]
-  get 'a/:short' => 'links#show'
+  resources :links, only: [:new, :create]
+  get 'a/:short_url' => 'links#show'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

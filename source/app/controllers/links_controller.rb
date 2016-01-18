@@ -14,9 +14,9 @@ before_filter :find_link, only: [:show]
     @link = Link.new(link_params)
 
     if @link.save
-      redirect_to link_path(@link)
-    else
       redirect_to root_path
+    else
+      redirect_to :back
     end
   end
 
@@ -28,7 +28,7 @@ before_filter :find_link, only: [:show]
 
   private
   def link_params
-    params.require(:link).permit(:long)
+    params.require(:link).permit(:long_url)
   end
 
   def set_link
@@ -36,7 +36,7 @@ before_filter :find_link, only: [:show]
   end
 
   def find_link
-    @link = Link.find_by(short: params[:short])
+    @link = Link.find_by(short_url: params[:short_url])
     @link.click_count += 1
     redirect_to "http://" + @link.long
   end

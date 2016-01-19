@@ -10,14 +10,14 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    unless !!current_user
+    if !current_user
       flash[:danger] = "You are not logged in."
       redirect_to root_path
     end
   end
 
   def admin_user
-    unless current_user && current_user.admin?
+    if !current_user && !current_user.admin?
       flash[:danger] = "You do not have the credentials to view this page."
       redirect_to root_path
     end

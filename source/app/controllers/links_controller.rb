@@ -1,6 +1,5 @@
 class LinksController < ApplicationController
 before_filter :set_link, only: [:edit]
-before_filter :find_link, only: [:show]
 
   def index
     @links = Link.all
@@ -14,7 +13,12 @@ before_filter :find_link, only: [:show]
     @link = Link.new(link_params)
 
     if @link.save
-      redirect_to root_path
+      if current_user
+        redirect_to user_path(current_user)
+      else
+        redirect_to root_path
+      end
+      flash[:success] = "Link successfully created! Link: localhost:3000/a/#{@link.short_url}"
     else
       flash.now[:danger] = "Link creation unsuccessful."
       render :new
@@ -22,6 +26,7 @@ before_filter :find_link, only: [:show]
   end
 
   def show
+    find_link
   end
 
   def edit
@@ -29,7 +34,7 @@ before_filter :find_link, only: [:show]
 
   private
   def link_params
-    params.require(:link).permit(:long_url)
+    params.require(:link).permit(:long_url, :user_id)
   end
 
   def set_link
@@ -38,7 +43,12 @@ before_filter :find_link, only: [:show]
 
   def find_link
     @link = Link.find_by(short_url: params[:short_url])
-    @link.increment_counter(:click_count, @link.id)
-    redirect_to @link.long_url
+    @link.click_count += 1
+    if @link.save
+      redirect_to @link.long_url
+    else
+      redirect_to root_path
+      flash[:danger] = "An error occurred."
+    end
   end
 end

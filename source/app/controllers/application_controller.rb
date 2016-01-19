@@ -10,7 +10,10 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    !!current_user
+    unless !!current_user
+      flash[:danger] = "You are not logged in."
+      redirect_to root_path
+    end
   end
 
   def admin_user

@@ -8,6 +8,8 @@
       <b> Enter URL: </b> <br>
       <%= f.text_field :long_url, class: "form-control" %> <br>
 
+      <%= f.hidden_field :user_id, value: current_user.id if current_user %>
+
       <%= f.submit class: "btn btn-primary" %>
 
     <% end %>

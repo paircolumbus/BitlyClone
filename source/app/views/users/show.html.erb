@@ -1,1 +1,9 @@
-User Links
+<div class="container">
+
+  <h3> <%= current_user.name + "'s" %> links </h3>
+  <% @user_links.each do |link| %>
+    <% local_url = "http://localhost:3000/a/" + link.short_url %>
+    <%= link_to "bit.ly/#{link.short_url}", local_url %> <br>
+  <% end %>
+
+</div>

@@ -3,6 +3,7 @@ require 'net/http'
 
 class Link < ActiveRecord::Base
 
+  belongs_to :user
   validate :valid_uri, on: :create
   before_save :shorten
 
@@ -22,9 +23,13 @@ class Link < ActiveRecord::Base
     self.errors.add(:url_response_code, "invalid") if res.code.to_i >= 400
   end
 
+  def add_click_count
+    self.click_count += 1
+  end
+
   private
   def shorten
-    self.short_url = SecureRandom.urlsafe_base64(6)
+    self.short_url ||= SecureRandom.urlsafe_base64(6)
   end
 
 end

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :current_user, only: [:show, :edit, :update]
+  before_filter :logged_in?, only: [:show, :edit, :update]
 
   def new
     @user = User.new
@@ -23,6 +25,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user_links = current_user.links
   end
 
   def destroy

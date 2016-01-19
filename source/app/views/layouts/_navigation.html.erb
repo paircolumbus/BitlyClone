@@ -7,7 +7,7 @@
     </div>
     <div class="navbar-form">
       <ul class="nav navbar-nav navbar-right">
-        <% if logged_in? %>
+        <% if current_user %>
           <li> <%= link_to current_user.name, user_path(current_user) %> </li>
           <li> <%= link_to "Logout", logout_path, class: "btn" %> </li>
         <% else %>

@@ -1,0 +1,18 @@
+<div class="container">
+
+  <%= form_for(@user) do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %> <br>
+
+    <%= f.label :password %>
+    <%= f.password_field :password, class: "form-control" %> <br>
+
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: "form-control" %> <br>
+
+    <%= f.submit class: "btn btn-success" %>
+
+  <% end %>
+
+</div>

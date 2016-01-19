@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root 'links#index'
   resources :links, only: [:new, :create, :index]
+  resources :users, only: [:new, :create, :show, :destroy]
   get 'a/:short_url' => 'links#show'
 
 

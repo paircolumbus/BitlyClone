@@ -1,0 +1,14 @@
+<div class="container">
+  <h2>Login</h2>
+  <div class="form-group well">
+    <%= form_for '/login' do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %> <br>
+
+      <%= f.label :password %> 
+      <%= f.password_field :password, class: "form-control" %> <br>
+
+      <%= f.submit "Login", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

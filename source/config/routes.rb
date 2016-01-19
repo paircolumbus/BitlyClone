@@ -2,9 +2,15 @@ Rails.application.routes.draw do
 
 
   root 'links#index'
+  
   resources :links, only: [:new, :create, :index]
   resources :users, only: [:new, :create, :show, :destroy]
+  
   get 'a/:short_url' => 'links#show'
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

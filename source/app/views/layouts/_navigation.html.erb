@@ -6,7 +6,15 @@
       </a>
     </div>
     <div class="navbar-form">
-
+      <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
+          <li> <%= link_to current_user.name, user_path(current_user) %> </li>
+          <li> <%= link_to "Logout", logout_path, class: "btn" %> </li>
+        <% else %>
+          <li> <%= link_to "Sign In", login_path, class: "btn" %> </li>
+          <li> <%= link_to "Register", new_user_path, class: "btn" %> </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </nav>

@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_user
-    if !current_user && !current_user.admin?
+    if !current_user || !current_user.admin?
       flash[:danger] = "You do not have the credentials to view this page."
       redirect_to root_path
     end

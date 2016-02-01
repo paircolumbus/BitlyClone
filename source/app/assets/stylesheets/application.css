@@ -3,7 +3,7 @@
  * listed below.
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
  *
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
  * compiled file so the styles you add here take precedence over styles defined in any styles
@@ -13,3 +13,82 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  background-color: #eeeeee !important;;
+}
+
+html, body { 
+  height: 100%; 
+  margin: 0;
+  padding: 0;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+}
+
+.container-fluid{
+  height: 100%;
+  display: table;
+  width: 100%;
+  padding: 0;
+}
+
+.row { 
+  height: 100%; 
+  display: table-cell; 
+  vertical-align: middle;
+}
+
+.centering {
+  float:none;
+  margin:0 auto;
+}
+
+.submit-button {
+  background: transparent; 
+  border: none; 
+  padding: 0;
+}
+
+input[type=text], textarea {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #DDDDDD;
+}
+
+input[type=text]:focus, textarea:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+
+.glyphicon {
+  font-size: 2.0em;
+}
+
+.about-button {
+  margin: 10px;
+  float: right;
+}
+
+#search_query {
+  width: 600px;
+}
+
+#about-block { 
+  border: 1px solid #55acee;
+  background-color: white;
+  line-height: 300%;
+  font-size: 16px;
+  font-family: Helvetica;
+}

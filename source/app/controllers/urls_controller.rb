@@ -9,10 +9,10 @@ class UrlsController < ApplicationController
 
   def create
     # validate that the user entered a url
-    if url_params[:address].size < 0 
-      respond_to do |format|
-        format.html { render :index, notice: 'Hold up, You need a valid URL to shrink!' }
-      end
+    binding.pry
+    if url_params[:address].size < 3 || address_not_uniq 
+      flash[:error] = "Hold up! You need to enter a valid address."
+      redirect_to :root and return
     end
 
     @url = Url.new(url_params)
@@ -20,10 +20,11 @@ class UrlsController < ApplicationController
     respond_to do |format|
       begin
         if @url.save
-          format.html { render :index, notice: 'Here you go!.' }
+          format.html { render :index }
         end
       rescue ActiveRecord::RecordNotUnique
-        format.html { render :index, notice: 'Here you go!.' }
+          flash[:error] = "Hold up! You need to enter a unique address."
+          format.html { render :index }
       end
     end
   end
@@ -43,5 +44,12 @@ class UrlsController < ApplicationController
 
   def url_params
     params.require(:url).permit(:address, :url)
+  end
+
+  def address_not_uniq
+    address = params[:address]
+    address.gsub!(/https:\/\/|http:\/\//,'')
+    address.gsub!(/www\./,'')
+    Url.where(address: address).first.blank?
   end
 end

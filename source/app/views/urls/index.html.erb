@@ -1,20 +1,21 @@
-<div class="row">
-  <div class="centering text-center">
+<div class="row-fluid">
+  <div class="vertical-center text-center">
     <%= form_for :url, :html => { :class => "" } do |f| %>
       <%= f.text_field :address, :placeholder => "Put your link here", id: "search_query" %><br />
-      <%= button_tag( :class => "submit-button btn btn-primary") do %>
-        <b>Smallify</b>
+      <%= button_tag( :class => "submit-button btn btn-defualt") do %>
+        <span class="text-muted bold">Smallify</span>
+      <% end %>
+      <br />
+      <br />
+      <br />
+      <% if @url.present? %>
+        Your new smallified url is:
+        <%= link_to "#{app_config[:dev_url]}/#{@url.id}", "/#{@url.id}" %>
+      <% elsif flash[:error].present? %>
+        <%= flash[:error] %>
       <% end %>
     <% end %>
   </div>
-  <br />
-  <br />
-  <br />
-  <% unless @url.nil? %>
-    <div class="row">Your smallified link is:<br />
-      <%= link_to "#{app_config[:dev_url]}/#{@url.id}", @url %>
-    </div>
-  <% end %>
 </div>
 
 

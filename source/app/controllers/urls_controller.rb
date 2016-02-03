@@ -9,8 +9,7 @@ class UrlsController < ApplicationController
 
   def create
     # validate that the user entered a url
-    binding.pry
-    if url_params[:address].size < 3 || address_not_uniq 
+    if url_params[:address].size <= 3 || url_params[:address].to_s.match(/^.+\..+/).blank?
       flash[:error] = "Hold up! You need to enter a valid address."
       redirect_to :root and return
     end
@@ -19,12 +18,11 @@ class UrlsController < ApplicationController
 
     respond_to do |format|
       begin
-        if @url.save
-          format.html { render :index }
-        end
-      rescue ActiveRecord::RecordNotUnique
-          flash[:error] = "Hold up! You need to enter a unique address."
-          format.html { render :index }
+        raise ActiveRecord::RecordNotUnique.new(@url) if Url.where(address: url_params[:address]).count > 0 
+        format.html { render :index } if @url.save
+      rescue ActiveRecord::RecordNotUnique 
+        @url = Url.where(address: url_params[:address]).first
+        format.html { render :index }
       end
     end
   end
@@ -47,7 +45,7 @@ class UrlsController < ApplicationController
   end
 
   def address_not_uniq
-    address = params[:address]
+    address = params[:address] || ''
     address.gsub!(/https:\/\/|http:\/\//,'')
     address.gsub!(/www\./,'')
     Url.where(address: address).first.blank?

@@ -37,7 +37,7 @@ class UrlsController < ApplicationController
 
   private
   def set_url
-    @url = Url.where(id: params[:id]).first
+    @url = Url.where(compressed_id: params[:compressed_id]).first
   end
 
   def url_params

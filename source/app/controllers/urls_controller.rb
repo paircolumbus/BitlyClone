@@ -4,7 +4,7 @@ class UrlsController < ApplicationController
   # GET /urls
   # GET /urls.json
   def index
-    @urls = Url.order("created_at").last(5).reverse
+    @urls = Url.order("created_at").last(10).reverse
   end
 
   # GET /urls/1
@@ -24,12 +24,13 @@ class UrlsController < ApplicationController
   # POST /urls
   # POST /urls.json
   def create
-    @url = Url.new(url_params)
+    @url = Url.new
+    @url.unshortened = params[:url]
     @url.shorten while Url.exists?(@url.shorten)
     #1/0
     respond_to do |format|
       if @url.save
-        format.html { redirect_to @url, notice: 'Url was successfully created.' }
+        format.html { redirect_to action: "index"}
         format.json { render :show, status: :created, location: @url }
       else
         format.html { render :new }
@@ -70,6 +71,6 @@ class UrlsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def url_params
-      params.require(:url).permit(:unshortened)
+      params.require(:url)
     end
 end

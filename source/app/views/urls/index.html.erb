@@ -4,22 +4,15 @@
     <h1>Welcome to chomp.it!</h1>
     <p>Chomp.it is the free and easy URL shortener. Just paste a URL in the field below
     and you'll get a shortened URL that you can share over social media.</p>
+
+    <%= form_tag shorten_path, :method => 'post' do %>
     <div class="input-group">
-      <%# text_field(:url, :unshortened, placeholder: "http://www.LinkYouWantToShorten.whatever/", value: @value) %>
-      <%# button_to "Chomp it!", shorten_path(url:{unshortened:@value}), :method => :post%>
-
-
+        <%= text_field_tag :url%>
+        <%= button_tag "Chomp it!", :name => nil %>
     </div>
-
-
+    <% end %>
 
   </div>
-  <%= form_tag shorten_path, :method => 'post' do %>
-    <p>
-      <%= text_field_tag :url, params[:unshortened] %>
-      <%= submit_tag "Go", :name => nil %>
-    </p>
-  <% end %>
 
 <table class="table table-striped">
   <thead>

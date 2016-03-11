@@ -17,16 +17,18 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Unshortened</th>
-      <th>Shortened</th>
+      <th class="col-md-5">Unshortened</th>
+      <th class="col-md-5">Shortened</th>
+      <th class="col-md-2">Times used</th>
     </tr>
   </thead>
 
   <tbody>
     <% @urls.each do |url| %>
       <tr>
-        <td><%= url.unshortened %></td>
-        <td><%= url.full_shortened %></td>
+        <td class="col-md-5"><%= link_to url.brief_unshortened, url.unshortened %></td>
+        <td class="col-md-5"><%= url.full_shortened %></td>
+        <td class="col-md-2"><%= url.clicks %></td>
       </tr>
     <% end %>
   </tbody>

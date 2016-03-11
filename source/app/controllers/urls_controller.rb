@@ -10,6 +10,8 @@ class UrlsController < ApplicationController
   def redirect_to_unshortened
     external = Url.find_by(shortened:params[:shortened])
     if external
+      external.clicks += 1
+      external.save
       redirect_to external.unshortened
     else
       redirect_to root_path
@@ -26,6 +28,7 @@ class UrlsController < ApplicationController
         @url.shorten
       end
       #1/0
+      @url.clicks = 0
       respond_to do |format|
         if @url.save
           format.html { redirect_to root_path, notice: "#{@url.full_shortened}"}

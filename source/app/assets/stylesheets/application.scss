@@ -25,6 +25,20 @@ $shortened-link:  #400D12;
 
 .jumbotron {
   background-color: $brand-primary;
+  h1 {
+    text-align: center;
+  }
+  p {
+    text-align: center;
+  }
+  #notice {
+    margin: 10px;
+    padding: 5px;
+    background-color: lighten($brand-primary,10%);
+    color: $shortened-link;
+    font-weight: bold;
+    text-align: center;
+  }
 }
 
 .jumbotron .input-group  {
@@ -33,13 +47,4 @@ $shortened-link:  #400D12;
 
 .form-group button{
   display: inline;
-}
-
-.jumbotron p#notice {
-  margin: 10px;
-  padding: 5px;
-  background-color: lighten($brand-primary,10%);
-  color: $shortened-link;
-  font-weight: bold;
-  text-align: center;
 }

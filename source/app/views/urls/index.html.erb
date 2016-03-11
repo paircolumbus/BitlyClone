@@ -1,25 +1,24 @@
-<%= content_tag(:h1, "Hello!") %>
-
-  <div class="jumbotron">
-    <h1>Welcome to chomp.it!</h1>
-    <p>Chomp.it is the free and easy URL shortener. Just paste a URL in the field below
-    and you'll get a shortened URL that you can share over social media.</p>
-
+<div class="jumbotron">
+  <h1>Welcome to chomp.it!</h1>
+  <p>Chomp.it is the free and easy URL shortener. Just paste a URL in the field below
+  and you'll get a shortened URL that you can share over social media.</p>
     <%= form_tag shorten_path, :method => 'post' do %>
-    <div class="input-group">
-        <%= text_field_tag :url%>
-        <%= button_tag "Chomp it!", :name => nil %>
-    </div>
+      <div class="input-group">
+        <%= text_field_tag 'url', nil, type:'url', class:'form-control'%>
+        <span class="input-group-btn">
+          <%= button_tag "Chomp it!", class:'btn btn-default', type:'submit'%>
+            <!-- <button class="btn btn-default" type="button">Chomp it!</button> -->
+        </span>
+      </div>
     <% end %>
-
-  </div>
+    <p id="notice"><%= notice || "Your shortened URL will be here!"%></p>
+</div>
 
 <table class="table table-striped">
   <thead>
     <tr>
       <th>Unshortened</th>
       <th>Shortened</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -28,14 +27,7 @@
       <tr>
         <td><%= url.unshortened %></td>
         <td><%= url.full_shortened %></td>
-        <td><%= link_to 'Show', url %></td>
-        <td><%= link_to 'Edit', edit_url_path(url) %></td>
-        <td><%= link_to 'Destroy', url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Url', new_url_path %>

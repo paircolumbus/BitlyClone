@@ -7,9 +7,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'urls#index'
   post 'shorten' => 'urls#create'
-  resources :urls do
-    post 'shorten'
-  end
+  get 'u/:shortened' => 'urls#redirect_to_unshortened'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -2,19 +2,19 @@ class Url < ActiveRecord::Base
 
   def new(params)
     url = Url.new(params)
-    
+
   end
 
   def full_shortened
-    "chomp.it\/#{shortened}"
+    "chomp.it\/u\/#{shortened}"
   end
 
   def shorten
     parsed = /https?:\/\/(w+\.)?(?<site>\w*)(?<extra>.*)/.match(self.unshortened)
     if parsed[:site]
       memed = parsed[:site].gsub(/[aeiou]/,'')
-      garble = junk
-      self.shortened = memed + garble
+      garble = junk while Url.exists?(shortened: garble)
+      self.shortened =  memed + garble
     else
       nil
     end

@@ -34,12 +34,12 @@ class UrlsController < ApplicationController
           format.html { redirect_to root_path, notice: "#{@url.full_shortened}"}
           format.json { render :show, status: :created, location: @url }
         else
-          format.html { render :new }
+          format.html { redirect_to root_path, notice: "Sorry! That was not a valid URL."}
           format.json { render json: @url.errors, status: :unprocessable_entity }
         end
       end
     else
-      redirect_to action: "index"
+      redirect_to root_path, notice: "Sorry! That was not a valid URL."
     end
   end
 

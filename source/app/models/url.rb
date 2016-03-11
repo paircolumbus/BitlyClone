@@ -11,13 +11,17 @@ class Url < ActiveRecord::Base
 
   def brief_unshortened
     first_bit = /\/\/(w{3}\.)?(?<site>.*)/.match(unshortened)
-    "#{first_bit[:site].first(25)}...#{unshortened.last(10)}"
+    if unshortened.length > 37
+      "#{first_bit[:site].first(25)}...#{unshortened.last(10)}"
+    else
+      unshortened
+    end
   end
 
   def shorten
     parsed = /https?:\/\/(w+\.)?(?<site>\w*)(?<extra>.*)/.match(self.unshortened)
     if parsed[:site]
-      memed = parsed[:site].gsub(/[aeiou]/,'')
+      memed = parsed[:site].gsub(/[aeiou]/,'').first(4)
       garble = junk while Url.exists?(shortened: garble)
       self.shortened =  memed + garble
     else

@@ -1,0 +1,10 @@
+<% if @urls.count > 0 %>
+<table class='table table-striped'>
+<% for @url in @urls %>
+    <td><%= @url.shortened_url %></td>
+    <td><%= @url.original_url %></td>
+<% end %>
+</table>
+<% else %>
+<div>There are no URLs in the database :(</div>
+<% end %>

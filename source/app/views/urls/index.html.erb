@@ -1,8 +1,14 @@
 <% if @urls.count > 0 %>
 <table class='table table-striped'>
+<tr>
+<th>Shortened Url</th>
+<th>Original Url</th>
+</tr>
 <% for @url in @urls %>
+<tr>
     <td><%= @url.shortened_url %></td>
     <td><%= @url.original_url %></td>
+</tr>
 <% end %>
 </table>
 <% else %>

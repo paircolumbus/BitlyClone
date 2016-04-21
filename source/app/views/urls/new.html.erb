@@ -1,3 +1,9 @@
+<% if flash[:url_save_error] %>
+<div class='alert alert-danger'>
+	<%= flash[:url_save_error] %>
+</div>
+<% end %>
+
 <form method='post' action='/urls'>
 	<label for='original_url'>Url to Shorten</label>
 	<input type='text' id='original_url' name='original_url'>

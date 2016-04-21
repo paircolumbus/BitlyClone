@@ -8,33 +8,19 @@ class UrlsController < ApplicationController
 
 	end
 
-	def generate_random_url
-		
-		alphabet = ('a'..'z').to_a
-		url = ''
-
-		6.times do
-			char = alphabet[rand(26)]
-			url += char
-		end
-
-		url
-
-	end
-
 	def create
 
 		url = Url.new
 		url.original_url = params[:original_url]
-		url.shortened_url = generate_random_url
 		url.click_count = 0
 
 		if url.save
 			redirect_to action: "index"
 		else
-			flash.now[:error] = "Could not save the URL"
-  			render action: "new"
-  		end
+			flash[:url_save_error] = url.errors.messages
+			render action: "new"
+		end
+
 	end
 
 	def destroy

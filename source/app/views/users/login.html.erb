@@ -1,0 +1,34 @@
+<h2>Login</h2>
+
+<% if flash[:login_error] %>
+<div class='alert alert-danger'><%= flash[:login_error] %></div>
+<% end %> 
+
+<form method='post' action='/users/login'>
+	<label for='username'>Username</label>
+	<input type='text' id='username' name='username'>
+	<label for='password'>Password</label>
+	<input type='text' id='password' name='password'>
+	<input type='submit'>
+</form>
+
+<h2>Don't have an account? Signup!</h2>
+
+<% if flash[:signup_error] %>
+<div class='alert alert-danger'><%= flash[:signup_error] %></div>
+<% end %> 
+
+<form method='post' action='/users/signup'>
+	
+	<label for='username'>Username</label>
+	<input type='text' id='username' name='username'>
+	
+	<label for='password'>Password</label>
+	<input type='text' id='password' name='password'>
+
+	<label for='password_confirmation'>Password (again)</label>
+	<input type='text' id='password_confirmation' name='password_confirmation'>
+	
+	<input type='submit'>
+
+</form>

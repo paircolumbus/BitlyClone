@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420200425) do
+ActiveRecord::Schema.define(version: 20160421135025) do
 
   create_table "urls", force: true do |t|
     t.string   "shortened_url"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20160420200425) do
     t.string   "username"
     t.boolean  "is_admin"
     t.string   "salt"
-    t.string   "hash"
+    t.string   "password_hash"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -3,11 +3,18 @@
 	<tr>
 		<th>Shortened Url</th>
 		<th>Original Url</th>
+		<th>Actions</td>
 	</tr>
 	<% for @url in @urls %>
 	<tr>
-	    <td><%= @url.shortened_url %></td>
+	    <td><a href="<%= "#{request.base_url}/u/#{@url.shortened_url}" %>"><%= request.base_url + '/u/' + @url.shortened_url %></a></td>
 	    <td><%= @url.original_url %></td>
+	    <td>
+	    	<% if session[:user] && session[:user].is_admin %>
+	    		<a href='#' data-action='edit'>Edit</a>
+	    		<a href='#' data-action='delete'>Delete</a>
+	    	<% end %>
+	    </td>
 	</tr>
 	<% end %>
 </table>

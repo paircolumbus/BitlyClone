@@ -18,7 +18,8 @@ class UrlsController < ApplicationController
 			url += char
 		end
 
-		"http://bit.ly/#{url}"
+		url
+
 	end
 
 	def create
@@ -26,7 +27,8 @@ class UrlsController < ApplicationController
 		url = Url.new
 		url.original_url = params[:original_url]
 		url.shortened_url = generate_random_url
-		
+		url.click_count = 0
+
 		if url.save
 			redirect_to action: "index"
 		else
@@ -51,5 +53,26 @@ class UrlsController < ApplicationController
   			render action: "index"
   		end
 	end
+
+  def perform_redirect
+    
+    shortened_url = params[:shortened_url]
+
+    url = Url.where(:shortened_url => shortened_url).first
+
+    if !url
+      render status: 404, text: 'nope'
+      return
+    end
+
+    Rails.logger.info(url)
+    p url
+
+    url.update!(click_count: url.click_count + 1)
+
+    redirect_to url.original_url
+    return
+
+  end
 
 end

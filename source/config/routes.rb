@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  
+
+  root 'urls#index'
+
+  # shortened url route
+  get 'u/:shortened_url' => 'urls#perform_redirect'
 
   get 'users/login' => 'users#show_login_signup'
   post 'users/login' => 'users#login'

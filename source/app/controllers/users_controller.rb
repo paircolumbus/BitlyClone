@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     user.is_admin = false # a user can be only made an admin by the dba
     
     if user.save
-      session[:username] = user.username
+      session[:user] = user
     else
       flash[:signup_error] = "Could not create new user"
       render :login
@@ -88,7 +88,7 @@ class UsersController < ApplicationController
     hash = Digest::SHA256.hexdigest(password + user.salt)
 
     if hash == user.password_hash
-      session[:username] = user.username
+      session[:user] = user
       return true
     else
       return false

@@ -5,6 +5,8 @@ __Time Limit:__ 1-2 hours
 
 Bitly.com is a link shortening service that provides people with a way to take really long urls and turn them into short urls for easy use in email and social media. Today, you'll create a clone.
 
+__Note:__ If you have __scant Rails knowledge__, we highly recommend tackling [TasksApp](https://github.com/paircolumbus/TasksApp) or following the [Rails Getting Started](http://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project) guide when attempting this drill.
+
 For this challenge, you may ONLY use the controllers provided to you in the `source` folder. 
 
 ##Release 0: Simple Shortener
@@ -38,3 +40,8 @@ Create one model, `User` to handle both regular users and at least one administr
 3. Creating an account
 4. Viewing the secret page
 5. Redirecting a user back to the "log in" screen if they try to view the secret page without being logged in
+
+##Resources
+- [Getting Started with Rails](http://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project)
+- [Active Record Callbacks](http://guides.rubyonrails.org/active_record_callbacks.html)
+- [Rails Routing](http://guides.rubyonrails.org/routing.html)

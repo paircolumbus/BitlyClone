@@ -1,0 +1,12 @@
+%h1 Jonah's Fantastic URL Shortener
+
+- if flash[:notice]
+  .notice
+    = flash[:notice]
+
+= form_for @url do |u|
+  .form-group
+    = u.label :address, "Enter the address to shorten:"
+    = u.text_field :address, class: "form-control"
+  .form-group
+    = u.submit "Submit", class: "btn btn-submit"

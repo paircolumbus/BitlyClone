@@ -1,9 +1,15 @@
 class UrlsController < ApplicationController
+  require 'socket'
   skip_before_action :verify_authenticity_token
+
+  def new
+    @url = Url.new
+  end
 
   def create
     @url = Url.create(url_params)
-    render json: @url
+    flash[:notice] = "Your URL: http://#{request.host_with_port}/#{@url.shortcode}"
+    redirect_to new_url_path
   end
 
   def get
@@ -13,6 +19,6 @@ class UrlsController < ApplicationController
 
   private
   def url_params
-    params.permit(:address)
+    params.require(:url).permit(:address)
   end
 end

@@ -14,6 +14,8 @@ class UrlsController < ApplicationController
 
   def get
     @url = Url.find_by(:shortcode => params[:id])
+    @url.click_count += 1
+    @url.save
     redirect_to @url.address
   end
 

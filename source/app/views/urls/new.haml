@@ -5,6 +5,15 @@
     = flash[:notice]
 
 = form_for @url do |u|
+  - if u.object.errors.any?
+    .alert.alert-error
+      The form contains
+      = pluralize(u.object.errors.count, "error")
+      \.
+      %ul
+        - u.object.errors.each do |msg|
+          %li
+            = msg
   .form-group
     = u.label :address, "Enter the address to shorten:"
     = u.text_field :address, class: "form-control"

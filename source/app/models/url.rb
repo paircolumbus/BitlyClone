@@ -2,7 +2,8 @@ require 'digest/sha1'
 require 'uri'
 
 class Url < ActiveRecord::Base
-  before_save :set_shortcode
+  before_validation :smart_url_protocol
+  before_create :set_shortcode
   validate :is_url, on: :create
 
   protected
@@ -23,6 +24,12 @@ class Url < ActiveRecord::Base
       errors.add(:address, "is not a valid URL") unless !!URI.parse(address)
     rescue URI::InvalidURIError
       errors.add(:address, "is not a valid URL")
+    end
+
+    def smart_url_protocol
+      unless self.address[/\Ahttp:\/\//] || self.address[/\Ahttps:\/\//]
+        self.address = "http://#{self.address}"
+      end
     end
 
 

@@ -1,19 +1,18 @@
 %h1 Jonah's Fantastic URL Shortener
 
-- if flash[:notice]
+- if flash[:notice] && !@url.errors.any?
   .notice
     = flash[:notice]
+- if flash[:alert]
+  .alert
+    = flash[:alert]
 
 = form_for @url do |u|
-  - if u.object.errors.any?
+  - if @url.errors.any?
     .alert.alert-error
-      The form contains
-      = pluralize(u.object.errors.count, "error")
-      \.
-      %ul
-        - u.object.errors.each do |msg|
-          %li
-            = msg
+      - @url.errors.full_messages.each do |msg|
+        %strong
+          = msg
   .form-group
     = u.label :address, "Enter the address to shorten:"
     = u.text_field :address, class: "form-control"

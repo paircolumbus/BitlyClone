@@ -1,13 +1,16 @@
-<h1>CMMly Key</h1>
+<h2>CMMly Keys</h2>
 <table>
   <tr>
     <th>URL</th>
     <th>CMMly URL</th>
   </tr>
-<% @urls.each do |u|%>
-  <tr>
-    <td><%= link_to u.address %></td>
-    <td><%= link_to "https://cmm.ly/#{u.bitly_clone}", url_path(:short => u.bitly_clone)%></td>
-  </tr>
+<% if @urls %>
+  <% @urls.each do |u|%>
+    <tr>
+      <td><%= u.address %></td>
+      <td><%= link_to "https://cmm.ly/#{u.bitly_clone}", move_url_path(:short => u.bitly_clone)%></td>
+      <td>Clicks: <%= u.click_count %></td>
+    </tr>
+  <% end %>
+  </table>
 <% end %>
-</table>

@@ -1,12 +1,13 @@
 class UrlsController < ApplicationController
   #GET urls
-  def index
-    @urls = Url.all #rake db:reset db:migrate
-  end
+  #def index
+    #@urls = Url.all #rake db:reset db:migrate
+  #end
 
   #GET url
   def new
     @url = Url.new
+    @urls = Url.all
   end
 
   #POST urls
@@ -15,15 +16,18 @@ class UrlsController < ApplicationController
     if !check
       @url = Url.create(:address => params[:url][:address])
     end
-    redirect_to urls_path
+    flash[:error] = @url.errors.full_messages.to_sentence
+    redirect_to root_path
   end
 
-  def show
+  def move
     @url = Url.where :bitly_clone => params[:short]
     if @url[0]
-      redirect_to @url[0].address
+      @url[0].increment!(:click_count)
+      redirect_to @url[0].address, outward: "true"
     else
-      render plain: @url[0].bitly_clone.inspect
+      redirect_to urls_path
     end
+
   end
 end

@@ -7,7 +7,10 @@
     <%= csrf_meta_tags %>
 </head>
   <body>
-    <header><h1>CMMly</h1></header>
+    <header><h1><%= link_to "CMMly", root_path %></h1></header>
+    <% if flash[:error] %>
+      <h3><%= flash[:error] %></h3>
+    <% end %>
     <div class="container">
 
     <%= yield %>

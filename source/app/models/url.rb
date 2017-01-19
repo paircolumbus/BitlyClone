@@ -1,6 +1,7 @@
+require 'uri'
 class Url < ActiveRecord::Base
-  before_save :bitly_generate
-  validates :address, presence: true, uniqueness: true
+  before_save :bitly_generate, :unless => :bitly_clone
+  validates :address, :if => :validate_url, presence: true, uniqueness: true, length: {minimum: 1}, :format => /\Ahttp[s]?:\/\/\S+/
   validates :bitly_clone, uniqueness: true
 
   def bitly_generate
@@ -9,5 +10,9 @@ class Url < ActiveRecord::Base
     bitly_link = rando_arr.sample(8).join
     self.bitly_clone = bitly_link
   end
-  
+
+  def validate_url
+    !!URI.regexp(['http','https'])
+  end
+
 end

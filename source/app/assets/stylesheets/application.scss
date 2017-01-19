@@ -15,18 +15,37 @@
  */
 $cmm_orange: #F59222;
 $cmm_pink: #B31944;
+$cmm_blue: #F8AD59;
 
-html, body, h1,.container {
+html, body, h1, .container, table{
   padding:0;
-  margin:0;
+  margin:0 auto;
   border-style:none;
+  text-align:center;
 }
+h3{
+  color: $cmm_blue;
+  text-align: center;
+  background-color: $cmm_pink;
+  border-radius:5em;
+  word-wrap: break-word;
+}
+
 header, footer{
   width:100%;
   text-align:center;
   line-height:3em;
   color:white;
   font-family: monospace;
+}
+
+table, td{
+  border-style:groove;
+}
+
+a{
+  text-decoration:none;
+  color:$cmm_pink;
 }
 
 header{

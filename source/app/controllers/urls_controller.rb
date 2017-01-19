@@ -24,7 +24,7 @@ class UrlsController < ApplicationController
     @url = Url.where :bitly_clone => params[:short]
     if @url[0]
       @url[0].increment!(:click_count)
-      redirect_to @url[0].address, outward: "true"
+      redirect_to @url[0].address
     else
       redirect_to urls_path
     end

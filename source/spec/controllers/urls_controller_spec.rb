@@ -23,9 +23,9 @@ RSpec.describe UrlsController, :type => :controller do
     end
   end
 
-  describe "GET bitly_path" do
+  describe "GET move" do
     it "returns http success" do
-      get :bitly_path
+      get :move
       expect(response).to have_http_status(:success)
     end
   end

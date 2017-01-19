@@ -1,10 +1,15 @@
 class UrlsController < ApplicationController
+  #GET urls
   def index
     @urls = Url.all #rake db:reset db:migrate
   end
+
+  #GET url
   def new
     @url = Url.new
   end
+
+  #POST urls
   def create
     check = Url.find_by(:address => params[:url][:address])
     if !check
@@ -12,8 +17,13 @@ class UrlsController < ApplicationController
     end
     redirect_to urls_path
   end
-  #def bitly_path
-  #  @url.find_by(bitly_clone: params[:bitly_clone])
-  #  redirect_to @url.address
-  #end
+
+  def show
+    @url = Url.where :bitly_clone => params[:short]
+    if @url[0]
+      redirect_to @url[0].address
+    else
+      render plain: @url[0].bitly_clone.inspect
+    end
+  end
 end

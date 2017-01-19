@@ -1,4 +1,13 @@
 <h1>CMMly Key</h1>
+<table>
+  <tr>
+    <th>URL</th>
+    <th>CMMly URL</th>
+  </tr>
 <% @urls.each do |u|%>
-  <p><%= u.report %></p>
+  <tr>
+    <td><%= link_to u.address %></td>
+    <td><%= link_to "https://cmm.ly/#{u.bitly_clone}", url_path(:short => u.bitly_clone)%></td>
+  </tr>
 <% end %>
+</table>

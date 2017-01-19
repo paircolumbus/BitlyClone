@@ -9,8 +9,5 @@ class Url < ActiveRecord::Base
     bitly_link = rando_arr.sample(8).join
     self.bitly_clone = bitly_link
   end
-
-  def report
-    "#{self.address} ==> #{self.bitly_clone}"
-  end
+  
 end

@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   #post '/urls' => 'urls#create'
   #get '/urls' => 'urls#index'
   root 'urls#new'
-  resources :urls
+  get '/urls/:short' => 'urls#show', :as => "url"
+  resources :urls, :except => [:update, :destroy, :edit, :show]
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

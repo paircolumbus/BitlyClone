@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+$cmm_orange: #F59222;
+$cmm_pink: #B31944;
+
+html, body, h1,.container {
+  padding:0;
+  margin:0;
+  border-style:none;
+}
+header, footer{
+  width:100%;
+  text-align:center;
+  line-height:3em;
+  color:white;
+  font-family: monospace;
+}
+
+header{
+  background-color: $cmm_orange;
+}
+footer{
+  background-color: $cmm_pink;
+  position:fixed;
+  top:75vh;
+}

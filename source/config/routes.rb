@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  #get '/urls/new' => 'urls#new'
+  #post '/urls' => 'urls#create'
+  #get '/urls' => 'urls#index'
+  root 'urls#new'
+  resources :urls
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

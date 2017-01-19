@@ -1,0 +1,7 @@
+<h1>Generate CMMly URL</h1>
+
+<%= form_for @url, url: urls_path do |u| %>
+<p><%= u.label :address %></p>
+<p><%= u.text_field :address %></p>
+<p><%= u.submit %></p>
+<% end %>

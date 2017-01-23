@@ -4,6 +4,7 @@ class Url < ActiveRecord::Base
   validates :address, :if => :validate_url, presence: true, uniqueness: true, length: {minimum: 1}, :format => /\Ahttp[s]?:\/\/\S+/
   validates :bitly_clone, uniqueness: true
 
+  private
   def bitly_generate
     rando_arr = ('a'..'z').to_a + ('A'..'Z').to_a
     #bitly_link = "https://cmm.ly/"+rando_arr.sample(6).join

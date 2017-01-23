@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   #post '/urls' => 'urls#create'
   #get '/urls' => 'urls#index'
   root 'urls#new'
-  get '/urls/:short' => 'urls#move', :as => "move_url"
+  get '/:short' => 'urls#move', :as => "move_url"
   resources :urls, :except => [:update, :destroy, :edit, :show]
 
 

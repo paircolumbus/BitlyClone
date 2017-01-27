@@ -1,0 +1,7 @@
+<h1>Urls</h1>
+<ul>
+  <% @urls.each do |url| %>
+    <li><%= link_to "#{url.short} --> #{url.full}", edit_url_path(url) %></li>
+  <% end %>
+</ul>
+<%= link_to "Create new short url", new_url_path %>

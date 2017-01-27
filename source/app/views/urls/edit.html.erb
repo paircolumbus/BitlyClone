@@ -1,0 +1,15 @@
+<%= form_for @url do |f| %>
+  <p>
+    http://fa.ke/<%= @url.short %>
+  </p>
+  <p>
+    <%= f.label :full, 'URL:' %>
+    <%= f.text_field :full %>
+    <% unless @url.errors[:full].empty? %>
+      <%= content_tag(:div, "Url #{@url.errors[:full][0]}", class: 'error-msg') %>
+    <% end %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

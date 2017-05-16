@@ -1,0 +1,35 @@
+<div class="jumbotron">
+  <h1>Welcome to chomp.it!</h1>
+  <p>Chomp.it is the free and easy URL shortener. Just paste a URL in the field below
+  and you'll get a shortened URL that you can share over social media.</p>
+    <%= form_tag shorten_path, :method => 'post' do %>
+      <div class="input-group">
+        <%= text_field_tag 'url', nil, type:'url', class:'form-control'%>
+        <span class="input-group-btn">
+          <%= button_tag "Chomp it!", class:'btn btn-default', type:'submit'%>
+            <!-- <button class="btn btn-default" type="button">Chomp it!</button> -->
+        </span>
+      </div>
+    <% end %>
+    <p id="notice"><%= notice || "Your shortened URL will be here!"%></p>
+</div>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th class="col-md-5">Unshortened</th>
+      <th class="col-md-5">Shortened</th>
+      <th class="col-md-2">Times used</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @urls.each do |url| %>
+      <tr>
+        <td class="col-md-5"><%= link_to url.brief_unshortened, url.unshortened %></td>
+        <td class="col-md-5"><%= url.full_shortened %></td>
+        <td class="col-md-2"><%= url.clicks %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -5,10 +5,23 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+    </div>
+  </div><!-- /.container-fluid -->
+  </div>
+</nav>
 </head>
 <body>
-
-<%= yield %>
-
+<div class="container">
+  <row>
+    <div class="col-md-10 col-md-offset-1">
+      <%= yield %>
+    </div>
+  </row>
+</div>
 </body>
 </html>

@@ -1,0 +1,19 @@
+<h1>All Urls</h1>
+<table>
+	<thead>
+	</thead>
+	<tbody>
+		<% @urls.each do |url| %>
+			<tr>
+				<td><% link_to root_url+url.unique_key, url.unique_key %></td>
+				<td><% url.address %></td>
+			</tr>
+		<% end %>
+		<%if @urls.empty? %>
+			<p> No urls to show </p>
+		<% end %>
+	</tbody>
+</table>
+
+<br>
+<%= link_to "New Url",new_url_path %>

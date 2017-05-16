@@ -1,0 +1,12 @@
+<h1>Create a new link</h1>
+<%= form_for @url do |f| %>
+	<p>
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </p>
+  <p>
+  	<%= f.submit %>
+  </p>
+ <% end %>
+
+ <%= link_to 'Back', urls_path %>

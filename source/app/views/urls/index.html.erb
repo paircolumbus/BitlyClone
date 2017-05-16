@@ -1,0 +1,11 @@
+<h1>Shortened URLs</h1>
+<ul>
+  <% @urls.each do |url| %>
+    <li>
+      <%= link_to "#{ENV['HOSTNAME']}/#{url.short_path}", url_path(url.short_path) %>
+      -&gt; <%= url.original_url %> (Link visited <%= (url.click_count / 2) %> times!)
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New URL", new_url_path %>

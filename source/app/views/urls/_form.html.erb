@@ -1,0 +1,20 @@
+<%= form_for @url, url: {action: "create"} do |f| %>
+
+  <% if @url.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @url.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <p> Url: <%= f.text_field :address %> <p>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

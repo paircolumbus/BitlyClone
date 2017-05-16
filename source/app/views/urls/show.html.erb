@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= link_to @url.destination, @url.destination %>
+</p>
+
+<p>
+  <strong>Shortenened URL:</strong>
+  <%= link_to @url.shortlink, @url.shortlink %>
+</p>
+
+<p>
+  <strong>Clicks:</strong>
+  <%= @url.click_count %>
+</p>
+
+<%= link_to 'Edit', edit_url_path(@url) %> |
+<%= link_to 'Back', urls_path %>

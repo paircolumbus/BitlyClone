@@ -1,0 +1,29 @@
+<h1>Listing urls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Shortcode</th>
+      <th>Clicks</th>
+      <th>Destination</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @urls.each do |url| %>
+      <tr>
+        <td><%= url.shortcode %></td>
+        <td><%= url.click_count %></td>
+        <td><%= link_to url.destination, url.destination %></td>
+        <td><%= link_to 'Show', url %></td>
+        <td><%= link_to 'Edit', edit_url_path(url) %></td>
+        <td><%= link_to 'Destroy', url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Url', new_url_path %>

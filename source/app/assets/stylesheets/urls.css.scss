@@ -1,3 +1,14 @@
-// Place all the styles related to the Urls controller here.
+// Place all the styles related to the urls controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.urls {
+  table {
+    border-collapse: collapse;
+    tr {
+      td {
+        padding: 1em;
+      }
+    }
+  }
+}

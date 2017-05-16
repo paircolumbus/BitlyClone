@@ -1,0 +1,16 @@
+<h1>URL Shortcuts</h1>
+
+<a href="<%= new_url_path %>">Get new shortened URL</a>
+<% if !@urls.nil? && @urls.size != 0 %>
+<table>
+  <thead>
+    <tr><th>Shortened ID</th><th>Target</th></tr>
+  </thead>
+<% @urls.each do |url| %>
+  <tr><td><a href="<%= url_url(url.id) %>"><%= url.linkid %></a></td>
+    <td><a href="<%= url.target_link %>"><%= url.target_link %></a></td></tr>
+<% end %>
+</table>
+<% else %>
+<p>No shortened URLs found</p>
+<% end %>

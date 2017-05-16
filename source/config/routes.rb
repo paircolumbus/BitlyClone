@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  resources :urls, except: [ :edit, :update, :destroy ]
+
+  get '/:linkid', to: 'urls#follow', as: :follow, constraints: { linkid: /[-_a-zA-Z0-9]{8}/ }
 
   # Example resource route with options:
   #   resources :products do

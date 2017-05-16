@@ -1,0 +1,13 @@
+<h1>URL Shortener</h1>
+<% if !@errors.nil? && @errors.size > 0 %>
+  <%   @errors.each do |err| %>
+  <p class="error"><%= err %></p>
+  <% end %>
+<% end %>
+<form id="new_url" method="post" action="<%= urls_path %>">
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
+  <label for="#target_link">Target:</label>
+  <input type="text" name="target_link" id="target_link" size="100" placeholder="http://example.com/cool_page.html" value="<%= @target || '' %>">
+  <button class="btn btn-primary" type="submit">Shorten</button>
+</form>
+<a href="<%= urls_path %>">Back to list</a>

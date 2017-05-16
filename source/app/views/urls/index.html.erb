@@ -1,0 +1,10 @@
+<h1>Welcome to LoRyder1's URL shortner</h1>
+
+  <%= link_to 'New URL', new_url_path %>
+
+  <ul>
+    <% @urls.each do |u| %>
+    <li><%= link_to "localhost:3000/url/#{u.short}", link_path(u.short), :method => :post %></li>
+    <li>Click Count:<%= u.counter %></li>
+    <% end %>
+  </ul>

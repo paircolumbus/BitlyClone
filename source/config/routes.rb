@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
+  get 'users/new'
+
+  root 'urls#index'
+
+  get '/urls', to: 'urls#index'
+  get '/signup', to: 'users#new'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: "sessions#destroy"
+
+  get '/:unique_key', to: 'urls#expand_link'
+
+  resources :urls, except: [:index]
+  resources :users, except: [:show, :edit, :update, :index, :destroy]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

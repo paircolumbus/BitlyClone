@@ -1,0 +1,25 @@
+<h1>Generate CMMly URL</h1>
+
+<%= form_for @url, url: urls_path do |u| %>
+<p><%= u.label :address %></p>
+<p><%= u.text_field :address %></p>
+<p><%= u.submit %></p>
+<% end %>
+<br>
+<% if @urls %>
+  <h2>CMMly Keys</h2>
+  <table>
+    <tr>
+      <th>URL</th>
+      <th>CMMly URL</th>
+      <th>Clicks</th>
+    </tr>
+  <% @urls.each do |u|%>
+    <tr>
+      <td><%= u.address %></td>
+      <td><%= link_to "https://cmm.ly/#{u.bitly_clone}", move_url_path(:short => u.bitly_clone)%></td>
+      <td>Clicks: <%= u.click_count %></td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>

@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Source</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+  <head>
+    <title>Source</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
 </head>
-<body>
+  <body>
+    <header><h1><%= link_to "CMMly", root_path %></h1></header>
+    <% if flash[:error] %>
+      <h3><%= flash[:error] %></h3>
+    <% end %>
+    <div class="container">
 
-<%= yield %>
+    <%= yield %>
 
-</body>
+    </div>
+    <footer>&copy; 2017</footer>
+  </body>
 </html>

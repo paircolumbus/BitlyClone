@@ -1,0 +1,16 @@
+<% provide(:title, "Landing Page") %>
+
+<h1>Share this link:</h1>
+
+<div style="text-align: center;">
+  <div style="display: inline-block; 
+              border: 1px solid black; 
+              padding: 0 40px 0 40px">
+    <h2><%= shortUrl(@url) %></h2>
+  </div>
+</div>
+
+<div style="text-align: center; margin-top: 50px;">
+  <p>The long version:</p>
+  <p><%= @url.longText %></p>
+</div>

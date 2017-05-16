@@ -1,0 +1,11 @@
+<% if params[:action] == "myIndex" %>
+  <% pageTitle = "My Links" %>
+<% else %>
+  <% pageTitle = "List of Links" %>
+<% end %>
+
+<% provide(:title, pageTitle) %>
+
+<h1><%= pageTitle %></h1>
+
+<%= render 'layouts/urlTable' %>

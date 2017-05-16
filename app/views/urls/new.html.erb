@@ -1,0 +1,16 @@
+<% provide(:title, "New Link") %>
+
+<h1>New Link</h1>
+
+<%= form_for(@url) do |f| %>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+    
+      <%= f.text_field :longText, placeholder: "Paste in the url", 
+                                                      class: "form-control" %>
+      <%= f.submit "Shorten It!", class: "btn btn-primary" %>
+    </div>
+  </div>
+
+<% end %>

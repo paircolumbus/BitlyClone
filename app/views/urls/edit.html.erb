@@ -1,0 +1,18 @@
+<% provide(:title, "Edit Link") %>
+
+<h1>Edit Link</h1>
+
+<%= form_for(@url) do |f| %>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <p style="text-align: center"><%= shortUrl(@url) %></p>
+
+      <%= f.text_field :longText, placeholder: "Paste in the url", 
+                                                      class: "form-control" %>
+      <%= f.submit "Submit Changes", class: "btn btn-primary" %>
+    </div>
+  </div>
+
+<% end %>
+

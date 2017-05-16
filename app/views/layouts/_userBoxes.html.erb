@@ -1,0 +1,18 @@
+<%= will_paginate %>
+<% @users.each do |user| %>
+  <div class="index-box">
+    <h4><%= link_to full_name(user), user %></h4>
+    <p><%= user.email %></p>
+    <p>
+      <% if user == current_user %>
+        <%= link_to "Edit", edit_user_path(current_user) %>
+      <% end %>
+      <% if current_user == user && current_user.admin? %> | <% end %>
+      <% if current_user.admin? %>
+        <%= link_to "Delete", user, method: :delete, 
+                                        data: {confirm: "Are you sure?"} %>
+      <% end %>
+    </p>
+  </div>
+<% end %>
+<%= will_paginate %>

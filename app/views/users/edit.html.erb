@@ -1,0 +1,21 @@
+<% provide(:title, "Edit Profile") %>
+
+<h1>Edit Profile</h1>
+
+<%= form_for(@user) do |f| %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= f.text_field :first_name, placeholder: "First name", 
+                                                      class: "form-control" %>
+      <%= f.text_field :last_name, placeholder: "Last name", 
+                                                      class: "form-control" %>
+      <%= f.email_field :email, placeholder: "Email", 
+                                                      class: "form-control" %>
+      <%= f.password_field :password, placeholder: "Password", 
+                                                      class: "form-control" %>
+      <%= f.password_field :password_confirmation, 
+                     placeholder: "Confirm password", class: "form-control" %>
+      <%= f.submit "Submit changes", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

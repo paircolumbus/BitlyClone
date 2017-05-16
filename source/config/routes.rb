@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  resources :urls
+
+  get 's/:shortened' => 'application#s'
+
+
+  root 'urls#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

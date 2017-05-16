@@ -1,0 +1,28 @@
+<h1>Listing urls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Short url</th>
+      <th>Long url</th>
+      <th>Click count</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @urls.each do |url| %>
+      <tr>
+        <td><%= url.short_url %></td>
+        <td><%= url.long_url %></td>
+        <td><%= url.click_count %></td>
+        <td><%= link_to 'Show', url %></td>
+        <td><%= link_to 'Destroy', url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Url', new_url_path %>

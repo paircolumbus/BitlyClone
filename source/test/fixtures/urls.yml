@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+valid:
+  short_url: google
+  long_url: https://www.google.com/
+  click_count: 0
+
+invalid:
+  short_url: MyString
+  long_url: MyString
+  click_count: 1

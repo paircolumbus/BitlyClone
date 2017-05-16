@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  
+  resources :urls
+  get '/urls/stats/:id', to: 'urls#stats', as: 'url_stats'
+
+  get '/:short_url', to: 'urls#expand', as: 'expand_url'
+
+  root 'urls#index'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,29 @@
+@import "bootstrap-sprockets"
+@import "bootstrap"
+
+.primary-body
+  margin: 0 auto
+  padding-top: 75px
+
+
+.flash
+  border: solid 1px darken(green, 20%)
+  text-align: center
+  padding: 5px
+  color: white
+
+
+.flash_notice 
+  display: block
+  @extend .flash
+  background: green
+
+.flash_alert 
+  @extend .flash
+  background: red
+
+table, th, td
+  border: 1px solid grey
+  text-align: left
+  padding: 5px
+  background-color: light-grey

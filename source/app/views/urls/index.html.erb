@@ -1,4 +1,12 @@
-<% @urls.each do |url| %>
-  <%= url.short_url %> <%= url.click_count %>
-  <br />
-<% end %>
+<div id="urls">
+  <% @urls.each do |url| %>
+    <div class="url-card">
+      <p class="url-title">
+        <strong><%= url.short_url %></strong>
+      </p>
+      <div class="url-info">
+        <p>Click Count: <%= url.click_count %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

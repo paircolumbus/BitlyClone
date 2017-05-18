@@ -1,6 +1,25 @@
 // Place all the styles related to the Urls controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-input[type="text"]{
-  text-align: center;
+
+#urls {
+  -webkit-display: flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 2em;
+  font-family: "Helvetica", sans-serif;
+
+  .url-card {
+    margin: 1em;
+    width: 200px;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+
+    &:hover {
+      -webkit-box-shadow: 0 2px 20px 0px rgba(0, 0, 0, 0.13);
+      box-shadow: 0 2px 20px 0px rgba(0, 0, 0, 0.13);
+    }
+  }
 }

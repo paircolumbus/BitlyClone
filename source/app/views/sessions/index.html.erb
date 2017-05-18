@@ -1,5 +1,23 @@
-<%= form_for @url, remote: true do |f| %>
-  <%= f.label :long_url, "Enter your Url"%>
-  <%= f.text_field :long_url %>
-  <%= f.submit %>
-<% end %>
+<div id="shortener">
+  <h1>Shortenmotron!</h1>
+
+  <%= form_for @url, remote: true do |f| %>
+    <%= f.text_field :long_url, placeholder: "Paste a link to shorten it", class: "url-input", autocomplete: "off" %>
+    <%= f.submit "Shorten", class: "submit-btn" %>
+  <% end %>
+
+  <ul id="errors">
+    <li>Please enter a valid url</li>
+  </ul>
+</div>
+
+<div id="your-link"></div>
+
+<div id="latest">
+  <h2>Latest shortened links</h2>
+  <p>(click only if you're feeling adventurous)</p>
+
+  <% @latest.each do |latest| %>
+    <%= link_to "#{latest.short_url}", latest.short_url %>
+  <% end %>
+</div>

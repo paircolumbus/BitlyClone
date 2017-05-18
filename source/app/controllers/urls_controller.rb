@@ -11,10 +11,24 @@ class UrlsController < ApplicationController
   def create
     @url = Url.new(url_params)
 
+    if Url.exists?(long_url: params[:url][:long_url])
+      @url = Url.find_by(long_url: params[:url][:long_url])
+
+      respond_to do |format|
+        format.js {render template: 'urls/exists.js.erb'}
+      end
+      return
+    end
+
+
     if @url.save
-      redirect_to root_path
+      respond_to do |format|
+        format.js
+      end
     else
-      puts 'failed'
+      respond_to do |format|
+        format.js {render template: 'urls/invalid.js.erb'}
+      end
     end
 
   end

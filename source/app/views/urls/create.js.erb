@@ -1,0 +1,2 @@
+$("#your-link h2").remove();
+$('#your-link').append("<%= escape_javascript render(partial: 'urls/new', locals: { url: @url }) %>");

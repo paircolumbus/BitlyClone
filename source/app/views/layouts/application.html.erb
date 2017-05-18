@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Source</title>
+  <title>Shortenmotron</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <nav id="nav">
+    <%= link_to "Home", root_path %>
+    <%= link_to "All Urls", urls_path %>
+  </nav>
+
+  <%= yield %>
 
 </body>
 </html>

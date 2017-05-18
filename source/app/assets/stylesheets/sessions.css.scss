@@ -1,3 +1,90 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  font-family: "Helvetica", sans-serif;
+  text-align: center;
+}
+h1, h2 {}
+nav {
+  display: block;
+  position: absolute;
+  top: 1em;
+  right: 2em;
+
+  a {
+    padding: 1em .5em;
+    color: blue;
+    text-decoration: none;
+
+    &:hover {
+      color: red;
+    }
+  }
+}
+.url-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25em;
+  padding: 1.5em 0 1.5em 20px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 1em;
+  outline: none;
+
+  &:focus {
+    border-color: #666;
+  }
+}
+#errors {
+  display: none;
+  margin: 0;
+  margin-top: 1.5em;
+  padding: 0;
+  list-style-type: none;
+
+  li { color: red }
+}
+.submit-btn {
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 1.5em;
+  border: 1px solid #ffc457;
+  border-radius: 3px;
+  background: #ffc457;
+  font-size: 1em;
+  outline: none;
+
+  &:hover {
+    border: 1px solid orange;
+    background: orange;
+    cursor: pointer;
+  }
+}
+
+// Divs
+#shortener {
+  margin-top: 80px;
+
+  h1 { font-size: 2em; }
+}
+#your-link {
+  //display: none;
+}
+#latest {
+  margin-top: 220px;
+
+  h2 { margin: 0; padding: 0; }
+  p {
+    font-size: 13px;
+    margin: 0;
+    padding: 5px 0;
+  }
+  a {
+    display: block;
+    color: blue;
+    margin: 10px;
+
+    &:hover { color: orange; }
+  }
+}

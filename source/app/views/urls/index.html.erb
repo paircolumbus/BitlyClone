@@ -1,0 +1,26 @@
+<h1>Bitly Clone</h1>
+
+<table>
+  <tr>
+    <th>Destination:</th>
+    <th>Short Url:</th>
+    <th>Clicks:</th>
+  </tr>
+ 
+  <% @urls.each do |url| %>
+    <tr>
+      <td><%= url.original %></td>
+      <td style="text-align: center"><%= link_to url.shortened, urls_click_link_path(url) %></td>
+      <td style="text-align: center"><%= url.click_count %></td>
+      <td><%= link_to 'Delete', url_path(url), method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= form_for :url do |f| %>
+  <p>
+    <%= f.label :'Enter Url:' %><br>
+    <%= f.text_field :original %>
+    <%= f.submit %>
+  </p>
+<% end %>

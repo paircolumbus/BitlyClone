@@ -6,7 +6,7 @@
     <th>Short Url:</th>
     <th>Clicks:</th>
   </tr>
- 
+  
   <% @urls.each do |url| %>
     <tr>
       <td><%= url.original %></td>
@@ -24,3 +24,11 @@
     <%= f.submit %>
   </p>
 <% end %>
+
+<div>
+  <% if @url %>
+    <p>
+      <%= "Please enter a valid URL starting with 'http://' or 'https://'" if @url.errors.any? %>
+    </p>
+  <% end %>
+</div>

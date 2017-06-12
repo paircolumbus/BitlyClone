@@ -1,16 +1,21 @@
 class UrlsController < ApplicationController
-  def new
-  end
 
   def index
     @urls = Url.all
   end
 
+  def new
+  end
+
   def create
     @url = Url.new(url_params)
 
-    @url.save
-    redirect_to '/'
+    if @url.save
+      redirect_to '/'
+    else
+      @urls = Url.all
+      render 'index'
+    end
   end
 
   def destroy

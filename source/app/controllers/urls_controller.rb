@@ -18,7 +18,7 @@ class UrlsController < ApplicationController
     @url = Url.find_by(short_key: key)
 
     if @url.nil?
-      flash[:error] = "No url exists for the key: #{key}"
+      flash[:success] = "No url exists for the key: #{key}"
       redirect_to action: :index
     else
       redirect_to @url.long_url

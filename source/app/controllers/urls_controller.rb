@@ -21,6 +21,14 @@ class UrlsController < ApplicationController
       flash[:success] = "No url exists for the key: #{key}"
       redirect_to action: :index
     else
+      @url.click_count += 1
+
+      if @url.save
+        puts "Successfully acknowledged click on #{@url.short_key}"
+      else
+        puts "Failed to register click for #{@url.short_key}"
+      end
+
       redirect_to @url.long_url
     end
   end

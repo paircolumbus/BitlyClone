@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612031040) do
+ActiveRecord::Schema.define(version: 20170612044551) do
 
   create_table "urls", force: true do |t|
     t.string   "long_url"
-    t.string   "short_key",  limit: 10
+    t.string   "short_key",   limit: 10
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "click_count",            default: 0
   end
 
   add_index "urls", ["long_url"], name: "index_urls_on_long_url"

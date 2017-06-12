@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'urls/click_link' => 'urls#click_link'
+
+  resources :urls
+
+  root 'urls#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

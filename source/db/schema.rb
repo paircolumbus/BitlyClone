@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612044551) do
+ActiveRecord::Schema.define(version: 20170612145628) do
 
   create_table "urls", force: true do |t|
     t.string   "long_url"
@@ -23,5 +23,14 @@ ActiveRecord::Schema.define(version: 20170612044551) do
 
   add_index "urls", ["long_url"], name: "index_urls_on_long_url"
   add_index "urls", ["short_key"], name: "index_urls_on_short_key"
+
+  create_table "users", force: true do |t|
+    t.string   "username"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "password_digest"
+  end
+
+  add_index "users", ["username"], name: "index_users_on_username"
 
 end

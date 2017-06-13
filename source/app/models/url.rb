@@ -19,9 +19,11 @@ class Url < ActiveRecord::Base
   private
   def generate_short_key
     if self.short_key.nil? || self.short_key.empty?
+      # I don't particularly like this loop, could probably do it deterministically in some way
+      # but it works.
       begin
         self.short_key = make_random_key
-      end until Url.find_by(short_key: self.short_key).nil?
+      end while Url.exists?(short_key: self.short_key)
     end
   end
 

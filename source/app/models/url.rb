@@ -12,6 +12,10 @@ class Url < ActiveRecord::Base
 
   before_save :generate_short_key
 
+  def click!
+    Url.increment_counter :click_count, self.id
+  end
+
   private
   def generate_short_key
     if self.short_key.nil? || self.short_key.empty?

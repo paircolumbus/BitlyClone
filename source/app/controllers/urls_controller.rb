@@ -1,5 +1,5 @@
 class UrlsController < ApplicationController
-  before_action :set_url, only: [:show]
+  before_action :set_url, only: [:show, :follow]
 
   # GET /urls
   # GET /urls.json
@@ -13,22 +13,11 @@ class UrlsController < ApplicationController
   end
 
   def follow
-    key = params[:key]
-
-    @url = Url.find_by(short_key: key)
-
     if @url.nil?
       flash[:success] = "No url exists for the key: #{key}"
       redirect_to action: :index
-    else
-      @url.click_count += 1
-
-      if @url.save
-        puts "Successfully acknowledged click on #{@url.short_key}"
-      else
-        puts "Failed to register click for #{@url.short_key}"
-      end
-
+    elsif
+      @url.click!
       redirect_to @url.long_url
     end
   end
@@ -57,7 +46,11 @@ class UrlsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_url
-      @url = Url.find(params[:id])
+      if !params[:id].nil?
+        @url = Url.find params[:id]
+      else
+        @url = Url.find_by short_key: params[:key]
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

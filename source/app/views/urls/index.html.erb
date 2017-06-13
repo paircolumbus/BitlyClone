@@ -15,8 +15,8 @@
       <% @urls.each do |url| %>
         <tr>
           <td id="long" title="<%= url.long_url %>"><div><%= url.long_url %></div></td>
-          <td id="short"><a href="<%= short_url url %>"><%= short_url url %></a></td>
-          <td id="showlink"><%= link_to 'Show', url %></td>
+          <td id="short"><%= link_to_short url %></td>
+          <td id="showlink"><%= link_to :show, url %></td>
         </tr>
       <% end %>
     </tbody>

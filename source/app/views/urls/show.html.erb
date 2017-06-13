@@ -1,0 +1,13 @@
+<p>
+  <strong>Long url:</strong>
+  <%= @url.long_url %>
+</p>
+
+<p>
+  <strong>Short url:</strong>
+  <%= link_to_short @url %>
+</p>
+
+<%= link_to 'Back', urls_path %>
+
+<%= render 'flash_messages' %>

@@ -1,3 +1,41 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "form-mixins";
+
+$chip-size: 40px !default;
+$chip-font-size: 14pt !default;
+
+form.new_user {
+  @include base-form
+}
+
+.chip {
+  display: inline-block;
+  padding: 0 20px 0 25px;
+  height: $chip-size;
+  font-size: $chip-font-size;
+
+  line-height: $chip-size;
+  border-radius: 25px;
+  text-decoration: none;
+  background-color: #F1F1F1;
+
+  &:hover, &:focus {
+    text-decoration: none;
+    background-color: #E53935;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  img {
+    float: left;
+    margin: 0 10px 0 -25px;
+    height: $chip-size;
+    width: $chip-size;
+    border-radius: 100%;
+  }
+}

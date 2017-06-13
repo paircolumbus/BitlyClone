@@ -1,0 +1,42 @@
+header.hdr {
+  display: flex;
+  align-items: center;
+  background-color: #333;
+
+  .title {
+    color: #eee;
+    align-self: flex-start;
+
+    padding: 0 15px;
+  }
+
+  .items {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: flex-end;
+
+    margin: 0;
+    padding: 0 15px;
+
+    overflow: hidden;
+  }
+
+}
+
+.hdr-navlink {
+
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+
+  #navlabel {
+    color: #f2f2f2;
+    font-weight: bolder;
+    font-size: large;
+  }
+}

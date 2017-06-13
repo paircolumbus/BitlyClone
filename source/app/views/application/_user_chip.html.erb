@@ -1,0 +1,4 @@
+<a href="<%= logout_path %>" class="chip" id="user-identity-chip">
+  <img src="/thumbnail/default.png" class="<%= html_classes if defined? html_classes %>" />
+  <span data-hover="Logout of <%= user.username %>?"><%= user.username %></span>
+</a>

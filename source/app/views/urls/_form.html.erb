@@ -1,0 +1,12 @@
+<div class="flex-container">
+  <%= form_for(@url) do |f| %>
+    <div class="field">
+      <%= f.label :long_url, 'Url to Shorten' %><br>
+      <%= f.text_field :long_url %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Create Short URL' %>
+    </div>
+    <%= render partial: 'form_errors', locals: { errors: @url.errors, classes: 'flex-center-self' } %>
+  <% end %>
+</div>

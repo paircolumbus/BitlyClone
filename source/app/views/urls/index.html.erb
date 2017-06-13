@@ -1,0 +1,30 @@
+<%= render partial: 'header', locals: { title: 'URLs' } %>
+
+<span>* - Hover over long url for full url</span>
+<div class="flex-container">
+  <table class="urls flex-center-self">
+    <thead>
+      <tr>
+        <th>Long URL</th>
+        <th>Short URL</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @urls.each do |url| %>
+        <tr>
+          <td id="long" title="<%= url.long_url %>"><div><%= url.long_url %></div></td>
+          <td id="short"><%= link_to_short url %></td>
+          <td id="showlink"><%= link_to :show, url %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br>
+
+<%= link_to 'New Url', new_url_path %>
+
+<%= render 'flash_messages' %>

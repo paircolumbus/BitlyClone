@@ -1,0 +1,17 @@
+<div class="flex-container">
+  <%= form_for :session, html: { class: 'new_session' }, url: login_path do |f| %>
+      <div class="field">
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
+      <div class="actions">
+        <%= f.submit 'Log In' %>
+        <%= link_to 'Register', new_user_path %>
+      </div>
+
+      <%= render 'flash_messages' %>
+  <% end %>
+</div>

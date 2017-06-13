@@ -1,0 +1,18 @@
+@mixin flash-alert($text-color, $bg-color) {
+  color: $text-color;
+  background: $bg-color repeating-linear-gradient(45deg, $bg-color, $bg-color 10px, darken($bg-color, 3%) 10px, darken($bg-color, 3%) 20px);
+
+  padding: 10px 10px;
+
+  border-radius: 10px;
+
+  opacity: 0.8;
+  &> span {
+    font-weight: bolder;
+    opacity: 1;
+  }
+
+  &.inactive {
+    display: none;
+  }
+}

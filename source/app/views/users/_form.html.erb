@@ -1,0 +1,21 @@
+<% provide(:title, 'Register') %>
+<div class="flex-container">
+  <%= form_for(@user) do |f| %>
+    <div class="field">
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, 'Confirm Password' %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Create Account' %>
+      <%= link_to 'Log In', new_session_path %>
+    </div>
+
+    <%= render partial: 'form_errors', locals: { errors: @user.errors } %>
+  <% end %>
+</div>

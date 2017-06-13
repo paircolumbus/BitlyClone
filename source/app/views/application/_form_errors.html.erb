@@ -1,5 +1,5 @@
 <% if errors.any? %>
-    <div id="error_explanation" class="<%= classes %>">
+    <div id="error_explanation" class="<%= classes if defined? classes %>">
       <h2><%= pluralize(errors.count, "error") %> prohibited this url from being saved:</h2>
 
       <ul>

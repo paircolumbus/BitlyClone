@@ -1,3 +1,5 @@
+@import "flash";
+
 body {
   background-color: #fff;
   color: #333;
@@ -20,12 +22,16 @@ pre {
 
 a {
   color: #000;
+  text-decoration: none;
+
   &:visited {
     color: #666;
   }
+
   &:hover {
     color: #fff;
     background-color: #000;
+    text-decoration: none;
   }
 }
 
@@ -48,6 +54,18 @@ div {
 
 #notice-error, .notice.error {
   color: red;
+}
+
+.flash-error {
+  @include flash-alert(darken(#B71C1C, 10%), #E57373)
+}
+
+.flash-warning {
+  @include flash-alert(darken(#F57F17, 8%), #FFEE58)
+}
+
+.flash-success {
+  @include flash-alert(darken(#1B5E20, 8%), #43A047)
 }
 
 .field_with_errors {

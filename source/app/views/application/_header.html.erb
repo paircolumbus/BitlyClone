@@ -1,0 +1,15 @@
+<header class="hdr">
+  <a href="<%= root_path %>" class="title">
+    <h2><%= title %></h2>
+  </a>
+  <nav class="items">
+    <% if logged_in? %>
+      <%= render partial: 'user_chip', locals: { user: current_user } %>
+      <%= render partial: 'navitem', locals: { target: '/logout', label: 'Logout' } %>
+      <%= render partial: 'navitem', locals: { target: '/profile', label: 'Profile' } %>
+    <% end %>
+    <%= render partial: 'navitem', locals: { target: '/urls', label: 'URLs' } %>
+
+    <%= yield %>
+  </nav>
+</header>

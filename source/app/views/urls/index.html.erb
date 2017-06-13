@@ -1,6 +1,6 @@
-<p class="notice error"><%= flash[:error] %></p>
-<h1>Full List of Shortened URLs</h1>
+<%= render partial: 'header', locals: { title: 'Full List of Shortened URLs' } %>
 
+<span>* - Hover over long url for full url</span>
 <div class="flex-container">
   <table class="urls flex-center-self">
     <thead>
@@ -26,3 +26,5 @@
 <br>
 
 <%= link_to 'New Url', new_url_path %>
+
+<%= render 'flash_messages' %>

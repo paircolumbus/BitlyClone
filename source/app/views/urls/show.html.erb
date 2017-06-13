@@ -1,6 +1,3 @@
-<p id="notice"><%= flash[:success] %></p>
-<p id="notice-error"><%= flash[:error] %></p>
-
 <p>
   <strong>Long url:</strong>
   <%= @url.long_url %>
@@ -12,3 +9,5 @@
 </p>
 
 <%= link_to 'Back', urls_path %>
+
+<%= render 'flash_messages' %>

@@ -1,0 +1,19 @@
+<% except ||= [] %>
+
+<% unless except.include?(:success) %>
+<div class="flash-success <%= 'inactive' if flash[:success].nil? %>">
+  <span><%= flash[:success] %></span>
+</div>
+<% end %>
+
+<% unless except.include?(:danger) %>
+<div class="flash-error <%= 'inactive' if flash[:danger].nil? %>">
+  <span><%= flash[:danger] %></span>
+</div>
+<% end %>
+
+<% unless except.include?(:warning) %>
+<div class="flash-warning <%= 'inactive' if flash[:warning].nil? %>">
+  <span><%= flash[:warning] %></span>
+</div>
+<% end %>

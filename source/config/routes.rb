@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
+
+  resources :users
   resources :urls, only: [:index, :show, :new, :create]
+
+  get '/profile' => 'users#profile'
+  get '/register' => 'users#new'
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 
   get '/:key' => 'urls#follow'
 

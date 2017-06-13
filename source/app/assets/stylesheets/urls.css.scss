@@ -2,54 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-h1 {
-  width: 50%;
-  text-align: center;
-  vertical-align: middle;
-
-  margin-top: 0;
-  padding: 15px 25%;
-
-  background-color: lighten(#E2E1E0, 8%);
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
+@import "form-mixins";
 
 .flex-container {
   justify-content: center;
 }
 
 form.new_url {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-self: center;
-
-  padding: 30px;
-  border-radius: 20px;
-  background-color: #E0E0E0;
-
-  .actions {
-    display: flex;
-    width: 100%;
-
-    justify-content: center;
-
-    input {
-
-    }
-  }
+  @include base-form;
 }
 
-div.field {
-
-  label {
-    font-size: larger;
-  }
-
-  input#url_long_url {
-    width: 50vw;
-  }
-}
+//div.field {
+//
+//  label {
+//    font-size: larger;
+//  }
+//
+//  input#url_long_url {
+//    width: 50vw;
+//  }
+//}
 
 table.urls {
   thead > tr > th {

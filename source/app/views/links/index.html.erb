@@ -1,0 +1,26 @@
+<h1>Welcome To A Bitly Clone</h1>
+
+<br><hr><h3>Enter The Link You Want To Shorten, Then Press The 'Generate Shorter Link' Button To Get The Shortened Link</h3><hr><br>
+<%= form_for @link do |f| %>
+<table style="width:50%">
+  <tr>
+    <td colspan="4", height="30"><b>Old URL</b></td>
+    <td colspan="4", height="30"><%= f.text_field :old_url, type: 'url', id: 'link_old' %></td>
+    <td colspan="4", height="30"><%= f.submit 'Generate Shorter Link', id: 'sub_button', :class  => 'button' %></td>
+  </tr>
+</table>
+<% end %>
+<br><hr>
+<table style="width:60%">
+  <tr>
+    <th colspan="50", width="40%", height="30">Old URL</th>
+    <th colspan="10", width="10%", height="30"></th>
+    <th colspan="25", width="30%", height="30">New URL</th>
+  <% @links.each do |link| %>
+  <tr>
+    <td colspan="50", width="40%", height="30"><%= link.old_url %></td>
+    <td colspan="10", width="10%", height="30"></td>
+    <td colspan="25", width="30%", height="30">localhost:3000/<%= link.new_url %></td>
+  </tr>
+  <% end %>
+</table>

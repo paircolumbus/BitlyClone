@@ -20,5 +20,9 @@ RSpec.describe Link, type: :model do
       link.save
       expect(link.new_url).to_not eq(nil)
     end
+
+    # it 'returns any number, never nil' do
+    #   expect(link.counter).to_not eq(nil)
+    # end
   end
 end

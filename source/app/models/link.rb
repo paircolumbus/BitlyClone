@@ -1,8 +1,20 @@
 class Link < ActiveRecord::Base
-  before_save :assign
+  before_save :assign#, :count_clicks
+
+  def create_counter(new_url)
+    self.counter( { :new_url => new_url } )
+  end
+  
+  # def init_count
+  #   count = 0
+  # end
+  #
+  # def set_counter
+  #   self.counter = init_count
+  # end
 
   def random_end(length=5)
-    chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
     text = ''
     length.times { text << chars[rand(chars.size)] }
     text
@@ -11,11 +23,4 @@ class Link < ActiveRecord::Base
   def assign
     self.new_url = random_end
   end
-
-  #  function removeEnd() {
-  #    var fullLink = document.getElementById('link_old').value;
-  #    var withOutEnd = fullLink.split('.com/').pop();
-  #    alert(fullLink.pop(withOutEnd));
-  #    return fullLink - withOutEnd;
-  #  }
 end

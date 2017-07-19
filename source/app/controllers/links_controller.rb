@@ -1,5 +1,10 @@
 class LinksController < ApplicationController
-  before_action :set_link, only: [:update, :destroy] # May need to re-add :edit up here
+  before_action :set_link, only: [:update, :destroy]
+  before_filter :create_counter, only: [:show]
+
+  def create_counter
+    @link.create_counter(new_url)
+  end
 
   def index
     @links = Link.all
@@ -7,8 +12,15 @@ class LinksController < ApplicationController
   end
 
   def show
-    redirection = Link.find_by new_url: params[:new_url]
-    redirect_to redirection.old_url
+    # @link = Link.find(params[:id])
+    # count = @link.counter + 1
+    # does it need the s on update_attributes or just update_attribute
+
+    @link = Link.find_by new_url: params[:new_url]
+
+    @link.update_attributes(counter, :counter+1)
+
+    redirect_to @link.old_urls
   end
 
   def new
@@ -16,11 +28,6 @@ class LinksController < ApplicationController
     @links = Link.all
   end
 
-  # def edit
-  #   @links = Link.all
-  #   #
-  # end
-  #
   def create
     @link = Link.new(link_params)
     respond_to do |format|
@@ -55,6 +62,6 @@ class LinksController < ApplicationController
     end
 
     def link_params
-      params.require(:link).permit(:old_url, :new_url)
+      params.require(:link).permit(:old_url, :new_url, :counter)
     end
 end

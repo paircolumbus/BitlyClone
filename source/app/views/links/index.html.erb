@@ -10,17 +10,21 @@
   </tr>
 </table>
 <% end %>
+
 <br><hr>
+
 <table style="width:60%">
   <tr>
     <th colspan="50", width="40%", height="30">Old URL</th>
     <th colspan="10", width="10%", height="30"></th>
     <th colspan="25", width="30%", height="30">New URL</th>
+    <th colspan="10", width="10%", height="30">Times Clicked</th>
   <% @links.each do |link| %>
   <tr>
     <td colspan="50", width="40%", height="30"><%= link.old_url %></td>
     <td colspan="10", width="10%", height="30"></td>
-    <td colspan="25", width="30%", height="30">localhost:3000/<%= link.new_url %></td>
+    <td colspan="25", width="30%", height="30"><%= link_to "localhost:3000/#{link.new_url}", link.old_url %></td>
+    <td colspan="10", width="10%", height="30"><%= link.counter %></td>
   </tr>
   <% end %>
 </table>

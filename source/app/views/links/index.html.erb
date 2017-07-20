@@ -23,7 +23,7 @@
   <tr>
     <td colspan="50", width="40%", height="30"><%= link.old_url %></td>
     <td colspan="10", width="10%", height="30"></td>
-    <td colspan="25", width="30%", height="30"><%= link_to "localhost:3000/#{link.new_url}", link.old_url %></td>
+    <td colspan="25", width="30%", height="30"><%= link_to "localhost:3000/#{link.new_url}", link_path(new_url: link.new_url) %></td>
     <td colspan="10", width="10%", height="30"><%= link.counter %></td>
   </tr>
   <% end %>

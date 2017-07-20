@@ -1,17 +1,5 @@
 class Link < ActiveRecord::Base
-  before_save :assign#, :count_clicks
-
-  def create_counter(new_url)
-    self.counter( { :new_url => new_url } )
-  end
-  
-  # def init_count
-  #   count = 0
-  # end
-  #
-  # def set_counter
-  #   self.counter = init_count
-  # end
+  before_save :assign
 
   def random_end(length=5)
     chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'

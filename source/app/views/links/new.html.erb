@@ -1,0 +1,25 @@
+<% if @link.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@link.errors.count, "error") %> prohibited this link from being saved:</h2>
+
+    <ul>
+    <% @link.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<h1>There Was An Error</h1>
+
+<br><hr><h3>The Link You Entered Did Not Work, Read The Errors On The Top Of The Page, Then Re-Click The 'Generate Shorter Link' Button</h3><hr><br>
+<%= form_for @link do |f| %>
+<table style="width:50%">
+  <tr>
+    <td colspan="4", height="30"><b>Old URL</b></td>
+    <td colspan="4", height="30"><%= f.text_field :old_url, type: 'url', id: 'link_old' %></td>
+    <td colspan="4", height="30"><%= f.submit 'Generate Shorter Link', id: 'sub_button', :class  => 'button' %></td>
+  </tr>
+</table>
+<% end %>
+<br><hr>

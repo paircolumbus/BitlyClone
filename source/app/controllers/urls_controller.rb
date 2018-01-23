@@ -1,5 +1,4 @@
 class UrlsController < ApplicationController
-  require 'uri'
   include UrlsHelper
 
   def index
@@ -13,6 +12,7 @@ class UrlsController < ApplicationController
   	if @url.save
   	  redirect_to root_path
   	else
+  	  @urls = Url.all
   	  render 'index'
   	end
   end

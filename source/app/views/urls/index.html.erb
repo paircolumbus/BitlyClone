@@ -1,5 +1,13 @@
 <p>Index Page</p>
 
+<% if @url.errors %>
+<ul>
+  <% @url.errors.each do |attr, error| %>
+    <li><%= error %></li>
+  <% end %>
+</ul>
+<% end %>
+
 <% @urls.each do |url| %>
   <p><%= url.address %> - <%= "#{request.url}#{url.id}" %> - Clicks: <%= url.click_count %></p>
 <% end %>

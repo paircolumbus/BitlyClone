@@ -53,4 +53,9 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  root "urls#index"
+
+  resources :urls, only: [:index, :create, :show]
+
+  get '/:id', to: 'urls#show', as: :shortened_url
 end

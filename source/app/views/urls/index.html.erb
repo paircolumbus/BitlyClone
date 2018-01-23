@@ -1,0 +1,10 @@
+<p>Index Page</p>
+
+<% @urls.each do |url| %>
+  <p><%= url.address %> - <%= "#{request.url}#{url.id}" %><p>
+<% end %>
+
+<%= form_for @url do |f| %>
+  <%= f.text_field :address %>
+  <%= f.submit "Shorten URL" %>
+<% end %>

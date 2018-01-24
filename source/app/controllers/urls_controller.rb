@@ -4,7 +4,7 @@ class UrlsController < ApplicationController
   end
 
   def new
-
+    @url = Url.new
   end
 
   def create
@@ -13,7 +13,7 @@ class UrlsController < ApplicationController
     if @url.save
       redirect_to @url
     else
-      render 'edit'
+      render 'new'
     end
   end
 
@@ -38,7 +38,7 @@ class UrlsController < ApplicationController
     if url.nil?
       redirect_to root_path
     else
-      url.update({'click_count': url.click_count + 1})
+      url.increment!(:click_count)
       redirect_to url.long_url
     end
   end

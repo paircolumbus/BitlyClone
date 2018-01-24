@@ -1,0 +1,14 @@
+<h1>Make a new url here</h1>
+
+<%= form_for :url, url: urls_path, local: true do |form| %>
+  <p>
+    <%= form.label :long_url %>
+    <%= form.text_field :long_url %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Home', root_path %>

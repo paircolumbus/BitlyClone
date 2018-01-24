@@ -53,4 +53,10 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  #
+
+  get 'application/index'
+  resources :urls
+  get '/:key' => 'urls#jump'
+  root 'application#index'
 end

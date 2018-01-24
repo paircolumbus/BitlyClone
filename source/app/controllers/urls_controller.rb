@@ -18,7 +18,7 @@ class UrlsController < ApplicationController
   end
 
   def show
-  	@url = Url.find(params[:id])
+  	@url = Url.find_by(slug: params[:slug])
   	@url.click_count += 1
   	@url.save
   	redirect_to @url.address

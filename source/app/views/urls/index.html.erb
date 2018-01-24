@@ -9,7 +9,7 @@
 <% end %>
 
 <% @urls.each do |url| %>
-  <p><%= url.address %> - <%= "#{request.url}#{url.id}" %> - Clicks: <%= url.click_count %></p>
+  <p><%= url.address %> - <%= "#{request.base_url}/#{url.slug}" %> - Clicks: <%= url.click_count %></p>
 <% end %>
 
 <%= form_for @url do |f| %>

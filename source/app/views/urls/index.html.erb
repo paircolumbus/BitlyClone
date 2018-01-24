@@ -3,12 +3,14 @@
 <table>
   <tr>
     <th>Short Url</th>
+    <th>Times Visited</th>
     <th>Original Url</th>
   </tr>
 
   <% @urls.each do |url| %>
     <tr>
       <td><%= url.short_url %></td>
+      <td><%= url.click_count %></td>
       <td><%= url.long_url %></td>
       <td><%= link_to 'Show', url_path(url) %></td>
       <td><%= link_to 'Edit', edit_url_path(url) %></td>

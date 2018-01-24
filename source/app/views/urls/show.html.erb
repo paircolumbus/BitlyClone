@@ -1,7 +1,12 @@
 <h1>Showing a URL here</h1>
 <p>
-  <strong>Long Url:</strong>
+  <strong>Original Url:</strong>
   <%= @url.long_url %>
+</p>
+
+<p>
+  <strong>Visit Count:</strong>
+  <%= @url.click_count %>
 </p>
 
 <p>
@@ -9,4 +14,5 @@
   <%= @url.short_url %>
 </p>
 
+<%= link_to 'Back', urls_path %><br/>
 <%= link_to 'Home', root_path %>

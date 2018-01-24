@@ -4,6 +4,6 @@ class Url < ActiveRecord::Base
   private
   def shorten_url
     range = [*'0'..'9',*'A'..'Z',*'a'..'z']
-    self.short_url = Array.new(6){ range.sample }.join
+    self.short_url = Array.new(6){ range.sample }.join if self.short_url.nil?
   end
 end

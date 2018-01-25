@@ -1,0 +1,26 @@
+<%= form_for :url, url: urls_path, local: true do |form| %>
+
+  <% if @url.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@url.errors.count, "error") %> couldn't save this url
+      </h2>
+      <ul>
+        <% @url.errors.full_messages.each do |error_msg| %>
+          <li style="color: red"><%= error_msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <p>
+    <strong><%= form.label 'Enter URL: ' %></strong> <%= form.text_field :long_url %>
+  </p>
+
+
+  <p> <%= form.submit %> </p>
+<% end %>
+
+<%= link_to 'Back', urls_path %>

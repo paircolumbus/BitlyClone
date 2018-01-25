@@ -53,4 +53,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  resources :urls
+  get '/:short_url' => 'urls#route_me'
+  root 'urls#index'
 end

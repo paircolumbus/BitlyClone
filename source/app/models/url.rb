@@ -30,11 +30,11 @@ class Url < ActiveRecord::Base
 
   def generate_shortened_url
     #This ensures that if a slug exists then a new one is not created
-    temp_shortened_host = self.slug || SecureRandom.base64(4)
+    temp_slug = self.slug || SecureRandom.base64(4)
     #Creates a slug if one doesn't exist
-    while !self.slug && Url.find_by(slug: temp_shortened_host)
-      temp_shortened_host = SecureRandom.base64(4)
+    while !self.slug && Url.find_by(slug: temp_slug)
+      temp_slug = SecureRandom.base64(4)
     end
-    self.slug = temp_shortened_host
+    self.slug = temp_slug
   end
 end

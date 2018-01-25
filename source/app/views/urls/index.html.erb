@@ -1,0 +1,27 @@
+<h2>Shorten a link</h2>
+
+<%= render 'form' %>
+
+<br><hr>
+
+<p id="notice"><%= notice %></p>
+
+<h2>Your shortened links</h2>
+
+<table>
+  <tbody>
+    <% @urls.each do |url| %>
+      <tr>
+        <td><%= url.original_url %></td>
+      </tr>
+      <tr>
+        <td><%= link_to "http://localhost:3000/#{url.shortened_url}", "http://localhost:3000/#{url.shortened_url}" %></td>
+        <td>&nbsp;&nbsp;&nbsp;</td>
+        <td><b>Clicks:</b> <%= url.click_count %></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

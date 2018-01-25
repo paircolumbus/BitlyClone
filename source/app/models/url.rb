@@ -5,6 +5,8 @@ class Url < ActiveRecord::Base
   private
 
   def shorten_url
-    self.short_url = (0...7).map { [*'0'..'9', *'A'..'Z', *'a'..'z'].sample }.join
+    if short_url.nil?
+      self.short_url = (0...7).map { [*'0'..'9', *'A'..'Z', *'a'..'z'].sample }.join
+    end
   end
 end

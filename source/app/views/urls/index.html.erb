@@ -5,6 +5,6 @@
 
 <ol>
   <% @urls.each do |url| %>
-    <li> <%= url.long_url %> | <%= url.short_url %> </li>
+    <li> <%= url.long_url %> | <a href="/<%= url.short_url %>"> <%= url.short_url %> </a>| <%= url.click_count %> </li>
   <% end %>
 </ol>

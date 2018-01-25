@@ -23,6 +23,7 @@ class UrlsController < ApplicationController
     if url.nil?
       redirect_to root_path
     else
+      url.update('click_count' => url.click_count + 1)
       redirect_to url.long_url
     end
 

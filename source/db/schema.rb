@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180124180333) do
+ActiveRecord::Schema.define(version: 20180125162712) do
 
   create_table "urls", force: true do |t|
     t.string   "address"
@@ -20,5 +20,7 @@ ActiveRecord::Schema.define(version: 20180124180333) do
     t.integer  "click_count"
     t.string   "slug"
   end
+
+  add_index "urls", ["slug"], name: "index_urls_on_slug"
 
 end

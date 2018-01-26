@@ -1,0 +1,11 @@
+<h1>Welcome to URL Shortner | Home </h1>
+<%= link_to 'Shorten a URL', new_url_path, class: "btn btn-primary"  %>
+
+<br><br>
+
+
+<ol>
+  <% @urls.each do |url| %>
+    <li> <%= url.long_url %> | <a href="/<%= url.short_url %>"> <%= url.short_url %> </a>| <%= url.click_count %> </li>
+  <% end %>
+</ol>

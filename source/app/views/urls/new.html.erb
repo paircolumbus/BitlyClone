@@ -16,11 +16,11 @@
 
 
   <p>
-    <strong><%= form.label 'Enter URL: ' %></strong> <%= form.text_field :long_url %>
+    <strong><%= form.label 'Enter URL: ' %></strong> <%= form.text_field :long_url, class: "form-control" %>
   </p>
 
 
-  <p> <%= form.submit %> </p>
+  <p> <%= form.submit class: "btn btn-primary"%> </p>
 <% end %>
 
 <%= link_to 'Back', urls_path %>

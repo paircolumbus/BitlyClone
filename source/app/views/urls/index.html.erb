@@ -1,7 +1,8 @@
 <h1>Welcome to URL Shortner | Home </h1>
-<%= link_to 'Shorten a URL', new_url_path %>
+<%= link_to 'Shorten a URL', new_url_path, class: "btn btn-primary"  %>
 
 <br><br>
+
 
 <ol>
   <% @urls.each do |url| %>

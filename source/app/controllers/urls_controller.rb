@@ -19,7 +19,7 @@ class UrlsController < ApplicationController
   def show
   	@url = Url.find_by(slug: params[:slug])
     if @url
-    	@url.increment!(:click_count)
+    	Url.increment_counter(:click_count, @url.id)
     	redirect_to @url.address
     else
       redirect_to root_path

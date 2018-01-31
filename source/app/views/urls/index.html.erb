@@ -1,0 +1,18 @@
+<p>Index Page</p>
+
+<% if @url.errors %>
+<ul>
+  <% @url.errors.each do |attr, error| %>
+    <li><%= error %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<% @urls.each do |url| %>
+  <p><%= url.address %> - <%= "#{request.base_url}/#{url.slug}" %> - Clicks: <%= url.click_count %></p>
+<% end %>
+
+<%= form_for @url do |f| %>
+  <%= f.text_field :address %>
+  <%= f.submit "Shorten URL" %>
+<% end %>

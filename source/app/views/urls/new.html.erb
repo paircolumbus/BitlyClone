@@ -1,0 +1,23 @@
+<h1>Shorten a new url on this page</h1>
+
+<!-- -->
+
+<%if @url.errors.any?%>
+  <h2> Correct the following errors</h2>
+  <ul>
+    <% @url.errors.full_messages.each do |msg| %>
+      <li class="text-danger">
+        <%= msg %>
+      </li>
+    <%end %>
+  </ul>
+
+<% end %>
+
+<%= form_for @url do |f| %>
+  <p>
+    <%= f.label "Enter Url" %></br>
+    <%= f.text_field :original_url, class: "form-control" %>
+    <%=f.submit class: "btn btn-success", value: "Shorten" %>
+  </p>
+<% end %>

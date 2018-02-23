@@ -1,0 +1,23 @@
+<h1>
+Listing all the urls
+</h1>
+
+<p> <%= link_to "Shorten Url", new_url_path %>
+</p>
+
+<table >
+  <tr>
+    <td> <strong> Original Url </strong> </td>
+    <td> <strong> Shortened Url </strong> </td>
+    <td> <strong>Total Clicks</strong> </td>
+  </tr>
+  <% @urls.each do |url| %>
+  <tr>
+    <td>  <a href="<%=url.original_url %>" ><%=url.original_url %></a></td>
+    <td>  <a href="http://localhost:3000/<%=url.short_url%>"><%=url.short_url%> </a></td>
+    <td><%= url.click_count %></td>
+    <td><%= link_to 'Delete', url_path(url), method: :delete,data: {confirm: "Are you sure?"} %></td>
+  </tr>
+
+  <% end %>
+</table>

@@ -1,5 +1,12 @@
-Url Index
+<p>Shorten URL:</p>
 
-<% @urls.each do |url| %>
-  <p><%= url.long_url %></p>
+<%= form_for :url do |f| %>
+  <%= f.label :long_url %>
+  <%= f.text_field :long_url %>
 <% end %>
+
+<ul>
+<% @urls.each do |url| %>
+  <li><%= "0.0.0.0:3000/urls/#{url.id} ====> " + url.long_url %></li>
+<% end %>
+</ul>

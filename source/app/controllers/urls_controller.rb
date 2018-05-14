@@ -5,12 +5,15 @@ class UrlsController < ApplicationController
 
   def create
     url = Url.new(url_params)
+    url.click_count = 0
     url.save
     redirect_to urls_path
   end
 
   def show
     url = Url.find(params[:id])
+    url.click_count += 1
+    url.save
     redirect_to url.long_url
   end
 

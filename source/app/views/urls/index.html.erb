@@ -1,5 +1,7 @@
 <p>Shorten URL:</p>
 
+<%= flash[:error] if !nil? %>
+
 <%= form_for :url do |f| %>
   <%= f.label :long_url %>
   <%= f.text_field :long_url %>

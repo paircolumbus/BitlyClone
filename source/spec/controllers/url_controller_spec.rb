@@ -21,20 +21,40 @@ describe UrlsController do
   end
 
   describe 'POST create' do
-    it 'creates a url entry' do
-      expect do
+    context 'with valid params' do
+      it 'creates a url entry' do
+        expect do
+          post :create, url: { long_url: 'https://www.google.com/' }
+        end.to change { Url.count }.by 1
+      end
+
+      it 'redirects to the index page' do
         post :create, url: { long_url: 'https://www.google.com/' }
-      end.to change { Url.count }.by 1
+        expect(response).to redirect_to urls_path
+      end
+
+      it 'sets the click counter to 0' do
+        post :create, url: { long_url: 'https://www.google.com/' }
+        expect(Url.first.click_count).to eq 0
+      end
     end
 
-    it 'redirects to the index page' do
-      post :create, url: { long_url: 'https://www.google.com/' }
-      expect(response).to redirect_to urls_path
-    end
+    context 'with invalid params' do
+      it 'does not create a url entry' do
+        expect do
+          post :create, url: { long_url: 'invalid URL' }
+        end.to_not change { Url.count }
+      end
 
-    it 'sets the click counter to 0' do
-      post :create, url: { long_url: 'https://www.google.com/' }
-      expect(Url.first.click_count).to eq 0
+      it 'redirects to the index page' do
+        post :create, url: { long_url: 'invalid URL' }
+        expect(response).to redirect_to urls_path
+      end
+
+      it 'displays an error message' do
+        post :create, url: { long_url: 'invalid URL' }
+        expect(flash[:error]).to eq 'Invalid URL'
+      end
     end
   end
 

@@ -6,7 +6,9 @@ class UrlsController < ApplicationController
   def create
     url = Url.new(url_params)
     url.click_count = 0
-    url.save
+    if !url.save
+      flash[:error] = 'Invalid URL'
+    end
     redirect_to urls_path
   end
 

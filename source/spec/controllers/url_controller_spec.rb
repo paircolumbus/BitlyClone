@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 describe UrlsController do
+  let(:url) { Url.create(long_url: 'https://www.google.com/', click_count: 0) }
+
   describe 'GET index' do
     it 'responds with a 200 OK' do
       get :index
@@ -8,7 +10,6 @@ describe UrlsController do
     end
 
     it 'assigns @urls' do
-      url = Url.create
       get :index
       expect(assigns[:urls]).to eq [url]
     end
@@ -38,8 +39,6 @@ describe UrlsController do
   end
 
   describe 'GET show' do
-    let(:url) { Url.create(long_url: 'https://www.google.com/', click_count: 0) }
-
     it 'redirects to the long url' do
       get :show, { id: url.id }
       expect(response).to redirect_to 'https://www.google.com/'

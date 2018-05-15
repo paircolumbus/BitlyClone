@@ -3,7 +3,7 @@
 <ul>
   <% @urls.each do |url| %>
     <li>
-      <%= url.long_url %><br>
+      <%= link_to "#{url.long_url}", url.long_url %><br>
       <%= link_to "#{short_url_url(url.short_url)}", short_url_path(url.short_url) %>
     </li>
   <% end %>

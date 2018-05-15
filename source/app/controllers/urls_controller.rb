@@ -23,7 +23,7 @@ class UrlsController < ApplicationController
     @url.click_count += 1
     @url.save
 
-    redirect_to "http://#{@url.long_url}"
+    redirect_to "#{@url.long_url}"
   end
 
   private

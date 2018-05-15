@@ -1,7 +1,10 @@
 <% if session[:user_id] %>
-  <%= link_to "Profile", user_path(session[:user_id]) %><br>
-  <%= link_to "Logout", log_out_path %><br>
+<ul>
+  <li><%= link_to "Main", urls_path %></li>
+  <li><%= link_to "Profile", user_path(session[:user_id]) %></li>
+  <li><%= link_to "Logout", log_out_path %></li>
+</ul>
+
 <% else %>
   <%= link_to "Login", log_in_path %> or <%= link_to "Signup", sign_up_path %>
-
 <% end %>

@@ -7,8 +7,9 @@ class Url < ActiveRecord::Base
 
   def validate_url
     uri = URI("#{self.long_url}")
-    res = Net::HTTP.get_response(uri).code 
-    self.errors.add(:base, "This URL is invalid") if res != "200"
+    # this doesn't work if the input isn't a url, i.e., it works if an error code is returned
+    res = Net::HTTP.get_response(uri)
+    self.errors.add(:base, "This URL is invalid, #{res.message}") if res.code != "200"
   end
 
   def shorten_url

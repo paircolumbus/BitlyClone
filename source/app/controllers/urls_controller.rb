@@ -22,7 +22,6 @@ class UrlsController < ApplicationController
   def create
     @url = Url.new(url_params)
     if @url.save
-        binding.pry
         redirect_to url_path(@url)
     else
       render 'new' 

@@ -19,6 +19,9 @@ class UrlsController < ApplicationController
   end
 
   def show
+    @url.click_count += 1
+    @url.save
+
     redirect_to "http://#{@url.long_url}"
   end
 

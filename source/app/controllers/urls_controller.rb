@@ -8,7 +8,7 @@ class UrlsController < ApplicationController
     if params[:id].start_with?("!")
         @url = Url.find_by(:short_url => "http://localhost:3000/urls/#{params[:id]}")
         @url.click_count += 1
-        redirect_to "http://#{@url[:long_url]}"
+        redirect_to @url[:long_url]
     else 
       @url = Url.find(params[:id])
       url_path(@url)
@@ -20,11 +20,14 @@ class UrlsController < ApplicationController
   end
 
   def create
-    @url = Url.create(url_params)
-    redirect_to url_path(@url)
+    @url = Url.new(url_params)
+    if @url.save
+        binding.pry
+        redirect_to url_path(@url)
+    else
+      render 'new' 
+    end
   end
-
-
 
   private
     def url_params

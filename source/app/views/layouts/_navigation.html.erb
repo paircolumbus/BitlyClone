@@ -1,4 +1,7 @@
 <% if session[:user_id] %>
   <%= link_to "Profile", user_path(session[:user_id]) %><br>
   <%= link_to "Logout", log_out_path %><br>
+<% else %>
+  <%= link_to "Login", log_in_path %> or <%= link_to "Signup", sign_up_path %>
+
 <% end %>

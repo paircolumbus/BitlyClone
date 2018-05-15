@@ -1,12 +1,13 @@
 class UrlsController < ApplicationController
 
   def index
-    @all = Url.all
+    @urls = Url.all
   end
 
   def show
     if params[:id].start_with?("!")
-        @url = Url.find_by(:short_url => "localhost:3000/urls/#{params[:id]}")
+        @url = Url.find_by(:short_url => "http://localhost:3000/urls/#{params[:id]}")
+        @url.click_count += 1
         redirect_to "http://#{@url[:long_url]}"
     else 
       @url = Url.find(params[:id])

@@ -10,7 +10,7 @@ class UrlsController < ApplicationController
   end
 
   def create
-    @url = Url.new(url_params)
+    @url = Url.find_or_initialize_by(url_params)
     if @url.save
       redirect_to urls_path
     else

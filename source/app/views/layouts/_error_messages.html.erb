@@ -1,0 +1,5 @@
+<% if flash[:error] %>
+  <%= content_tag :div, flash[:error], id: "flash_error" do %>
+    <%= flash[:error].join(", ") %>
+  <% end %>
+<% end %>

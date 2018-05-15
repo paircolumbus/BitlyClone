@@ -1,0 +1,9 @@
+Username: <%= @user.username %>
+<ul>
+  <% @user.urls.each do |url| %>
+    <li>
+      Original url: <%= link_to "#{url.long_url}", url.long_url %><br>
+      Short url: <%= link_to "#{short_url_url(url.short_url)}", short_url_path(url.short_url) %>
+    </li>
+  <% end %>
+</ul>

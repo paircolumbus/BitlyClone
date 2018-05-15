@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180515133521) do
+ActiveRecord::Schema.define(version: 20180515172345) do
 
   create_table "urls", force: true do |t|
     t.string   "long_url"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20180515133521) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "click_count", default: 0
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "username"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

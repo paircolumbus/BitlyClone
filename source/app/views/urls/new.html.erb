@@ -1,3 +1,5 @@
+<%= render '/layouts/error_messages' %>
+
 <%= form_for @url do |f| %>
   <%= f.text_field :long_url, placeholder: "Paste url text here" %>
   <%= f.submit "Shorten" %>

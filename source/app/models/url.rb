@@ -23,7 +23,7 @@ class Url < ActiveRecord::Base
 
   def uri_properly_formatted
     unless self.compliant?
-      errors.add(:long_url, "url is invalid, must include 'http://' or 'https://'")
+      errors.add(:long_url, "must include 'http://' or 'https://'")
     end
   end
 end

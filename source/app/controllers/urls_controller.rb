@@ -14,6 +14,7 @@ class UrlsController < ApplicationController
     if @url.save
       redirect_to urls_path
     else
+      flash[:error] = @url.errors.full_messages
       redirect_to new_url_path(@url)
     end
   end

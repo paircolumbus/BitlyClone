@@ -1,0 +1,14 @@
+<p>Shorten URL:</p>
+
+<%= flash[:error] if !nil? %>
+
+<%= form_for :url do |f| %>
+  <%= f.label :long_url %>
+  <%= f.text_field :long_url %>
+<% end %>
+
+<ul>
+<% @urls.each do |url| %>
+  <li><%= url_url(url) ====> #{url.long_url} (clicked #{url.click_count} times)" %></li>
+<% end %>
+</ul>

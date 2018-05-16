@@ -11,13 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180514175827) do
+ActiveRecord::Schema.define(version: 20180516183211) do
 
   create_table "urls", force: true do |t|
     t.string   "long_url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "click_count"
+    t.integer  "click_count", default: 0
+    t.string   "short_url"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "username"
+    t.string   "password"
+    t.boolean  "admin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

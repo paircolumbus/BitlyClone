@@ -1,6 +1,2 @@
-class Url < ApplicationRecord
-
-  def index
-  end
-
+class Url < ActiveRecord::Base
 end

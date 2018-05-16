@@ -16,8 +16,18 @@ RSpec.describe Url, :type => :model do
       url.long_url = 'http://www.google.com'
       expect(url).to be_valid
 
-      url.long_url = 'https://www.google.com'
+      url.long_url = 'https://www.google.com/'
       expect(url).to be_valid
+    end
+
+    it 'is a valid uri' do
+      url.long_url = 'invalid uri'
+      expect(url).to_not be_valid
+    end
+
+    it 'is accessible' do
+      url.long_url = 'https://invalid.com'
+      expect(url).to_not be_valid
     end
   end
 end

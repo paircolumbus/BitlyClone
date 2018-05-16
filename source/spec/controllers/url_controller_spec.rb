@@ -39,7 +39,7 @@ describe UrlsController do
       end
     end
 
-    context 'with invalid params' do
+    context 'with blantantly invalid params' do
       it 'does not create a url entry' do
         expect do
           post :create, url: { long_url: 'invalid URL' }
@@ -53,6 +53,24 @@ describe UrlsController do
 
       it 'displays an error message' do
         post :create, url: { long_url: 'invalid URL' }
+        expect(flash[:error]).to eq 'Invalid URL'
+      end
+    end
+
+    context 'with valid params but unaccessible webpage' do
+      it 'does not create a url entry' do
+        expect do
+          post :create, url: { long_url: 'https://blah.com' }
+        end.to_not change { Url.count }
+      end
+
+      it 'redirects to the index page' do
+        post :create, url: { long_url: 'https://blah.com' }
+        expect(response).to redirect_to urls_path
+      end
+
+      it 'displays an error message' do
+        post :create, url: { long_url: 'https://blah.com' }
         expect(flash[:error]).to eq 'Invalid URL'
       end
     end

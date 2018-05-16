@@ -21,8 +21,11 @@ class Url < ActiveRecord::Base
 
   def long_url_is_reachable
     begin
-      url = URI(long_url)
-      Net::HTTP.get_response(url)
+      response = HTTParty.get(long_url, timeout: 2)
+
+      if response.code.to_i != 200
+        errors.add(:long_url, 'must return a 200 code')
+      end
     rescue
       errors.add(:long_url, 'must be accessible')
     end

@@ -4,6 +4,7 @@
 <table>
   <tr>
     <th>URL</th>
+    <th>Count</th>
     <th>View</th>
     <th>Destroy</th>
   </tr>
@@ -11,7 +12,8 @@
   <% @urls.each do |url| %>
     <tr>
       <td>http://localhost:3000/<%= url.source %></td>
-      <td><%= link_to 'View', url_path(url.source) %></td>
+      <td><%= url.click_count %></td>
+      <td><%= link_to 'View', url_path(url.source), method: :get%></td>
       <td><%= link_to 'Destroy', url_path(url.source),
        				   method: :delete,
               		   data: { confirm: 'Are you sure?' } %></td>

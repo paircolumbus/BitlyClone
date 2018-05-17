@@ -1,0 +1,34 @@
+
+<%= flash[:error] if !nil? %>
+<h1>Listing URLS</h1>
+<table>
+  <tr>
+    <th>URL</th>
+    <th>View</th>
+    <th>Destroy</th>
+  </tr>
+ 
+  <% @urls.each do |url| %>
+    <tr>
+      <td>http://localhost:3000/<%= url.source %></td>
+      <td><%= link_to 'View', url_path(url.source) %></td>
+      <td><%= link_to 'Destroy', url_path(url.source),
+       				   method: :delete,
+              		   data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h3> Add New URL</h3>
+<%= form_for Url.new do |form| %>
+
+  <p>
+     <%= form.label :destination %> : <%= form.text_field :destination %>
+  </p>
+ 
+ 
+  <p>
+    <%= submit_tag %>
+  </p>
+ <% end %>
+

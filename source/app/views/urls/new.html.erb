@@ -1,0 +1,11 @@
+<% if @url.errors.any? %>
+  <% @url.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+<% end %>
+
+<%= form_for @url do |f| %>
+  <%= f.label "Enter a URL" %>
+  <%= f.url_field :long_url, :required => true %>
+<%= f.submit %>
+<% end %>

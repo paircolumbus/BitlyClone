@@ -1,5 +1,4 @@
 
-<%= flash[:error] if !nil? %>
 <h1>Listing URLS</h1>
 <table>
   <tr>
@@ -22,6 +21,9 @@
 </table>
 
 <h3> Add New URL</h3>
+<% flash.each do |key, value| %>
+        <div class="error"><%= value %></div>
+      <% end %>
 <%= form_for Url.new do |form| %>
 
   <p>

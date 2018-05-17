@@ -9,19 +9,18 @@ class UrlsController < ApplicationController
     @url = Url.new(url_params)
 
     if !@url.save
-     flash[:error] = "Invalid url"
+     flash[:error] = "Invalid url. Please Enter a valid url"
     end
-		puts "create redirect"
+
     redirect_to urls_path
   end
 
 	def new
-			@url = Url.new
+			@url = UrlsControllerrl.new
 	end
 
 	def show
 		expires_now
-		puts "Calledd dsfjkdshkgfhdskjghksdjhgkjsdhgkhk"
 		@url = Url.find_by_source(params[:id])
 		@url.click_count += 1
 		@url.save
@@ -31,7 +30,6 @@ class UrlsController < ApplicationController
 	def destroy
 		@url = Url.find_by_source(params[:id])
 		@url.destroy
-		puts "destory redirect"
 		redirect_to urls_path
 	end
 

@@ -1,0 +1,12 @@
+<div class="col-md-10 col-md-offset-1">
+  <table class="table table-bordered">
+    <tr>
+      <th>Long Url</th>
+      <th>Short Url</th>
+    </tr>
+    <tr>
+      <td><%= @url.long_url %></td>
+      <td><%= link_to @url.short_url, "http://#{@url.long_url}" %></td>
+    </tr>
+  </table>
+</div>

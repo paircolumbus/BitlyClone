@@ -1,1 +1,16 @@
-url index
+<h1 align="center">URL too long? Snip it.</h1>
+<h2 align="center">Check these out.</h2>
+<div class="col-md-8 col-md-offset-2">
+  <table class="table table-bordered">
+    <tr>
+      <th>Long Url</th>
+      <th>Short Url</th>
+    </tr>
+      <% @urls.each do |url| %>
+        <tr>
+          <td><%= url.long_url %></td>
+          <td><%= link_to url.short_url, "http://#{url.long_url}" %></td>
+        </tr>
+      <% end %>
+  </table>
+</div>

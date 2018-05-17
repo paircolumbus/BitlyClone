@@ -12,7 +12,6 @@ class UrlsController < ApplicationController
 
   def show
     @url = Url.find(params[:id])
-    url_path(@url)
   end
 
   def new

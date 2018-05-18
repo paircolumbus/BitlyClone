@@ -1,0 +1,8 @@
+$navbar-default-bg: lightblue;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.form-horizontal, .jumbotron, .table-bordered {
+  margin-top: 75px;
+}

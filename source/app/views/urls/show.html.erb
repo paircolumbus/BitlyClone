@@ -1,0 +1,18 @@
+<div class="col-md-10 col-md-offset-1">
+  <table class="table table-bordered">
+    <tr>
+      <th>Long Url</th>
+      <th>Short Url</th>
+      <th>Click Count</th>
+    </tr>
+    <tr>
+      <td><%= @url.long_url %></td>
+      <td><%= link_to @url.short_url, short_url_path(@url.short_url) %></td>
+      <td><%= @url.click_count %></td>
+      </td>
+    </tr>
+  </table>
+  <div align="center">
+   [ <%= link_to "Home", root_path %> ]
+ </div>
+</div>

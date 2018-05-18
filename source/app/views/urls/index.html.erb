@@ -1,0 +1,19 @@
+<h1 align="center">URL too long? Snip it.</h1>
+<h2 align="center">Check these out.</h2>
+<div class="col-md-8 col-md-offset-2">
+  <table class="table table-bordered">
+    <tr>
+      <th>Long Url</th>
+      <th>Short Url</th>
+    </tr>
+      <% @urls.each do |url| %>
+        <tr>
+          <td><%= link_to url.long_url, url_path(url) %></td>
+          <td><%= link_to url.short_url, short_url_path(url.short_url) %></td>
+        </tr>
+      <% end %>
+  </table>
+  <div align="center">
+   [ <%= link_to "Home", root_path %> ]
+ </div>
+</div>

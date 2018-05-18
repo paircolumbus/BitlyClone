@@ -7,9 +7,12 @@
     </tr>
     <tr>
       <td><%= @url.long_url %></td>
-      <td><%= link_to "localhost:3000/urls/#{@url.short_url}", url_path(@url) %></td>
+      <td><%= link_to @url.short_url, short_url_path(@url.short_url) %></td>
       <td><%= @url.click_count %></td>
       </td>
     </tr>
   </table>
+  <div align="center">
+   [ <%= link_to "Home", root_path %> ]
+ </div>
 </div>

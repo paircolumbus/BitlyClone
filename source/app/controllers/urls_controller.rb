@@ -3,7 +3,7 @@ class UrlsController < ApplicationController
 
   def index
     if Url.all.size == 0
-      flash[:danger] = "There aren't any yet. Why don't you start us off?"
+      flash.now[:danger] = "There aren't any yet. Why don't you start us off?"
       render 'home'
     else
       @urls = Url.all
@@ -16,15 +16,7 @@ class UrlsController < ApplicationController
 
   def create
     @url = Url.new(url_params)
-    #if check_url?
-      #flash.now[:danger] = "Check your URL. . ."
-      #render 'new'
-    #else
-      #@url.save
-      #flash.now[:success] = "Your URL is SHORT"
-      #redirect_to new_url_path(@url)
-    #end
-    if @url.save
+    if check_url? && @url.save
       redirect_to urls_path
     else
       flash.now[:danger] = "Something went wrong with your URL. . ."
@@ -32,25 +24,31 @@ class UrlsController < ApplicationController
     end
   end
 
-  def show
+  def short_url
+    @url = Url.find_by(short_url: params[:short_url])
     @url.click_count += 1
     @url.save
-    redirect_to "http://#{@url.long_url}"
+    redirect_to @url.long_url
+  end
+
+  def show
+
   end
 
   def home
   end
 
   private
-  def url_params
-    params.require(:url).permit(:long_url)
-  end
+    def url_params
+      params.require(:url).permit(:long_url)
+    end
 
-  def check_url?
-    @url.long_url.exclude?(".com") && @url.long_url.exclude?(".org") && @url.long_url.exclude?(".net")
-  end
+    def check_url?
+      url = URI.parse(@url.long_url)
+      url.is_a?(URI::HTTP) && !url.host.nil?
+    end
 
-  def set_url
-    @url = Url.find_by(short_url: params[:short_url])
-  end
+    def set_url
+      @url = Url.find_by(params[:id])
+    end
 end

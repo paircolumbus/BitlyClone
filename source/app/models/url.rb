@@ -2,8 +2,6 @@ require 'uri'
 
 class Url < ActiveRecord::Base
 
-attr_accessor :click_count
-
 validate :compliance_check
 
 before_create :generate_url

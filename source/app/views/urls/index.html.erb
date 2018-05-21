@@ -16,7 +16,7 @@ Welcome to the URL Shortener! <a href="/urls/new">Click here to create your own 
       <td><%= url.long_url %></td>
       <td><%= "localhost:3000/#{url.short_url}" %></td>
       <td><%= url.click_count %></td>
-      <!--- <td><%= link_to 'Show', url_path(url) %></td> !-->
+      <td><%= link_to 'Show', url_path(url) %></td> 
     </tr>
   <% end %>
 </table>

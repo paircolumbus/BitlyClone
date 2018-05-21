@@ -34,8 +34,9 @@ class UrlsController < ApplicationController
 
   def transfer
     @url = Url.find_by(short_url: params[:short_url])
+    @url.click_count += 1
+    @url.save
     redirect_to @url.long_url
-    #@url.click_count += 1
   end
 
   private

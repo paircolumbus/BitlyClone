@@ -1,0 +1,22 @@
+
+<h1>Shortened URLs</h1>
+
+Welcome to the URL Shortener! <a href="/urls/new">Click here to create your own shortened URL.</a>
+<p>
+<table>
+  <tr>
+    <th>Long URL</th>
+    <th>Short URL</th>
+    <th>Click Count</th>
+  <!--  <th></th>!-->
+  </tr>
+
+  <% @urls.each do |url| %>
+    <tr>
+      <td><%= url.long_url %></td>
+      <td><%= "localhost:3000/#{url.short_url}" %></td>
+      <td><%= url.click_count %></td>
+      <!--- <td><%= link_to 'Show', url_path(url) %></td> !-->
+    </tr>
+  <% end %>
+</table>

@@ -2,6 +2,8 @@ require 'uri'
 
 class Url < ActiveRecord::Base
 
+validates :long_url, presence: true
+validates :short_url, uniqueness: true
 validate :compliance_check
 
 before_create :generate_url
